@@ -25,7 +25,7 @@
 		Title="Settings"
 		Icon="Images/UI/settings.png">
 		<x:Arguments>
-			<views:HostPage/>
+			<views:SettingsPage/>
 		</x:Arguments>
 	</NavigationPage>
 

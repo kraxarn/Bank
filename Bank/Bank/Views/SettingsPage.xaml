@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Bank.Views.SettingsPage"
+	Title="Settings">
+
+	<TableView
+		Intent="Settings">
+		<TableRoot>
+
+		<TableSection
+			Title="Application">
+				<SwitchCell
+					x:Name="CellDarkMode"
+					Text="Dark Mode"
+					OnChanged="DarkMode_OnChanged"/>
+		</TableSection>
+
+		<TableSection
+			Title="Advanced">
+				<EntryCell
+					Label="Port"
+					Placeholder="13000"/>
+		</TableSection>
+
+			<TableSection
+				Title="Profile">
+				<ViewCell>
+					<Button
+						Text="Edit Profile"
+						HorizontalOptions="FillAndExpand"
+						Clicked="ButtonProfile_OnClicked"/>
+				</ViewCell>
+			</TableSection>
+
+		</TableRoot>
+	</TableView>
+
+</ContentPage>
