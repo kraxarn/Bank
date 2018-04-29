@@ -38,9 +38,11 @@ namespace Bank.Views
 			for (var i = 0; i < avatarNames.Length; i++)
 				avatars[i] = ImageSource.FromFile($"Images/Avatar/{avatarNames[i]}.png");
 
-			selectedIndex = new Random().Next(avatarNames.Length);
+			selectedIndex = (int) Application.Current.Properties["avatar"];
 
 			ImageAvatar.Source = avatars[selectedIndex];
+
+			EntryName.Text = Application.Current.Properties["name"] as string;
 		}
 
 		private void ButtonPrevious_OnClicked(object sender, EventArgs e)
@@ -55,21 +57,26 @@ namespace Bank.Views
 				ImageAvatar.Source = avatars[++selectedIndex];
 		}
 
-		private void ButtonSave_OnClicked(object sender, EventArgs e)
+		protected override void OnDisappearing()
 		{
 			var nameLength = EntryName.Text?.Length ?? 0;
 
 			if (nameLength < 3)
 			{
-				DisplayAlert("Invalid Name", "Name must be at least 3 characters", "OK");
+				DisplayAlert("Changes not saved", "Name must be at least 3 characters", "OK");
 				return;
 			}
 
 			if (nameLength > 16)
 			{
-				DisplayAlert("Invalid Name", "Name cannot be longer than 16 characters", "OK");
+				DisplayAlert("Changed not saved", "Name cannot be longer than 16 characters", "OK");
 				return;
 			}
+
+			Application.Current.Properties["name"]   = EntryName.Text;
+			Application.Current.Properties["avatar"] = selectedIndex;
+
+			base.OnDisappearing();
 		}
 	}
 }

@@ -45,10 +45,6 @@
 				x:Name="EntryName"
 				Placeholder="Name"/>
 
-			<Button
-				Text="Save"
-				Clicked="ButtonSave_OnClicked"/>
-
 		</StackLayout>
 
 	</ContentPage.Content>

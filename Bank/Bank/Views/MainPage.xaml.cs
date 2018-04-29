@@ -8,6 +8,12 @@ namespace Bank.Views
 		public MainPage()
 		{
 			InitializeComponent();
+
+			if (!Application.Current.Properties.ContainsKey("name"))
+			{
+				Application.Current.Properties["name"]   = DependencyService.Get<IDeviceInfo>().DeviceName;
+				Application.Current.Properties["avatar"] = 0;
+			}
 		}
 	}
 }
