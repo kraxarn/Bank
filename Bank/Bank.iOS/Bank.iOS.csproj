@@ -170,9 +170,30 @@
     <BundleResource Include="Resources\Images\Avatar\shoe.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\right.png" />
+    <BundleResource Include="Resources\Images\UI\settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\left.png" />
+    <BundleResource Include="Resources\Images\UI\settings%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\settings%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\host.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\host%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\host%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\join.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\join%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\UI\join%403x.png" />
   </ItemGroup>
 </Project>
