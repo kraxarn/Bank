@@ -57,24 +57,25 @@ namespace Bank.Views
 				ImageAvatar.Source = avatars[++selectedIndex];
 		}
 
-		protected override void OnDisappearing()
+		protected override async void OnDisappearing()
 		{
 			var nameLength = EntryName.Text?.Length ?? 0;
 
 			if (nameLength < 3)
 			{
-				DisplayAlert("Changes not saved", "Name must be at least 3 characters", "OK");
+				await DisplayAlert("Changes not saved", "Name must be at least 3 characters", "OK");
 				return;
 			}
 
 			if (nameLength > 16)
 			{
-				DisplayAlert("Changed not saved", "Name cannot be longer than 16 characters", "OK");
+				await DisplayAlert("Changed not saved", "Name cannot be longer than 16 characters", "OK");
 				return;
 			}
 
 			Application.Current.Properties["name"]   = EntryName.Text;
 			Application.Current.Properties["avatar"] = selectedIndex;
+			await Application.Current.SavePropertiesAsync();
 
 			base.OnDisappearing();
 		}
