@@ -42,7 +42,7 @@
 						Orientation="Horizontal"
 						Margin="12">
 						<Label
-							Text="Device"/>
+							Text="Name"/>
 						<Label
 							TextColor="Gray"
 							HorizontalOptions="EndAndExpand"
