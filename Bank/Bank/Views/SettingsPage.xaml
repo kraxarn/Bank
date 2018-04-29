@@ -37,7 +37,8 @@
 			<TableSection
 				Title="Device Info">
 				
-				<ViewCell>
+				<ViewCell
+					IsEnabled="False">
 					<StackLayout
 						Orientation="Horizontal"
 						Margin="12">
@@ -51,7 +52,8 @@
 					</StackLayout>
 				</ViewCell>
 
-				<ViewCell>
+				<ViewCell
+					IsEnabled="False">
 					<StackLayout
 						Orientation="Horizontal"
 						Margin="12">
