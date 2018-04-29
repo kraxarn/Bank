@@ -33,6 +33,18 @@
 						Clicked="ButtonProfile_OnClicked"/>
 				</ViewCell>
 			</TableSection>
+			
+			<TableSection
+				Title="Info">
+				
+				<ViewCell>
+					<Label
+						x:Name="LabelDeviceName"
+						Text="Device: Unknown"
+						Margin="12, 12, 0, 0"/>
+				</ViewCell>
+
+			</TableSection>
 
 		</TableRoot>
 	</TableView>

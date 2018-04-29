@@ -7,8 +7,13 @@ namespace Bank.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SettingsPage : ContentPage
 	{
-		public SettingsPage() 
-			=> InitializeComponent();
+		public SettingsPage()
+		{
+			InitializeComponent();
+
+			var deviceName = DependencyService.Get<IDeviceInfo>().GetDeviceName();
+			LabelDeviceName.Text = $"Device: {deviceName}";
+		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e)
 		{
