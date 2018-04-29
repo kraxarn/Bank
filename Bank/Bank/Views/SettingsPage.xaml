@@ -35,13 +35,34 @@
 			</TableSection>
 			
 			<TableSection
-				Title="Info">
+				Title="Device Info">
 				
 				<ViewCell>
-					<Label
-						x:Name="LabelDeviceName"
-						Text="Device: Unknown"
-						Margin="12, 12, 0, 0"/>
+					<StackLayout
+						Orientation="Horizontal"
+						Margin="12">
+						<Label
+							Text="Device"/>
+						<Label
+							TextColor="Gray"
+							HorizontalOptions="EndAndExpand"
+							x:Name="LabelDeviceName"
+							Text="Unknown"/>
+					</StackLayout>
+				</ViewCell>
+
+				<ViewCell>
+					<StackLayout
+						Orientation="Horizontal"
+						Margin="12">
+						<Label
+							Text="OS"/>
+						<Label
+							TextColor="Gray"
+							HorizontalOptions="EndAndExpand"
+							x:Name="LabelDeviceOs"
+							Text="Unknown"/>
+					</StackLayout>
 				</ViewCell>
 
 			</TableSection>

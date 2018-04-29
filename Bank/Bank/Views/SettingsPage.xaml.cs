@@ -11,8 +11,9 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 
-			var deviceName = DependencyService.Get<IDeviceInfo>().DeviceName;
-			LabelDeviceName.Text = $"Device: {deviceName}";
+			var device = DependencyService.Get<IDeviceInfo>();
+			LabelDeviceName.Text = device.DeviceName;
+			LabelDeviceOs.Text    = device.OSVersion;
 		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e)
