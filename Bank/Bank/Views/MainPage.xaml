@@ -17,7 +17,7 @@
 		Title="Join"
 		Icon="Images/UI/join.png">
 		<x:Arguments>
-			<views:HostPage/>
+			<views:JoinPage/>
 		</x:Arguments>
 	</NavigationPage>
 

@@ -9,7 +9,7 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 
-			if (!Application.Current.Properties.ContainsKey("name"))
+			if (!Application.Current.Properties.ContainsKey("name") || !Application.Current.Properties.ContainsKey("avatar"))
 			{
 				Application.Current.Properties["name"]   = DependencyService.Get<IDeviceInfo>().DeviceName;
 				Application.Current.Properties["avatar"] = 0;
