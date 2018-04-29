@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Bank.Views;
 using Xamarin.Forms;
 
 namespace Bank
@@ -13,7 +13,7 @@ namespace Bank
 		{
 			InitializeComponent();
 
-			MainPage = new Bank.MainPage();
+			MainPage = new MainPage();
 		}
 
 		protected override void OnStart ()

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -79,14 +79,44 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Bank\Bank.csproj">
       <Project>{2CF249B2-915C-44BB-9086-5B9E9A027958}</Project>
       <Name>Bank</Name>
     </ProjectReference>
   </ItemGroup>
-
-
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <None Include="Assets\Images\Avatar\airplane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\boat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\burger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\cat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\dog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\duck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\hat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\penguin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\Images\Avatar\shoe.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -104,6 +104,17 @@
     <None Include="Bank.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Images\Avatar\airplane.png" />
+    <BundleResource Include="Assets\Images\Avatar\boat.png" />
+    <BundleResource Include="Assets\Images\Avatar\burger.png" />
+    <BundleResource Include="Assets\Images\Avatar\car.png" />
+    <BundleResource Include="Assets\Images\Avatar\cat.png" />
+    <BundleResource Include="Assets\Images\Avatar\dog.png" />
+    <BundleResource Include="Assets\Images\Avatar\duck.png" />
+    <BundleResource Include="Assets\Images\Avatar\hat.png" />
+    <BundleResource Include="Assets\Images\Avatar\penguin.png" />
+    <BundleResource Include="Assets\Images\Avatar\phone.png" />
+    <BundleResource Include="Assets\Images\Avatar\shoe.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
@@ -149,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bank\Bank.csproj">

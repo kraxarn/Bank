@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Bank.Views"
+             x:Class="Bank.Views.MainPage">
+
+	<StackLayout
+		Margin="32, 92, 32, 32">
+
+		<Label
+			FontSize="32"
+			Text="Create Profile"
+			HorizontalTextAlignment="Center"
+			FontAttributes="Bold"/>
+
+		<Grid
+			x:Name="GridAvatar"
+			HeightRequest="260">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="Auto"/>
+				<ColumnDefinition
+					Width="1*"/>
+				<ColumnDefinition
+					Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<Button
+				VerticalOptions="Center"
+				Grid.Column="0"
+				FontSize="32"
+				Text="◄"
+				Clicked="ButtonPrevious_OnClicked"/>
+
+			<Image
+				VerticalOptions="Center"
+				Grid.Column="1"
+				x:Name="ImageAvatar"/>
+
+			<Button
+				VerticalOptions="Center"
+				Grid.Column="2"
+				FontSize="32"
+				Text="►"
+				Clicked="ButtonNext_OnClicked"/>
+
+		</Grid>
+
+		<Entry
+			x:Name="EntryName"
+			Placeholder="Name"/>
+
+		<Button
+			Text="Save"
+			Clicked="ButtonSave_OnClicked"/>
+
+	</StackLayout>
+</ContentPage>
