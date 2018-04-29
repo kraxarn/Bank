@@ -11,7 +11,7 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 
-			var deviceName = DependencyService.Get<IDeviceInfo>().GetDeviceName();
+			var deviceName = DependencyService.Get<IDeviceInfo>().DeviceName;
 			LabelDeviceName.Text = $"Device: {deviceName}";
 		}
 

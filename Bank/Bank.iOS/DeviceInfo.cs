@@ -6,6 +6,6 @@ namespace Bank.iOS
 {
 	public class DeviceInfo : IDeviceInfo
 	{
-		public string GetDeviceName() => UIDevice.CurrentDevice.Name;
+		public string DeviceName => UIDevice.CurrentDevice.Name;
 	}
 }
