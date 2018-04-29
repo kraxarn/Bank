@@ -1,17 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bank.Views.ProfilePage">
+             x:Class="Bank.Views.ProfilePage"
+             Title="Profile">
 	<ContentPage.Content>
 
 		<StackLayout
 			Margin="32, 92, 32, 32">
-
-			<Label
-				FontSize="32"
-				Text="Create Profile"
-				HorizontalTextAlignment="Center"
-				FontAttributes="Bold"/>
 
 			<Grid
 				HeightRequest="260">
