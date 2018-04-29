@@ -6,11 +6,59 @@
 	Title="Create">
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-	            Text="View: HostPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <StackLayout
+	        Margin="32">
+
+			<Label
+				x:Name="LabelRoom"
+				FontAttributes="Bold"
+				FontSize="32"
+	            Text="RoomID: "/>
+
+			<StackLayout
+				Margin="0, 16, 0, 0"
+				HorizontalOptions="CenterAndExpand"
+				Orientation="Horizontal">
+
+				<Entry
+					x:Name="EntryMoney"
+					Placeholder="Starting Money"
+					Keyboard="Numeric"/>
+
+				<Picker
+					Title="Unit">
+					<Picker.Items>
+						<x:String>M</x:String>
+						<x:String>K</x:String>
+					</Picker.Items>
+				</Picker>
+
+			</StackLayout>
+
+	        <Label
+		        Margin="0, 16, 0, 0"
+				FontSize="16"
+				FontAttributes="Bold"
+		        Text="Players"/>
+
+			<ListView
+				x:Name="ViewUsers">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ImageCell
+							Text="{Binding Name}"
+							Detail="{Binding Address}"
+							ImageSource="{Binding Avatar}"/>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			
+			<Button
+				Text="Start"
+				Clicked="ButtonStart_OnClicked"/>
+
+		</StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

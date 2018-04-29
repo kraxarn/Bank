@@ -15,7 +15,7 @@ namespace Bank.Views
 		private readonly ImageSource[] avatars;
 		private int selectedIndex;
 
-		public ProfilePage ()
+		public ProfilePage()
 		{
 			InitializeComponent();
 
