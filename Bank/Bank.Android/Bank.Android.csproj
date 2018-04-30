@@ -87,37 +87,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\Avatar\airplane.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\airplane.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\boat.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\boat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\burger.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\burger.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\car.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\car.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\cat.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\cat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\dog.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\dog.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\duck.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\duck.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\hat.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\hat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\penguin.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\penguin.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\phone.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\phone.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\Images\Avatar\shoe.png" />
+    <AndroidResource Include="Resources\drawable\images\avatar\shoe.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

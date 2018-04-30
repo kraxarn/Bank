@@ -36,7 +36,7 @@ namespace Bank.Views
 
 			avatars = new ImageSource[avatarNames.Length];
 			for (var i = 0; i < avatarNames.Length; i++)
-				avatars[i] = ImageSource.FromFile($"Images/Avatar/{avatarNames[i]}.png");
+				avatars[i] = ImageSource.FromFile($"images/avatar/{avatarNames[i]}.png");
 
 			selectedIndex = (int) Application.Current.Properties["avatar"];
 

@@ -31,7 +31,7 @@ namespace Bank
 		        "phone",
 		        "shoe"
 	        };
-		    Avatar = ImageSource.FromFile($"Images/Avatar/{avatarNames[avatar]}.png");
+		    Avatar = ImageSource.FromFile($"images/avatar/{avatarNames[avatar]}.png");
 	    }
     }
 }

@@ -24,7 +24,7 @@ namespace Bank
 
 			Users  = new ObservableCollection<User>();
 		    server = new TcpListener(ip, port);
-		    Running = false;
+			Running = false;
 	    }
 
 	    public bool Start()
@@ -33,7 +33,7 @@ namespace Bank
 		    {
 			    server.Start();
 			    var thread = new Thread(ServerThread);
-			    thread.Start();
+				thread.Start();
 			}
 		    catch (SocketException)
 		    {
@@ -50,7 +50,7 @@ namespace Bank
 		    var bytes = new byte[256];
 		    string data = null;
 
-		    while (true)
+		    while (Running)
 		    {
 				// Blocking call to accept requests
 			    TcpClient client = null;
@@ -75,6 +75,13 @@ namespace Bank
 			    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
 			    {
 				    data = Encoding.ASCII.GetString(bytes, 0, i);
+
+				    if (data == "STOP")
+				    {
+					    Running = false;
+					    break;
+				    }
+
 				    var dat = data.Split(',');
 
 
@@ -91,6 +98,8 @@ namespace Bank
 
 				client.Close();
 		    }
+
+			Console.WriteLine();
 		}
 
 	    public void Stop()

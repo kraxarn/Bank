@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -23,8 +24,13 @@ namespace Bank
 		    this.address = address;
 		    this.port    = port;
 
-		    name   = Application.Current.Properties["name"] as string;
-		    avatar = int.Parse(Application.Current.Properties["avatar"].ToString());
+		    name = Application.Current.Properties.ContainsKey("name")
+			    ? Application.Current.Properties["name"] as string
+			    : "NAME";
+
+		    avatar = Application.Current.Properties.ContainsKey("avatar")
+			    ? int.Parse(Application.Current.Properties["avatar"].ToString())
+			    : 0;
 	    }
 
 		public bool Connect() => Send($"JOIN,{name},{avatar}");

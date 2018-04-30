@@ -68,7 +68,7 @@ namespace Bank.Views
 		protected override void OnDisappearing()
 		{
 			if (server.Running)
-				server.Stop();
+				client.Send("STOP");
 
 			base.OnDisappearing();
 		}

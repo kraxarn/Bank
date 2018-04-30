@@ -6,24 +6,24 @@
 	x:Class="Bank.Views.MainPage">
 	
 	<NavigationPage
-		Title="Create"
-		Icon="Images/UI/host.png">
+		x:Name="PageCreate"
+		Title="Create">
 		<x:Arguments>
 			<views:HostPage/>
 		</x:Arguments>
 	</NavigationPage>
 
 	<NavigationPage
-		Title="Join"
-		Icon="Images/UI/join.png">
+		x:Name="PageJoin"
+		Title="Join">
 		<x:Arguments>
 			<views:JoinPage/>
 		</x:Arguments>
 	</NavigationPage>
 
 	<NavigationPage
-		Title="Settings"
-		Icon="Images/UI/settings.png">
+		x:Name="PageSettings"
+		Title="Settings">
 		<x:Arguments>
 			<views:SettingsPage/>
 		</x:Arguments>

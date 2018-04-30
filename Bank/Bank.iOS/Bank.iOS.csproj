@@ -138,63 +138,63 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Avatar\airplane.png" />
+    <None Include="Resources\images\avatar\airplane.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\boat.png" />
+    <BundleResource Include="Resources\images\avatar\boat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\burger.png" />
+    <BundleResource Include="Resources\images\avatar\burger.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\car.png" />
+    <BundleResource Include="Resources\images\avatar\car.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\cat.png" />
+    <BundleResource Include="Resources\images\avatar\cat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\dog.png" />
+    <BundleResource Include="Resources\images\avatar\dog.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\duck.png" />
+    <BundleResource Include="Resources\images\avatar\duck.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\hat.png" />
+    <BundleResource Include="Resources\images\avatar\hat.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\penguin.png" />
+    <BundleResource Include="Resources\images\avatar\penguin.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\phone.png" />
+    <BundleResource Include="Resources\images\avatar\phone.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\Avatar\shoe.png" />
+    <BundleResource Include="Resources\images\avatar\shoe.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\settings.png" />
+    <BundleResource Include="Resources\images\ui\settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\settings%402x.png" />
+    <BundleResource Include="Resources\images\ui\settings%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\settings%403x.png" />
+    <BundleResource Include="Resources\images\ui\settings%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\host.png" />
+    <BundleResource Include="Resources\images\ui\host.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\host%402x.png" />
+    <BundleResource Include="Resources\images\ui\host%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\host%403x.png" />
+    <BundleResource Include="Resources\images\ui\host%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\join.png" />
+    <BundleResource Include="Resources\images\ui\join.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\join%402x.png" />
+    <BundleResource Include="Resources\images\ui\join%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Images\UI\join%403x.png" />
+    <BundleResource Include="Resources\images\ui\join%403x.png" />
   </ItemGroup>
 </Project>
