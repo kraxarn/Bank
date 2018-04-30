@@ -193,6 +193,6 @@
     <BundleResource Include="Resources\images\ui\join%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Splash.png" />
+    <BundleResource Include="Resources\Logo.png" />
   </ItemGroup>
 </Project>
