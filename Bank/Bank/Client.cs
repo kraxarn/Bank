@@ -46,6 +46,10 @@ namespace Bank
 			    {
 				    return false;
 			    }
+			    catch (AggregateException)
+			    {
+				    return false;
+			    }
 			    finally
 			    {
 					tcp.Close();
