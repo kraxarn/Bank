@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using Xamarin.Forms;
@@ -60,8 +61,13 @@ namespace Bank
 			    }
 			    catch (SocketException e)
 			    {
-					client?.Close();
+				    client?.Close();
 				    continue;
+			    }
+			    catch (TargetInvocationException e)
+			    {
+					client?.Close();
+					continue;
 			    }
 
 
@@ -76,9 +82,13 @@ namespace Bank
 			    {
 				    data = Encoding.ASCII.GetString(bytes, 0, i);
 
-				    if (data == "STOP")
+				    var ok = Encoding.ASCII.GetBytes("OK");
+
+					if (data == "STOP")
 				    {
+						stream.Write(ok, 0, ok.Length);
 					    Running = false;
+						Users.Clear();
 					    break;
 				    }
 
@@ -86,12 +96,9 @@ namespace Bank
 
 
 				    if (dat[0] == "JOIN")
-				    {
 						Users.Add(new User(dat[1], int.Parse(dat[2]), ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString()));
-				    }
-
-				    var msg = Encoding.ASCII.GetBytes("OK");
-					stream.Write(msg, 0, msg.Length);
+					
+					stream.Write(ok, 0, ok.Length);
 
 					// Process data here and send response
 			    }
@@ -99,13 +106,14 @@ namespace Bank
 				client.Close();
 		    }
 
-			Console.WriteLine();
+			server.Stop();
 		}
 
 	    public void Stop()
 	    {
 		    server.Stop();
 		    Running = false;
+			Users.Clear();
 	    }
     }
 }
