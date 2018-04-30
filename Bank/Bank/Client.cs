@@ -42,7 +42,8 @@ namespace Bank
 		    {
 			    try
 			    {
-				    return tcp.ConnectAsync(address, port).Wait(500);
+				    tcp.ConnectAsync(address, port).Wait(500);
+				    return true;
 			    }
 			    catch (SocketException e)
 			    {
