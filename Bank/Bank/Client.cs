@@ -33,6 +33,25 @@ namespace Bank
 			    : 0;
 	    }
 
+	    public bool TestConnection()
+	    {
+		    using (var tcp = new TcpClient())
+		    {
+			    try
+			    {
+				    return tcp.ConnectAsync(address, port).Wait(500);
+			    }
+			    catch (SocketException)
+			    {
+				    return false;
+			    }
+			    finally
+			    {
+					tcp.Close();
+			    }
+		    }
+	    }
+
 		public bool Connect() => Send($"JOIN,{name},{avatar}");
 
 		public bool Send(string message)

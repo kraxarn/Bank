@@ -8,47 +8,64 @@
 	<TableView
 		Intent="Settings">
 		<TableRoot>
+			
+			<!-- Application Settings -->
+			<TableSection
+				Title="Application">
 
-		<TableSection
-			Title="Application">
 				<SwitchCell
 					x:Name="CellDarkMode"
 					Text="Dark Mode"
 					OnChanged="DarkMode_OnChanged"/>
-		</TableSection>
 
-		<TableSection
-			Title="Advanced">
+			</TableSection>
+
+			<!-- Advanced Settings -->
+			<TableSection
+				Title="Advanced">
+
 				<EntryCell
 					Label="Port"
 					Placeholder="13000"/>
-		</TableSection>
 
+				<EntryCell
+					Label="Timeout"
+					Placeholder="5000"/>
+
+			</TableSection>
+			
+			<!-- Profile -->
 			<TableSection
 				Title="Profile">
+
 				<ViewCell>
 					<Button
 						Text="Edit Profile"
 						HorizontalOptions="FillAndExpand"
 						Clicked="ButtonProfile_OnClicked"/>
 				</ViewCell>
+
 			</TableSection>
 			
+			<!-- Info -->
 			<TableSection
 				Title="Device Info">
-				
+
 				<ViewCell
 					IsEnabled="False">
 					<StackLayout
 						Orientation="Horizontal"
 						Margin="12">
+
 						<Label
 							Text="Name"/>
+
 						<Label
 							TextColor="Gray"
 							HorizontalOptions="EndAndExpand"
 							x:Name="LabelDeviceName"
 							Text="Unknown"/>
+
 					</StackLayout>
 				</ViewCell>
 
@@ -57,13 +74,16 @@
 					<StackLayout
 						Orientation="Horizontal"
 						Margin="12">
+
 						<Label
 							Text="OS"/>
+
 						<Label
 							TextColor="Gray"
 							HorizontalOptions="EndAndExpand"
 							x:Name="LabelDeviceOs"
 							Text="Unknown"/>
+
 					</StackLayout>
 				</ViewCell>
 
