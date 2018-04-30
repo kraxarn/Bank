@@ -34,9 +34,9 @@ namespace Bank.Views
 		private void ButtonConnect_OnClicked(object sender, EventArgs e)
 		{
 			client = new Client($"{addressPrefix}{EntryRoom.Text}");
-
+			
 			Application.Current.MainPage.DisplayAlert("Status",
-				client.TestConnection() ? "Connection successful" : "Connection failed", "OK");
+				client.TestConnection(out var msg) ? "Connection successful" : $"Connection failed: {msg}", "OK");
 		}
 	}
 }

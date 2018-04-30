@@ -34,20 +34,24 @@ namespace Bank
 			    : 0;
 	    }
 
-	    public bool TestConnection()
+	    public bool TestConnection(out string message)
 	    {
+		    message = null;
+
 		    using (var tcp = new TcpClient())
 		    {
 			    try
 			    {
 				    return tcp.ConnectAsync(address, port).Wait(500);
 			    }
-			    catch (SocketException)
+			    catch (SocketException e)
 			    {
+				    message = e.Message;
 				    return false;
 			    }
-			    catch (AggregateException)
+			    catch (AggregateException e)
 			    {
+				    message = e.Message;
 				    return false;
 			    }
 			    finally
