@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -58,39 +59,45 @@ namespace Bank
 	    {
 		    try
 		    {
-				// Create client
+			    // Create client
 			    client = new TcpClient(address, port)
 			    {
 				    ReceiveTimeout = 5000
 			    };
 
 			    // Translate message
-				var data = Encoding.ASCII.GetBytes(message);
+			    var data = Encoding.ASCII.GetBytes(message);
 
-				// Stream for reading/writing
+			    // Stream for reading/writing
 			    var stream = client.GetStream();
-				stream.Write(data, 0, data.Length);
+			    stream.Write(data, 0, data.Length);
 
-				// Recieve response
-				data = new byte[256];
+			    // Recieve response
+			    data = new byte[256];
 
-				// String to store response
+			    // String to store response
 			    var response = string.Empty;
 
-				// Read first batch of response
+			    // Read first batch of response
 			    var bytes = stream.Read(data, 0, data.Length);
 			    response = Encoding.ASCII.GetString(data, 0, bytes);
 
-				// Use response here
+			    // Use response here
 			    if (response != "OK" && response.Count(c => c == ',') != 2)
-				    Application.Current.MainPage.DisplayAlert("Invalid response", $"Got invalid response from server: \n{response}", "OK");
+				    Application.Current.MainPage.DisplayAlert("Invalid response", 
+					    $"Got invalid response from server: \n{response}", "OK");
 
-				stream.Close();
-				client.Close();
+			    stream.Close();
+			    client.Close();
 		    }
-		    catch (SocketException e)
+		    catch (SocketException)
 		    {
 			    client.Close();
+			    return false;
+		    }
+		    catch (IOException)
+		    {
+				client.Close();
 			    return false;
 		    }
 

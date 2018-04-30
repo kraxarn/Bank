@@ -109,17 +109,17 @@
     <None Include="Bank.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\avatar\airplane.png" />
-    <BundleResource Include="images\avatar\boat.png" />
-    <BundleResource Include="images\avatar\burger.png" />
-    <BundleResource Include="images\avatar\car.png" />
-    <BundleResource Include="images\avatar\cat.png" />
-    <BundleResource Include="images\avatar\dog.png" />
-    <BundleResource Include="images\avatar\duck.png" />
-    <BundleResource Include="images\avatar\hat.png" />
-    <BundleResource Include="images\avatar\penguin.png" />
-    <BundleResource Include="images\avatar\phone.png" />
-    <BundleResource Include="images\avatar\shoe.png" />
+    <Content Include="images\avatar\airplane.png" />
+    <Content Include="images\avatar\boat.png" />
+    <Content Include="images\avatar\burger.png" />
+    <Content Include="images\avatar\car.png" />
+    <Content Include="images\avatar\cat.png" />
+    <Content Include="images\avatar\dog.png" />
+    <Content Include="images\avatar\duck.png" />
+    <Content Include="images\avatar\hat.png" />
+    <Content Include="images\avatar\penguin.png" />
+    <Content Include="images\avatar\phone.png" />
+    <Content Include="images\avatar\shoe.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

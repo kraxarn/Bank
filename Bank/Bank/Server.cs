@@ -88,19 +88,32 @@ namespace Bank
 				    {
 						stream.Write(ok, 0, ok.Length);
 					    Running = false;
-						Users.Clear();
-					    break;
+
+					    // UWP needs this to run on the main thread
+					    if (Device.RuntimePlatform == Device.UWP)
+						    Device.BeginInvokeOnMainThread(() => Users.Clear());
+					    else
+						    Users.Clear();
+
+						break;
 				    }
 
 				    var dat = data.Split(',');
 
 
 				    if (dat[0] == "JOIN")
-						Users.Add(new User(dat[1], int.Parse(dat[2]), ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString()));
-					
-					stream.Write(ok, 0, ok.Length);
+				    {
+					    var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString());
 
-					// Process data here and send response
+						// UWP needs this to run on the main thread
+						if (Device.RuntimePlatform == Device.UWP)
+							Device.BeginInvokeOnMainThread(() => Users.Add(user));
+						else
+							Users.Add(user);
+				    }
+
+					// Send 'OK' back to the client
+				    stream.Write(ok, 0, ok.Length);
 			    }
 
 				client.Close();
