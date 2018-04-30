@@ -129,6 +129,17 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="images\avatar\48\airplane.png" />
+    <Content Include="images\avatar\48\boat.png" />
+    <Content Include="images\avatar\48\burger.png" />
+    <Content Include="images\avatar\48\car.png" />
+    <Content Include="images\avatar\48\cat.png" />
+    <Content Include="images\avatar\48\dog.png" />
+    <Content Include="images\avatar\48\duck.png" />
+    <Content Include="images\avatar\48\hat.png" />
+    <Content Include="images\avatar\48\penguin.png" />
+    <Content Include="images\avatar\48\phone.png" />
+    <Content Include="images\avatar\48\shoe.png" />
     <Content Include="images\avatar\airplane.png" />
     <Content Include="images\avatar\boat.png" />
     <Content Include="images\avatar\burger.png" />

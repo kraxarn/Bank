@@ -31,7 +31,10 @@ namespace Bank
 		        "phone",
 		        "shoe"
 	        };
-		    Avatar = ImageSource.FromFile($"images/avatar/{avatarNames[avatar]}.png");
+
+		    Avatar = ImageSource.FromFile(Device.RuntimePlatform == Device.UWP 
+			    ? $"images/avatar/48/{avatarNames[avatar]}.png" 
+			    : $"images/avatar/{avatarNames[avatar]}.png");
 	    }
     }
 }
