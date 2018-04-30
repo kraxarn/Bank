@@ -7,7 +7,7 @@ namespace Bank.UWP
     {
         public MainPage()
         {
-            InitializeComponent();
+	        InitializeComponent();
 
 			ApplicationView.PreferredLaunchViewSize = new Size(540, 960);
 	        ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
