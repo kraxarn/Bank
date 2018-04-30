@@ -64,5 +64,13 @@ namespace Bank.Views
 
 			base.OnAppearing();
 		}
+
+		protected override void OnDisappearing()
+		{
+			if (server.Running)
+				server.Stop();
+
+			base.OnDisappearing();
+		}
 	}
 }

@@ -93,6 +93,10 @@ namespace Bank
 		    }
 		}
 
-	    public void Stop() => server.Stop();
+	    public void Stop()
+	    {
+		    server.Stop();
+		    Running = false;
+	    }
     }
 }
