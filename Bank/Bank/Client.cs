@@ -37,14 +37,13 @@ namespace Bank
 
 	    public bool TestConnection(out string message)
 	    {
-		    message = null;
+		    message = "Connection timed out";
 
 		    using (var tcp = new TcpClient())
 		    {
 			    try
 			    {
-				    tcp.ConnectAsync(address, port).Wait(500);
-				    return true;
+				    return tcp.ConnectAsync(address, port).Wait(500);
 			    }
 			    catch (SocketException e)
 			    {
