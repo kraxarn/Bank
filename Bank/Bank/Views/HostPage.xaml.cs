@@ -57,7 +57,7 @@ namespace Bank.Views
 			{
 				// Start server
 				if (!server.Start())
-					Application.Current.MainPage.DisplayAlert("Socket Error", "Error starting local server", "OK");
+					Application.Current.MainPage.DisplayAlert("Server Error", "Error starting local server", "OK");
 				else if (!client.Connect(out var error))
 					Application.Current.MainPage.DisplayAlert("Server Error", error, "OK");
 			}
