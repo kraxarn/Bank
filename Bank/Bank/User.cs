@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Bank
 {
@@ -11,6 +7,8 @@ namespace Bank
 	    public string      Name    { get; set; }
 	    public ImageSource Avatar  { get; set; }
 	    public string      Address { get; set; }
+
+	    public uint Money;
 
 	    public User(string name, int avatar, string address)
 	    {
