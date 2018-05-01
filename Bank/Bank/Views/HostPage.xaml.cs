@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -36,6 +30,9 @@ namespace Bank.Views
 			ViewUsers.ItemsSource = server.Users;
 
 			LabelRoom.Text += ip.Substring(ip.LastIndexOf('.') + 1);
+
+			// Disable selection of users
+			ViewUsers.ItemSelected += (sender, args) => ViewUsers.SelectedItem = null;
 
 			EntryMoney.Text = "1500";
 			PickerMoney.SelectedIndex = 2;
