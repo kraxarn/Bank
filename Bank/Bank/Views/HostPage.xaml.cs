@@ -58,8 +58,8 @@ namespace Bank.Views
 				// Start server
 				if (!server.Start())
 					Application.Current.MainPage.DisplayAlert("Socket Error", "Error starting local server", "OK");
-				else if (!client.Connect())
-					Application.Current.MainPage.DisplayAlert("Socket Error", "Error connecting to local server", "OK");
+				else if (!client.Connect(out var error))
+					Application.Current.MainPage.DisplayAlert("Server Error", error, "OK");
 			}
 
 			base.OnAppearing();
@@ -68,7 +68,7 @@ namespace Bank.Views
 		protected override void OnDisappearing()
 		{
 			if (server.Running)
-				client.Send("STOP");
+				client.Send("STOP", out _);
 
 			base.OnDisappearing();
 		}

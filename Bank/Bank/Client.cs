@@ -25,6 +25,7 @@ namespace Bank
 		    this.address = address;
 		    this.port    = port;
 
+			// We prob want to update these if settings changes
 		    name = Application.Current.Properties.ContainsKey("name")
 			    ? Application.Current.Properties["name"] as string
 			    : "NAME";
@@ -62,10 +63,17 @@ namespace Bank
 		    }
 	    }
 
-		public bool Connect() => Send($"JOIN,{name},{avatar}");
-
-		public bool Send(string message)
+	    public bool Connect(out string error)
 	    {
+		    var result = Send($"JOIN,{name},{avatar}", out var e);
+		    error = e;
+		    return result;
+	    }
+
+	    public bool Send(string message, out string error)
+		{
+			error = null;
+
 		    try
 		    {
 			    // Create client
@@ -99,13 +107,15 @@ namespace Bank
 			    stream.Close();
 			    client.Close();
 		    }
-		    catch (SocketException)
+		    catch (SocketException e)
 		    {
+			    error = e.Message;
 			    client.Close();
 			    return false;
 		    }
-		    catch (IOException)
+		    catch (IOException e)
 		    {
+			    error = e.Message;
 				client.Close();
 			    return false;
 		    }
