@@ -10,6 +10,21 @@ namespace Bank
 
 	    public uint Money;
 
+	    public string FormattedMoney
+	    {
+		    get
+		    {
+				// M
+			    if (Money >= 1000000)
+				    return $"{Money / 100000} M";
+				// K
+			    if (Money >= 1000)
+				    return $"{Money / 1000} K";
+				// -
+			    return $"{Money}";
+		    }
+	    }
+
 	    public User(string name, int avatar, string address)
 	    {
 		    Name = name;
