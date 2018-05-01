@@ -28,7 +28,15 @@ namespace Bank.Views
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
 		{
-			await Navigation.PopModalAsync();
+			var action = await DisplayActionSheet("Are you sure?", "Cancel", "Quit without saving", "Save and quit");
+			switch (action)
+			{
+				// For now, quit without saving for both
+				case "Quit without saving":
+				case "Save and quit":
+					await Navigation.PopModalAsync();
+					break;
+			}
 		}
 	}
 }
