@@ -32,6 +32,7 @@
 					<Picker.Items>
 						<x:String>M</x:String>
 						<x:String>K</x:String>
+						<x:String>-</x:String>
 					</Picker.Items>
 				</Picker>
 

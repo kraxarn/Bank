@@ -35,11 +35,10 @@ namespace Bank.Views
 			server = new Server();
 			ViewUsers.ItemsSource = server.Users;
 
-			//var name = Application.Current.Properties["name"] as string;
-			//var avatar = (int)Application.Current.Properties["avatar"];
-
-			//users.Add(new User(name, avatar, ip));
 			LabelRoom.Text += ip.Substring(ip.LastIndexOf('.') + 1);
+
+			EntryMoney.Text = "1500";
+			PickerMoney.SelectedIndex = 2;
 		}
 
 		private async void ButtonStart_OnClicked(object sender, EventArgs e)
