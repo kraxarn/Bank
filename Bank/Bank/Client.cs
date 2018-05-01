@@ -110,13 +110,13 @@ namespace Bank
 		    catch (SocketException e)
 		    {
 			    error = e.Message;
-			    client.Close();
+			    client?.Close();
 			    return false;
 		    }
 		    catch (IOException e)
 		    {
 			    error = e.Message;
-				client.Close();
+				client?.Close();
 			    return false;
 		    }
 
