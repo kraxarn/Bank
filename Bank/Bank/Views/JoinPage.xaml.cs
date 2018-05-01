@@ -36,7 +36,7 @@ namespace Bank.Views
 				return;
 			}
 
-			client.Connect();
+			client.Connect(out _);
 		}
 	}
 }
