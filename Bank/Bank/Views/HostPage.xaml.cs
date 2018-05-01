@@ -53,7 +53,7 @@ namespace Bank.Views
 				return;
 			}
 
-			await Navigation.PushModalAsync(new GamePage(client, server.Users));
+			await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, server.Users)));
 		}
 
 		protected override void OnAppearing()

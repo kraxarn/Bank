@@ -2,12 +2,14 @@
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="Bank.Views.GamePage">
+	x:Class="Bank.Views.GamePage"
+	Title="Game">
+
 	<ContentPage.Content>
 
 		<StackLayout
 			Margin="32">
-			
+
 			<!-- You -->
 			<Label
 				FontSize="32"
@@ -62,6 +64,10 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+
+			<Button
+				Text="Quit"
+				Clicked="ButtonBack_OnClicked"/>
 
 		</StackLayout>
 

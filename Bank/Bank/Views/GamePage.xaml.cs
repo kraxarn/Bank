@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,6 +24,11 @@ namespace Bank.Views
 			ImageAvatar.Source = currentUser.Avatar;
 			LabelName.Text     = currentUser.Name;
 			LabelMoney.Text    = currentUser.FormattedMoney;
+		}
+
+		private async void ButtonBack_OnClicked(object sender, EventArgs e)
+		{
+			await Navigation.PopModalAsync();
 		}
 	}
 }
