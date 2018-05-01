@@ -32,7 +32,7 @@ namespace Bank.Views
 
 			if (!client.TestConnection(out var msg))
 			{
-				Application.Current.MainPage.DisplayAlert("Error", $"Connection failed: {msg}", "OK");
+				Application.Current.MainPage.DisplayAlert("Conection failed", msg, "OK");
 				return;
 			}
 
