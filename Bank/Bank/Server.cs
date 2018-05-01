@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -49,7 +47,6 @@ namespace Bank
 	    private void ServerThread()
 	    {
 		    var bytes = new byte[256];
-		    string data = null;
 
 		    while (Running)
 		    {
@@ -59,30 +56,26 @@ namespace Bank
 			    {
 				    client = server.AcceptTcpClient();
 			    }
-			    catch (SocketException e)
+			    catch (SocketException)
 			    {
 				    client?.Close();
 				    continue;
 			    }
-			    catch (TargetInvocationException e)
+			    catch (TargetInvocationException)
 			    {
 					client?.Close();
 					continue;
 			    }
 
-
-			    data = null;
-
-				// Stream object for reading/writing
+			    // Stream object for reading/writing
 			    var stream = client.GetStream();
 
 				// Get all data sent by client
 			    int i;
 			    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
 			    {
-				    data = Encoding.ASCII.GetString(bytes, 0, i);
-
-				    var ok = Encoding.ASCII.GetBytes("OK");
+				    var data = Encoding.ASCII.GetString(bytes, 0, i);
+				    var ok   = Encoding.ASCII.GetBytes("OK");
 
 					if (data == "STOP")
 				    {
@@ -99,7 +92,6 @@ namespace Bank
 				    }
 
 				    var dat = data.Split(',');
-
 
 				    if (dat[0] == "JOIN")
 				    {
@@ -121,12 +113,5 @@ namespace Bank
 
 			server.Stop();
 		}
-
-	    public void Stop()
-	    {
-		    server.Stop();
-		    Running = false;
-			Users.Clear();
-	    }
     }
 }
