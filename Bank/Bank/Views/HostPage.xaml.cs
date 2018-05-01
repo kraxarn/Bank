@@ -42,11 +42,18 @@ namespace Bank.Views
 			LabelRoom.Text += ip.Substring(ip.LastIndexOf('.') + 1);
 		}
 
-		private void ButtonStart_OnClicked(object sender, EventArgs e)
+		private async void ButtonStart_OnClicked(object sender, EventArgs e)
 		{
 			if (server.Users.Count < 2)
 			{
-				Application.Current.MainPage.DisplayAlert("Not enough players", "Try adding more players and try again", "OK");
+				if (await Application.Current.MainPage.DisplayAlert("Not enough players",
+					"Try adding more players and try again", "OK", "Ignore"))
+					return;
+			}
+
+			if (!uint.TryParse(EntryMoney.Text, out _) || PickerMoney.SelectedIndex < 0)
+			{
+				await Application.Current.MainPage.DisplayAlert("No starting money", "Please select starting money first", "OK");
 				return;
 			}
 		}

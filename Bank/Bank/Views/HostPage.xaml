@@ -27,6 +27,7 @@
 					Keyboard="Numeric"/>
 
 				<Picker
+					x:Name="PickerMoney"
 					Title="Unit">
 					<Picker.Items>
 						<x:String>M</x:String>
