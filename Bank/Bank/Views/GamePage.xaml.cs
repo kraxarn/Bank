@@ -28,7 +28,13 @@ namespace Bank.Views
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
 		{
-			var action = await DisplayActionSheet("Are you sure?", "Cancel", "Quit without saving", "Save and quit");
+			string action;
+
+			if (Device.RuntimePlatform == Device.iOS)
+				action = await DisplayActionSheet("Are you sure?", "Cancel", "Quit without saving", "Save and quit");
+			else
+				action = await DisplayActionSheet("Are you sure?", "Cancel", null, "Quit without saving", "Save and quit");
+
 			switch (action)
 			{
 				// For now, quit without saving for both
