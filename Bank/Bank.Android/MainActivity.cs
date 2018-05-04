@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Preferences;
 
 namespace Bank.Droid
 {
@@ -14,14 +15,19 @@ namespace Bank.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
+	        var prefs = PreferenceManager.GetDefaultSharedPreferences(this);
+
+			if (prefs.GetString("theme", "light") == "dark")
+				SetTheme(Resource.Style.MainThemeDark);
+
+			TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
-        }
+		}
     }
 }
 

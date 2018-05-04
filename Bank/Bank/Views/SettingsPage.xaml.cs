@@ -16,18 +16,13 @@ namespace Bank.Views
 			LabelDeviceOs.Text    = device.OSVersion;
 		}
 
-		private void DarkMode_OnChanged(object sender, ToggledEventArgs e)
-		{
-			if (!e.Value)
-				return;
+		private void DarkMode_OnChanged(object sender, ToggledEventArgs e) 
+			=> Application.Current.Properties["theme"] = e.Value ? "dark" : "light";
 
-			Application.Current.MainPage.DisplayAlert("Sorry", "Not implemented yet", "OK");
-			CellDarkMode.On = false;
-		}
+		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
+			=> await Navigation.PushAsync(new ProfilePage());
 
-		private async void ButtonProfile_OnClicked(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new ProfilePage());
-		}
+		protected override async void OnDisappearing() 
+			=> await Application.Current.SavePropertiesAsync();
 	}
 }

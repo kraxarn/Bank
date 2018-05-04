@@ -17,6 +17,10 @@
 					x:Name="CellDarkMode"
 					Text="Dark Mode"
 					OnChanged="DarkMode_OnChanged"/>
+				
+				<SwitchCell
+					x:Name="CellShortenMoney"
+					Text="Shorten Money"/>
 
 			</TableSection>
 
