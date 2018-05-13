@@ -29,7 +29,7 @@ namespace Bank.Views
 			server = new Server();
 			ViewUsers.ItemsSource = server.Users;
 
-			LabelRoom.Text += ip.Substring(ip.LastIndexOf('.') + 1);
+			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
 
 			// Disable selection of users
 			ViewUsers.ItemSelected += (sender, args) => ViewUsers.SelectedItem = null;
