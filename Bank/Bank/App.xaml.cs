@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Bank.Views;
+﻿using Bank.Views;
 using Xamarin.Forms;
 
 namespace Bank

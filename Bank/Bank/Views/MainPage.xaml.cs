@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Bank.Views
 {
