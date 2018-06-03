@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,15 +11,19 @@ namespace Bank.Views
 	{
 		private Client client;
 
-		public GamePage(Client client, ObservableCollection<User> users)
+		public GamePage(Client client, IEnumerable<User> serverUsers)
 		{
 			InitializeComponent();
 
 			this.client = client;
+			var users = new List<User>(serverUsers);
 
 			// Get local user
 			// TODO: This doesn't work if we're connecting to a server
 			var currentUser = users.Single(u => u.Address == "127.0.0.1");
+
+			// Don't show ourselves in users list
+			users.Remove(currentUser);
 
 			ImageAvatar.Source = currentUser.Avatar;
 			LabelName.Text     = currentUser.Name;
@@ -29,7 +32,8 @@ namespace Bank.Views
 			// Set view source
 			ViewUsers.ItemsSource = users;
 
-			users.Add(new User("Test user", 0, "192.168.0.1"));
+			// Add test user
+			users.Add(new User("TestUser", 0, "0.0.0.0"));
 		}
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
