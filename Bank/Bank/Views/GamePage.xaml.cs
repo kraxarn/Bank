@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace Bank.Views
 	{
 		private Client client;
 
-		public GamePage(Client client, IEnumerable<User> users)
+		public GamePage(Client client, ObservableCollection<User> users)
 		{
 			InitializeComponent();
 
@@ -24,6 +25,9 @@ namespace Bank.Views
 			ImageAvatar.Source = currentUser.Avatar;
 			LabelName.Text     = currentUser.Name;
 			LabelMoney.Text    = currentUser.FormattedMoney;
+
+			// Set view source
+			ViewUsers.ItemsSource = users;
 		}
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
