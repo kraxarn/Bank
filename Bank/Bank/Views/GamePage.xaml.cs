@@ -34,6 +34,18 @@ namespace Bank.Views
 
 			// Add test user
 			users.Add(new User("Test user", 0, "0.0.0.0"));
+
+			// Set handler for clicking user
+			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
+		}
+
+		private async void ViewUsersOnItemSelected(object sender, SelectedItemChangedEventArgs e)
+		{
+			if (ViewUsers.SelectedItem == null)
+				return;
+
+			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage()));
+			ViewUsers.SelectedItem = null;
 		}
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)

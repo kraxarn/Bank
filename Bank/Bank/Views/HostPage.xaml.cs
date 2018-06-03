@@ -51,7 +51,7 @@ namespace Bank.Views
 			{
 				await Application.Current.MainPage.DisplayAlert("No starting money", "Please select starting money first", "OK");
 				return;
-			}
+			}	
 
 			await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, server.Users)));
 		}

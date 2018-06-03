@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Bank.Views.MoneyPage"
+	Title="Send Money">
+
+    <ContentPage.Content>
+
+		<StackLayout
+			Margin="32">
+			
+			<!-- Title -->
+			<StackLayout
+				VerticalOptions="StartAndExpand">
+
+				<!-- Money view -->
+				<Grid
+					HorizontalOptions="Center">
+
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="Auto"/>
+						<ColumnDefinition
+							Width="Auto"/>
+						<ColumnDefinition
+							Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					
+					<!-- You (With some dummy text) -->
+					<Label
+						Grid.Column="0"
+						Grid.Row="0"
+						FontSize="32"
+						Text="You"/>
+					<Label
+						Grid.Column="0"
+						Grid.Row="1"
+						Text="$000"/>
+					
+					<!-- Arrow (Label for now) -->
+					<Label
+						Grid.Column="1"
+						Grid.Row="0"
+						Grid.RowSpan="2"
+						VerticalOptions="CenterAndExpand"
+						HorizontalOptions="CenterAndExpand"
+						Margin="16"
+						FontSize="24"
+						Text="->"/>
+					
+					<!-- User (Also with dummy text) -->
+					<Label
+						Grid.Column="2"
+						Grid.Row="0"
+						FontSize="32"
+						Text="User"/>
+					<Label
+						Grid.Column="2"
+						Grid.Row="1"
+						Text="$000"/>
+
+				</Grid>
+
+			</StackLayout>
+			
+			<!-- Controls -->
+			<StackLayout
+				Margin="0,0,0,64"
+				VerticalOptions="End">
+
+				<!-- Money entry -->
+				<StackLayout
+					HorizontalOptions="Center"
+					Orientation="Horizontal">
+					
+					<Button
+						Text="K"/>
+					
+					<Entry
+						x:Name="EntryMoney"
+						IsEnabled="False"
+						WidthRequest="192"
+						Margin="16,0,16,0"/>
+					
+					<Button
+						Text="M"/>
+
+				</StackLayout>
+				
+				<!-- Buttons -->
+				<Grid
+					Margin="0,16,0,0">
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="0"
+						Grid.Column="0"
+						Text="Erase"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="0"
+						Grid.Column="1"
+						Text="1"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="0"
+						Grid.Column="2"
+						Text="2"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="0"
+						Grid.Column="3"
+						Text="3"/>
+					<Button
+						x:Name="ButtonSave"
+						Clicked="Button_OnClicked"
+						Grid.Row="0"
+						Grid.Column="4"
+						Text="Cancel"/>
+
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="1"
+						Grid.Column="1"
+						Text="4"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="1"
+						Grid.Column="2"
+						Text="5"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="1"
+						Grid.Column="3"
+						Text="6"/>
+
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="2"
+						Grid.Column="1"
+						Text="7"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="2"
+						Grid.Column="2"
+						Text="8"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="2"
+						Grid.Column="3"
+						Text="9"/>
+
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="3"
+						Grid.Column="2"
+						Text="0"/>
+					<Button
+						Clicked="Button_OnClicked"
+						Grid.Row="3"
+						Grid.Column="3"
+						Text="."/>
+
+				</Grid>
+				
+			</StackLayout>
+
+		</StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
