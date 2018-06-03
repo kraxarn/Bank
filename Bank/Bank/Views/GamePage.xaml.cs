@@ -33,7 +33,7 @@ namespace Bank.Views
 			ViewUsers.ItemsSource = users;
 
 			// Add test user
-			users.Add(new User("TestUser", 0, "0.0.0.0"));
+			users.Add(new User("Test user", 0, "0.0.0.0"));
 		}
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)

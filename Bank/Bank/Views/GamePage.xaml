@@ -59,7 +59,7 @@
 					<DataTemplate>
 						<ImageCell
 							Text="{Binding Name}"
-							Detail="{Binding Address}"
+							Detail="{Binding FormattedMoney}"
 							ImageSource="{Binding Avatar}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
