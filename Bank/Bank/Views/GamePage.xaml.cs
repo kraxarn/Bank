@@ -28,6 +28,8 @@ namespace Bank.Views
 
 			// Set view source
 			ViewUsers.ItemsSource = users;
+
+			users.Add(new User("Test user", 0, "192.168.0.1"));
 		}
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
