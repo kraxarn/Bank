@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,10 +14,11 @@ namespace Bank.Views
 			SelfRemove
 		}
 
-		public MoneyPage(Mode mode)
+		public MoneyPage(Mode mode, User from, User to = null)
 		{
 			InitializeComponent();
 
+			// Set title
 			switch (mode)
 			{
 				case Mode.SelfAdd:
@@ -33,6 +29,13 @@ namespace Bank.Views
 					Title = "Reduce Money";
 					break;
 			}
+
+			// Set 'You'
+			LabelSelfMoney.Text = from.FormattedMoney;
+
+			// Set 'User'
+			LabelUserName.Text  = to?.Name;
+			LabelUserMoney.Text = to?.FormattedMoney;
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)

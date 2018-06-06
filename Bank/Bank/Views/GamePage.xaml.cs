@@ -9,18 +9,20 @@ namespace Bank.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GamePage : ContentPage
 	{
-		private Client client;
+		private readonly Client client;
+		private readonly List<User> users;
+		private readonly User currentUser;
 
 		public GamePage(Client client, IEnumerable<User> serverUsers)
 		{
 			InitializeComponent();
 
 			this.client = client;
-			var users = new List<User>(serverUsers);
+			users = new List<User>(serverUsers);
 
 			// Get local user
 			// TODO: This doesn't work if we're connecting to a server
-			var currentUser = users.Single(u => u.Address == "127.0.0.1");
+			currentUser = users.Single(u => u.Address == "127.0.0.1");
 
 			// Don't show ourselves in users list
 			users.Remove(currentUser);
@@ -44,7 +46,7 @@ namespace Bank.Views
 			if (ViewUsers.SelectedItem == null)
 				return;
 
-			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.OtherPlayer)));
+			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.OtherPlayer, currentUser, users[0])));
 			ViewUsers.SelectedItem = null;
 		}
 
@@ -68,9 +70,9 @@ namespace Bank.Views
 		}
 
 		private async void ButtonSelfRemoveClicked(object sender, EventArgs e) 
-			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfRemove)));
+			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfRemove, currentUser)));
 
 		private async void ButtonSelfAddClicked(object sender, EventArgs e) 
-			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfAdd)));
+			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfAdd, currentUser)));
 	}
 }

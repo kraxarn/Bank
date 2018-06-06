@@ -39,9 +39,10 @@
 						FontSize="32"
 						Text="You"/>
 					<Label
+						x:Name="LabelSelfMoney"
 						Grid.Column="0"
 						Grid.Row="1"
-						Text="$000"/>
+						Text="SelfMoney"/>
 					
 					<!-- Arrow (Label for now) -->
 					<Label
@@ -56,14 +57,16 @@
 					
 					<!-- User (Also with dummy text) -->
 					<Label
+						x:Name="LabelUserName"
 						Grid.Column="2"
 						Grid.Row="0"
 						FontSize="32"
-						Text="User"/>
+						Text="Name"/>
 					<Label
+						x:Name="LabelUserMoney"
 						Grid.Column="2"
 						Grid.Row="1"
-						Text="$000"/>
+						Text="Money"/>
 
 				</Grid>
 
