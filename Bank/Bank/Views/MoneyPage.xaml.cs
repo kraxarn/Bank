@@ -36,6 +36,9 @@ namespace Bank.Views
 			// Set 'User'
 			LabelUserName.Text  = to?.Name;
 			LabelUserMoney.Text = to?.FormattedMoney;
+
+			if (to == null)
+				LabelArrow.Text = null;
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)

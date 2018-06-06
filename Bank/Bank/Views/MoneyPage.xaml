@@ -46,6 +46,7 @@
 					
 					<!-- Arrow (Label for now) -->
 					<Label
+						x:Name="LabelArrow"
 						Grid.Column="1"
 						Grid.Row="0"
 						Grid.RowSpan="2"
