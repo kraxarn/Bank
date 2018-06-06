@@ -10,6 +10,8 @@ namespace Bank.Views
 		private readonly ImageSource[] avatars;
 		private int selectedIndex;
 
+		private double geastureStart;
+
 		public ProfilePage()
 		{
 			InitializeComponent();
@@ -41,12 +43,18 @@ namespace Bank.Views
 		}
 
 		private void ButtonPrevious_OnClicked(object sender, EventArgs e)
+			=> PreviousAvatar();
+
+		private void ButtonNext_OnClicked(object sender, EventArgs e)
+			=> NextAvatar();
+
+		private void PreviousAvatar()
 		{
 			if (selectedIndex > 0)
 				ImageAvatar.Source = avatars[--selectedIndex];
 		}
 
-		private void ButtonNext_OnClicked(object sender, EventArgs e)
+		private void NextAvatar()
 		{
 			if (selectedIndex < avatars.Length - 1)
 				ImageAvatar.Source = avatars[++selectedIndex];
@@ -64,7 +72,7 @@ namespace Bank.Views
 
 			if (nameLength > 16)
 			{
-				await DisplayAlert("Changed not saved", "Name cannot be longer than 16 characters", "OK");
+				await DisplayAlert("Changes not saved", "Name cannot be longer than 16 characters", "OK");
 				return;
 			}
 
@@ -73,6 +81,28 @@ namespace Bank.Views
 			await Application.Current.SavePropertiesAsync();
 
 			base.OnDisappearing();
+		}
+
+		private void PanUpdated(object sender, PanUpdatedEventArgs e)
+		{
+			switch (e.StatusType)
+			{
+				case GestureStatus.Started:
+					geastureStart = 0;
+					break;
+
+				case GestureStatus.Running:
+					geastureStart += e.TotalX;
+					break;
+
+				case GestureStatus.Completed when e.TotalX > geastureStart:
+					NextAvatar();
+					break;
+
+				case GestureStatus.Completed:
+					PreviousAvatar();
+					break;
+			}
 		}
 	}
 }

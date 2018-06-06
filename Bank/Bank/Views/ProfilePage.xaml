@@ -28,9 +28,13 @@
 					Clicked="ButtonPrevious_OnClicked"/>
 
 				<Image
-					VerticalOptions="Center"
 					Grid.Column="1"
-					x:Name="ImageAvatar"/>
+					VerticalOptions="Center"
+					x:Name="ImageAvatar">
+						<Image.GestureRecognizers>
+							<PanGestureRecognizer PanUpdated="PanUpdated"></PanGestureRecognizer>
+						</Image.GestureRecognizers>
+				</Image>
 
 				<Button
 					VerticalOptions="Center"
