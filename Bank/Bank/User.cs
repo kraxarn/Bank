@@ -16,12 +16,12 @@ namespace Bank
 		    {
 				// M
 			    if (Money >= 1000000)
-				    return $"{Money / 100000} M";
+				    return $"${Money / 100000}m";
 				// K
 			    if (Money >= 1000)
-				    return $"{Money / 1000} K";
+				    return $"${Money / 1000}k";
 				// -
-			    return $"{Money}";
+			    return $"${Money}";
 		    }
 	    }
 
