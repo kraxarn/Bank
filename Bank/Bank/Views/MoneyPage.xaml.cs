@@ -17,11 +17,24 @@ namespace Bank.Views
 		private string money;
 		private char   moneyUnit;
 
-		private string FormattedMoney
+		private string FormattedMoney => $"{money}{moneyUnit}";
+
+		private uint TotalMoney
 		{
 			get
 			{
-				return $"{money}{moneyUnit}";
+				var total = money.Substring(1);
+
+				if (!float.TryParse(total, out var m))
+					return 0;
+
+				switch (moneyUnit)
+				{
+					case 'k': m *= 1000;    break;
+					case 'm': m *= 1000000; break;
+				}
+
+				return uint.Parse($"{m}");
 			}
 		}
 
@@ -110,5 +123,8 @@ namespace Bank.Views
 
 			EntryMoney.Text = FormattedMoney;
 		}
+
+		private async void ButtonTestClicked(object sender, EventArgs e) 
+			=> await Application.Current.MainPage.DisplayAlert("Debug.TotalMoney", $"{TotalMoney}", "Dismiss");
 	}
 }
