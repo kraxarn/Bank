@@ -95,7 +95,7 @@ namespace Bank.Views
 					break;
 
 				default:
-					if (text != "0" || !string.IsNullOrEmpty(EntryMoney.Text))
+					if (text != "0" || money != "$")
 						money += text;
 					break;
 			}
