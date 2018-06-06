@@ -104,7 +104,7 @@ namespace Bank.Views
 
 			ButtonSave.Text = money == "$" ? "Cancel" : "Send";
 
-			if (ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
+			if (toUser != null && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
 				ButtonSave.IsEnabled = false;
 			else
 				ButtonSave.IsEnabled = true;
