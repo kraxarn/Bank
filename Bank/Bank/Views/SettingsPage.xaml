@@ -91,6 +91,24 @@
 					</StackLayout>
 				</ViewCell>
 
+				<ViewCell
+					IsEnabled="False">
+					<StackLayout
+						Orientation="Horizontal"
+						Margin="12">
+
+						<Label
+							Text="App Version"/>
+						
+						<!-- For now, just say alpha -->
+						<Label
+							TextColor="Gray"
+							HorizontalOptions="EndAndExpand"
+							Text="Alpha"/>
+
+					</StackLayout>
+				</ViewCell>
+
 			</TableSection>
 
 		</TableRoot>
