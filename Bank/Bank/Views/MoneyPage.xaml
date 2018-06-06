@@ -54,7 +54,7 @@
 						HorizontalOptions="CenterAndExpand"
 						Margin="16"
 						FontSize="24"
-						Text="->"/>
+						Text="→"/>
 					
 					<!-- User (Also with dummy text) -->
 					<Label

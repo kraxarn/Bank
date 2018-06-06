@@ -17,6 +17,8 @@ namespace Bank.Views
 		private string money;
 		private char   moneyUnit;
 
+		private User fromUser, toUser;
+
 		private string FormattedMoney => $"{money}{moneyUnit}";
 
 		private uint TotalMoney
@@ -53,6 +55,10 @@ namespace Bank.Views
 					Title = "Reduce Money";
 					break;
 			}
+
+			// Set users
+			fromUser = from;
+			toUser   = to;
 
 			// Set 'You'
 			LabelSelfMoney.Text = from.FormattedMoney;
@@ -97,6 +103,11 @@ namespace Bank.Views
 			EntryMoney.Text = FormattedMoney;
 
 			ButtonSave.Text = money == "$" ? "Cancel" : "Send";
+
+			if (ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
+				ButtonSave.IsEnabled = false;
+			else
+				ButtonSave.IsEnabled = true;
 		}
 
 		private void ButtonUnit_OnClicked(object sender, EventArgs e)
