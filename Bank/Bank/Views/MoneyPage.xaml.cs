@@ -48,11 +48,11 @@ namespace Bank.Views
 			switch (mode)
 			{
 				case Mode.SelfAdd:
-					Title = "Increase Money";
+					Title = "Send from bank";
 					break;
 
 				case Mode.SelfRemove:
-					Title = "Reduce Money";
+					Title = "Send to bank";
 					break;
 			}
 
