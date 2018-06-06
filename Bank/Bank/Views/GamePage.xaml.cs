@@ -44,7 +44,7 @@ namespace Bank.Views
 			if (ViewUsers.SelectedItem == null)
 				return;
 
-			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage()));
+			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.OtherPlayer)));
 			ViewUsers.SelectedItem = null;
 		}
 
@@ -66,5 +66,11 @@ namespace Bank.Views
 					break;
 			}
 		}
+
+		private async void ButtonSelfRemoveClicked(object sender, EventArgs e) 
+			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfRemove)));
+
+		private async void ButtonSelfAddClicked(object sender, EventArgs e) 
+			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(MoneyPage.Mode.SelfAdd)));
 	}
 }

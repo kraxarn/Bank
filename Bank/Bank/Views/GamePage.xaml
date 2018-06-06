@@ -52,14 +52,16 @@
 						TextColor="Red"
 						FontSize="20"
 						FontAttributes="Bold"
-						Text="-"/>
+						Text="-"
+						Clicked="ButtonSelfRemoveClicked"/>
 
 					<Button
 						Margin="16,0,0,0"
 						TextColor="Green"
 						FontSize="20"
 						FontAttributes="Bold"
-						Text="+"/>
+						Text="+"
+						Clicked="ButtonSelfAddClicked"/>
 					
 				</StackLayout>
 

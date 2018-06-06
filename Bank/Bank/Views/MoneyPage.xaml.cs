@@ -12,9 +12,27 @@ namespace Bank.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MoneyPage : ContentPage
 	{
-		public MoneyPage ()
+		public enum Mode
 		{
-			InitializeComponent ();
+			OtherPlayer,
+			SelfAdd,
+			SelfRemove
+		}
+
+		public MoneyPage(Mode mode)
+		{
+			InitializeComponent();
+
+			switch (mode)
+			{
+				case Mode.SelfAdd:
+					Title = "Increase Money";
+					break;
+
+				case Mode.SelfRemove:
+					Title = "Reduce Money";
+					break;
+			}
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)
