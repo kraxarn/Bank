@@ -25,7 +25,7 @@ namespace Bank.Views
 			switch (text)
 			{
 				case "Erase":
-					if (EntryMoney.Text.Length > 0)
+					if (!string.IsNullOrEmpty(EntryMoney.Text))
 						EntryMoney.Text = EntryMoney.Text.Substring(0, EntryMoney.Text.Length - 1);
 					break;
 
