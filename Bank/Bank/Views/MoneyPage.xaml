@@ -84,16 +84,19 @@
 					Orientation="Horizontal">
 					
 					<Button
-						Text="K"/>
+						Text="K"
+						Clicked="ButtonUnit_OnClicked"/>
 					
 					<Entry
 						x:Name="EntryMoney"
 						IsEnabled="False"
 						WidthRequest="192"
-						Margin="16,0,16,0"/>
+						Margin="16,0,16,0"
+						Text="$"/>
 					
 					<Button
-						Text="M"/>
+						Text="M"
+						Clicked="ButtonUnit_OnClicked"/>
 
 				</StackLayout>
 				

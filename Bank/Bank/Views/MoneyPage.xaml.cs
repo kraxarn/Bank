@@ -14,6 +14,17 @@ namespace Bank.Views
 			SelfRemove
 		}
 
+		private string money;
+		private char   moneyUnit;
+
+		private string FormattedMoney
+		{
+			get
+			{
+				return $"{money}{moneyUnit}";
+			}
+		}
+
 		public MoneyPage(Mode mode, User from, User to = null)
 		{
 			InitializeComponent();
@@ -39,18 +50,21 @@ namespace Bank.Views
 
 			if (to == null)
 				LabelArrow.Text = null;
+
+			// Set default stuff
+			money = "$";
+			moneyUnit = ' ';
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)
 		{
 			var text = ((Button) sender).Text;
-			//EntryMoney.Text += text;
 
 			switch (text)
 			{
 				case "Erase":
-					if (!string.IsNullOrEmpty(EntryMoney.Text))
-						EntryMoney.Text = EntryMoney.Text.Substring(0, EntryMoney.Text.Length - 1);
+					if (money != "$")
+						money = money.Substring(0, money.Length - 1);
 					break;
 
 				case "Cancel":
@@ -58,13 +72,43 @@ namespace Bank.Views
 					await Navigation.PopModalAsync();
 					break;
 
+				case "." when money.Contains("."):
+					break;
+
 				default:
 					if (text != "0" || !string.IsNullOrEmpty(EntryMoney.Text))
-						EntryMoney.Text += text;
+						money += text;
 					break;
 			}
 
-			ButtonSave.Text = string.IsNullOrEmpty(EntryMoney.Text) ? "Cancel" : "Send";
+			EntryMoney.Text = FormattedMoney;
+
+			ButtonSave.Text = money == "$" ? "Cancel" : "Send";
+		}
+
+		private void ButtonUnit_OnClicked(object sender, EventArgs e)
+		{
+			var text = (sender as Button)?.Text;
+			switch (text)
+			{
+				case "K" when moneyUnit == 'k':
+					moneyUnit = ' ';
+					break;
+
+				case "K":
+					moneyUnit = 'k';
+					break;
+
+				case "M" when moneyUnit == 'm':
+					moneyUnit = ' ';
+					break;
+
+				case "M":
+					moneyUnit = 'm';
+					break;
+			}
+
+			EntryMoney.Text = FormattedMoney;
 		}
 	}
 }
