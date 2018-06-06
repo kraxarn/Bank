@@ -47,7 +47,8 @@
 
 			<Entry
 				x:Name="EntryName"
-				Placeholder="Name"/>
+				Placeholder="Name"
+				PropertyChanged="EntryName_OnPropertyChanged"/>
 
 		</StackLayout>
 

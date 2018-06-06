@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -103,6 +104,12 @@ namespace Bank.Views
 					PreviousAvatar();
 					break;
 			}
+		}
+
+		private void EntryName_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			if (!string.IsNullOrEmpty(EntryName.Text) && EntryName.Text.Length > 16)
+				EntryName.Text = EntryName.Text.Substring(0, 16);
 		}
 	}
 }
