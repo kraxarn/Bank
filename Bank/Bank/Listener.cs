@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -130,23 +131,31 @@ namespace Bank
 
 					var dat = data.Split(',');
 
+					Debug.WriteLine($"ListenerData: '{data}'");
+
 					if (dat[0] == "JOIN")
 					{
+						Debug.WriteLine($"Added user: '{dat[1]}'");
+
 						var u = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString());
 						InvokeNewPlayer(u);
 						users.Add(u);
 					}
 					else if (dat[0] == "ADD")
 					{
-						var user = users.Single(u => u.Address == dat[1]);
+						Debug.WriteLine($"Users: {users.Count}");
 
-						if (user != null && uint.TryParse(dat[2], out var amount))
+						var user = users.SingleOrDefault(u => u.Address == dat[1]);
+
+						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
 							user.Money += amount;
 							InvokeMoneyChange(user);
 						}
+						/*
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
+						*/
 					}
 
 					stream.Write(ok, 0, ok.Length);

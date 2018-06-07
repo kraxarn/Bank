@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -133,11 +134,19 @@ namespace Bank
 				    }
 
 					// Send data to clients (listeners)
-					Debug.WriteLine($"BROADCAST: '{data}'");
-					Broadcast(data);
+					void B()
+					{
+						Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
+						Broadcast(data);
+					}
+
+					if (Device.RuntimePlatform == Device.UWP)
+					    Device.BeginInvokeOnMainThread(B);
+				    else
+						B();
 
 					// Send 'OK' back to the client
-				    stream.Write(ok, 0, ok.Length);
+					stream.Write(ok, 0, ok.Length);
 			    }
 
 				client.Close();
