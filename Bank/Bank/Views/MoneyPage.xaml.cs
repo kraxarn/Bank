@@ -136,6 +136,11 @@ namespace Bank.Views
 			}
 
 			EntryMoney.Text = FormattedMoney;
+
+			if (toUser != null && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
+				ButtonSave.IsEnabled = false;
+			else
+				ButtonSave.IsEnabled = true;
 		}
 
 		private async void ButtonTestClicked(object sender, EventArgs e) 
