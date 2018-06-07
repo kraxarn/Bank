@@ -32,6 +32,8 @@ namespace Bank
 			    : 0;
 
 			listener = new Listener();
+		    if (!listener.Start(out var err))
+			    Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
 	    }
 
 	    public bool TestConnection(out string message)
