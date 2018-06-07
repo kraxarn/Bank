@@ -16,8 +16,8 @@ namespace Bank.Views
 
 		private string money;
 		private char   moneyUnit;
-
 		private readonly User fromUser, toUser;
+		private Client client;
 
 		private string FormattedMoney => $"{money}{moneyUnit}";
 
@@ -43,9 +43,11 @@ namespace Bank.Views
 			}
 		}
 
-		public MoneyPage(Mode mode, User from, User to = null)
+		public MoneyPage(Client client, Mode mode, User from, User to = null)
 		{
 			InitializeComponent();
+
+			this.client = client;
 
 			// Set title
 			switch (mode)
