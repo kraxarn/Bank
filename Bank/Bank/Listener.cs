@@ -56,6 +56,8 @@ namespace Bank
 			// Assume port
 			server = new TcpListener(ip, 13000);
 			Running = false;
+
+			users = new List<User>();
 		}
 
 		private void InvokeNewPlayer(User user) 
