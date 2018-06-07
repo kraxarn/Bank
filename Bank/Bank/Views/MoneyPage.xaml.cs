@@ -18,8 +18,8 @@ namespace Bank.Views
 		private string money;
 		private char   moneyUnit;
 		private readonly User fromUser, toUser;
-		private Client client;
-		private Mode mode;
+		private readonly Client client;
+		private readonly Mode mode;
 
 		private string FormattedMoney => $"{money}{moneyUnit}";
 
