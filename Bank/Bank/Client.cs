@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -9,7 +10,6 @@ namespace Bank
 {
     public class Client
     {
-	    private readonly Listener listener;
 	    private TcpClient client;
 	    private readonly string address;
 	    private readonly int port;
@@ -31,9 +31,12 @@ namespace Bank
 			    ? int.Parse(Application.Current.Properties["avatar"].ToString())
 			    : 0;
 
-			listener = new Listener();
+			var listener = new Listener();
 		    if (!listener.Start(out var err))
 			    Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
+
+		    listener.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
+		    listener.MoneyChanged += user => Debug.WriteLine($"{user.Name} now has {user.FormattedMoney}");
 	    }
 
 	    public bool TestConnection(out string message)

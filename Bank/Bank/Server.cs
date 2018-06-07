@@ -105,6 +105,8 @@ namespace Bank
 					 *
 					 * TODO: Just add on 'JOIN' and then always broadcast?
 					 */
+
+					Debug.WriteLine($"ServerData: '{data}'");
 					
 				    if (dat[0] == "JOIN")
 				    {

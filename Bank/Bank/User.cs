@@ -10,6 +10,9 @@ namespace Bank
 
 	    public uint Money;
 
+		/// <summary>
+		/// Shortens and formats the money. Also adds $.
+		/// </summary>
 	    public string FormattedMoney
 	    {
 		    get
