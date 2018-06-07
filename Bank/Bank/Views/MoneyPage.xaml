@@ -103,7 +103,7 @@
 				<!-- Buttons -->
 				<Grid
 					x:Name="GridNumpad"
-					Margin="0,16,0,0">
+					Margin="0,32,0,0">
 					<Grid.RowDefinitions>
 						<RowDefinition/>
 						<RowDefinition/>
