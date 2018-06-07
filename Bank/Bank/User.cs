@@ -25,6 +25,8 @@ namespace Bank
 		    }
 	    }
 
+	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".")));
+
 	    public User(string name, int avatar, string address)
 	    {
 		    Name = name;
