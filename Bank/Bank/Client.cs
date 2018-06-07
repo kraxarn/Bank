@@ -9,7 +9,7 @@ namespace Bank
 {
     public class Client
     {
-	    private readonly TcpListener server;
+	    private readonly Listener listener;
 	    private TcpClient client;
 	    private readonly string address;
 	    private readonly int port;
@@ -30,6 +30,8 @@ namespace Bank
 		    avatar = Application.Current.Properties.ContainsKey("avatar")
 			    ? int.Parse(Application.Current.Properties["avatar"].ToString())
 			    : 0;
+
+			listener = new Listener();
 	    }
 
 	    public bool TestConnection(out string message)
