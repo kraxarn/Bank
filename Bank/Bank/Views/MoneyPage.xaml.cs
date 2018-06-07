@@ -17,7 +17,7 @@ namespace Bank.Views
 		private string money;
 		private char   moneyUnit;
 
-		private User fromUser, toUser;
+		private readonly User fromUser, toUser;
 
 		private string FormattedMoney => $"{money}{moneyUnit}";
 
@@ -26,6 +26,9 @@ namespace Bank.Views
 			get
 			{
 				var total = money.Substring(1);
+
+				if (total.StartsWith("."))
+					total = $"0{total}";
 
 				if (!float.TryParse(total, out var m))
 					return 0;
@@ -36,7 +39,7 @@ namespace Bank.Views
 					case 'm': m *= 1000000; break;
 				}
 
-				return uint.Parse($"{m}");
+				return (uint) m;
 			}
 		}
 
