@@ -80,7 +80,7 @@ namespace Bank.Views
 
 		private async void Button_OnClicked(object sender, EventArgs e)
 		{
-			var text = ((Button) sender).Text;
+			var text = (sender as Button)?.Text;
 
 			switch (text)
 			{
@@ -116,6 +116,7 @@ namespace Bank.Views
 		private void ButtonUnit_OnClicked(object sender, EventArgs e)
 		{
 			var text = (sender as Button)?.Text;
+
 			switch (text)
 			{
 				case "K" when moneyUnit == 'k':
