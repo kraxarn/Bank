@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -78,6 +79,11 @@ namespace Bank.Views
 			// Set default stuff
 			money = "$";
 			moneyUnit = ' ';
+
+			// Increase font size for buttons
+			// TODO: Make this an option
+			foreach (var child in GridNumpad.Children)
+				((Button) child).FontSize = 18;
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)

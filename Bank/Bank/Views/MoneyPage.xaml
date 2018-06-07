@@ -102,6 +102,7 @@
 				
 				<!-- Buttons -->
 				<Grid
+					x:Name="GridNumpad"
 					Margin="0,16,0,0">
 					<Grid.RowDefinitions>
 						<RowDefinition/>
