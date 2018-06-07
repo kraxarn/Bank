@@ -22,6 +22,7 @@ namespace Bank.Views
 
 			// Get local user
 			// TODO: This doesn't work if we're connecting to a server
+			// TODO: Create a new user identical to the current one instead
 			currentUser = users.Single(u => u.Address == "127.0.0.1");
 
 			// Don't show ourselves in users list
@@ -35,7 +36,7 @@ namespace Bank.Views
 			ViewUsers.ItemsSource = users;
 
 			// Add test user
-			users.Add(new User("Test user", 0, "0.0.0.0"));
+			users.Add(new User("Test user", 0, "127.0.0.1"));
 
 			// Set handler for clicking user
 			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
