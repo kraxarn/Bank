@@ -113,16 +113,7 @@ namespace Bank.Views
 					break;
 			}
 
-			EntryMoney.Text = FormattedMoney;
-
-			ButtonSave.Text = money == "$" ? "Cancel" : "Send";
-
-			if (mode != Mode.SelfAdd && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
-				ButtonSave.IsEnabled = false;
-			else
-				ButtonSave.IsEnabled = true;
-
-			LabelTotalMoney.Text = $"${TotalMoney}";
+			UpdateLabels();
 		}
 
 		private void ButtonUnit_OnClicked(object sender, EventArgs e)
@@ -148,9 +139,17 @@ namespace Bank.Views
 					break;
 			}
 
-			EntryMoney.Text = FormattedMoney;
+			UpdateLabels();
+		}
 
-			if (toUser != null && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
+		private void UpdateLabels()
+		{
+			EntryMoney.Text = FormattedMoney;
+			var totalMoney  = TotalMoney;
+
+			ButtonSave.Text = totalMoney == 0 ? "Cancel" : "Send";
+
+			if (mode != Mode.SelfAdd && ButtonSave.Text == "Send" && totalMoney > fromUser.Money)
 				ButtonSave.IsEnabled = false;
 			else
 				ButtonSave.IsEnabled = true;
