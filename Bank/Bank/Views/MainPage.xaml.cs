@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Bank.Views
 {
@@ -7,6 +9,17 @@ namespace Bank.Views
 		public MainPage()
 		{
 			InitializeComponent();
+
+			AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+			{
+				var ex = args.ExceptionObject as Exception;
+				DisplayAlert("Unhandled Exception!", ex?.Message + Environment.NewLine + ex?.StackTrace, "wtf?");
+			};
+			TaskScheduler.UnobservedTaskException += (sender, args) =>
+			{
+				var ex = args.Exception;
+				DisplayAlert("Unobserved Task Exception!", ex?.Message + Environment.NewLine + ex?.StackTrace, "wtf?");
+			};
 
 			// Add tab icons on iOS
 			if (Device.RuntimePlatform == Device.iOS)
