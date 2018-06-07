@@ -78,28 +78,35 @@
 				Margin="0,0,0,64"
 				VerticalOptions="End">
 
+				<Label
+					x:Name="LabelTotalMoney"
+					Text="$0"
+					FontSize="12"
+					HorizontalTextAlignment="Center"
+					TextColor="Gray"/>
+
 				<!-- Money entry -->
 				<StackLayout
 					HorizontalOptions="Center"
 					Orientation="Horizontal">
-					
+
 					<Button
 						Text="K"
 						Clicked="ButtonUnit_OnClicked"/>
-					
+
 					<Entry
 						x:Name="EntryMoney"
 						IsEnabled="False"
 						WidthRequest="192"
 						Margin="16,0,16,0"
 						Text="$"/>
-					
+
 					<Button
 						Text="M"
 						Clicked="ButtonUnit_OnClicked"/>
 
 				</StackLayout>
-				
+
 				<!-- Buttons -->
 				<Grid
 					x:Name="GridNumpad"
@@ -146,11 +153,6 @@
 						Grid.Column="4"
 						Text="Cancel"/>
 					
-					<Button
-						Clicked="ButtonTestClicked"
-						Grid.Row="1"
-						Grid.Column="0"
-						Text="Debug"/>
 					<Button
 						Clicked="Button_OnClicked"
 						Grid.Row="1"

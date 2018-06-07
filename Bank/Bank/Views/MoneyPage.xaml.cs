@@ -19,6 +19,7 @@ namespace Bank.Views
 		private char   moneyUnit;
 		private readonly User fromUser, toUser;
 		private Client client;
+		private Mode mode;
 
 		private string FormattedMoney => $"{money}{moneyUnit}";
 
@@ -49,6 +50,7 @@ namespace Bank.Views
 			InitializeComponent();
 
 			this.client = client;
+			this.mode   = mode;
 
 			// Set title
 			switch (mode)
@@ -115,10 +117,12 @@ namespace Bank.Views
 
 			ButtonSave.Text = money == "$" ? "Cancel" : "Send";
 
-			if (toUser != null && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
+			if (mode != Mode.SelfAdd && ButtonSave.Text == "Send" && TotalMoney > fromUser.Money)
 				ButtonSave.IsEnabled = false;
 			else
 				ButtonSave.IsEnabled = true;
+
+			LabelTotalMoney.Text = $"${TotalMoney}";
 		}
 
 		private void ButtonUnit_OnClicked(object sender, EventArgs e)
@@ -150,9 +154,8 @@ namespace Bank.Views
 				ButtonSave.IsEnabled = false;
 			else
 				ButtonSave.IsEnabled = true;
-		}
 
-		private async void ButtonTestClicked(object sender, EventArgs e) 
-			=> await Application.Current.MainPage.DisplayAlert("Debug.TotalMoney", $"{TotalMoney}", "Dismiss");
+			LabelTotalMoney.Text = $"${TotalMoney}";
+		}
 	}
 }
