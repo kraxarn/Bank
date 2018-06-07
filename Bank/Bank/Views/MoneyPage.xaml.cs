@@ -100,7 +100,11 @@ namespace Bank.Views
 					break;
 
 				case "Cancel":
+					await Navigation.PopModalAsync();
+					break;
+
 				case "Send":
+					SendMoney();
 					await Navigation.PopModalAsync();
 					break;
 
@@ -155,6 +159,35 @@ namespace Bank.Views
 				ButtonSave.IsEnabled = true;
 
 			LabelTotalMoney.Text = $"${TotalMoney}";
+		}
+
+		private void SendMoney()
+		{
+			switch (mode)
+			{
+				/*
+				 * Send to other player
+				 * Remove 'from' and add 'to'
+				 */
+				case Mode.OtherPlayer:
+					break;
+
+				/*
+				 * Add to self
+				 * Add 'from'
+				 */
+				case Mode.SelfAdd:
+					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var err))
+						DisplayAlert("Warning", $"Failed to send: {err}", "OK");
+					break;
+
+				/*
+				 * Remove from self
+				 * Remove 'from'
+				 */
+				case Mode.SelfRemove:
+					break;
+			}
 		}
 	}
 }
