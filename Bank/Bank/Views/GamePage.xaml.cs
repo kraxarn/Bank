@@ -39,6 +39,9 @@ namespace Bank.Views
 
 			// Set handler for clicking user
 			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
+
+			// Set debug label
+			LabelMaxValue.Text += uint.MaxValue;
 		}
 
 		private async void ViewUsersOnItemSelected(object sender, SelectedItemChangedEventArgs e)

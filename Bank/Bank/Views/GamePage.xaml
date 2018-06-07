@@ -67,6 +67,11 @@
 
 			</StackLayout>
 			
+			<!-- Debug: Max amount of money -->
+			<Label
+				x:Name="LabelMaxValue"
+				Text="Max money: "/>
+			
 			<!-- Other players -->
 			<Label
 	            Text="Players"
