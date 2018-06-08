@@ -43,7 +43,7 @@ namespace Bank.Views
 			if (server.Users.Count < 2)
 			{
 				if (await Application.Current.MainPage.DisplayAlert("Not enough players",
-					"Try adding more players and try again", "OK", "Ignore"))
+					"Try adding more players", "OK", "Ignore"))
 					return;
 			}
 
