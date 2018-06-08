@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -101,6 +102,7 @@ namespace Bank
 					 * REM:  ip,amount			// Removed money from user
 					 * SET:  ip.amount			// Just set a new value for someone
 					 * NEW:  ip.amount			// A user has a new amount of money
+					 * BYE:  ip					// Removes the user
 					 *
 					 * TODO: Just add on 'JOIN' and then always broadcast?
 					 */
@@ -117,6 +119,15 @@ namespace Bank
 						else
 							Users.Add(user);
 				    }
+					else if (dat[0] == "BYE")
+				    {
+					    var user = Users.SingleOrDefault(u => u.Address == dat[1]);
+
+					    if (Device.RuntimePlatform == Device.UWP)
+						    Device.BeginInvokeOnMainThread(() => Users.Remove(user));
+					    else
+						    Users.Remove(user);
+					}
 
 					// Send data to clients (listeners)
 					void B()

@@ -29,7 +29,8 @@
 				Margin="32">
 
 				<Button
-					Text="Leave"/>
+					Text="Leave"
+					Clicked="ButtonLeave_OnClicked"/>
 
 			</StackLayout>
 
