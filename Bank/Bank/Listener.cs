@@ -64,9 +64,6 @@ namespace Bank
 		private void InvokeNewPlayer(User user) 
 			=> PlayerJoined?.Invoke(user);
 
-		private void InvokeNewPlayer(string name, int avatar, string address)
-			=> InvokeNewPlayer(new User(name, avatar, address));
-
 		private void InvokeMoneyChange(User user)
 			=> MoneyChanged?.Invoke(user);
 
