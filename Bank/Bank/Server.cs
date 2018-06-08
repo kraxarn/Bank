@@ -117,19 +117,6 @@ namespace Bank
 						else
 							Users.Add(user);
 				    }
-					else if (dat[0] == "ADD")
-				    {
-						// TODO: Should this be here or just in the listener?
-						/*
-					    var user = Users.Single(u => u.Address == dat[1]);
-
-					    if (user != null && uint.TryParse(dat[2], out var amount))
-					    {
-						    user.Money += amount;
-							Broadcast($"ADD,{user.Address},{user.Money}");
-					    }
-						*/
-				    }
 
 					// Send data to clients (listeners)
 					void B()

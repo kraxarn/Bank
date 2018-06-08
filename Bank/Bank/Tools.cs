@@ -1,9 +1,10 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using Xamarin.Forms;
 
 namespace Bank
 {
-    abstract class Tools
+	internal abstract class Tools
     {
 	    public static string GetIPAddress()
 	    {
@@ -14,5 +15,15 @@ namespace Bank
 			    return endPoint?.Address.ToString();
 		    }
 		}
+
+	    public static void DisplayAlert(string title, string message, string button)
+	    {
+		    void Alert() => Application.Current.MainPage.DisplayAlert(title, message, button);
+
+			if (Device.IsInvokeRequired)
+				Device.BeginInvokeOnMainThread(Alert);
+			else
+				Alert();
+	    }
     }
 }

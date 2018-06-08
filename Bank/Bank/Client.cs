@@ -33,9 +33,12 @@ namespace Bank
 
 			var listener = new Listener();
 		    if (!listener.Start(out var err))
-			    Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
+			{
+				//Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
+				Debug.WriteLine($"*** Failed to create listener: {err} ***");
+			}
 
-		    listener.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
+			listener.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
 		    listener.MoneyChanged += user => Debug.WriteLine($"{user.Name} now has {user.FormattedMoney}");
 	    }
 
