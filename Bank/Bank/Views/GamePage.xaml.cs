@@ -37,7 +37,7 @@ namespace Bank.Views
 			ViewUsers.ItemsSource = users;
 
 			// Add test user
-			users.Add(new User("Test user", 0, "127.0.0.1"));
+			//users.Add(new User("Test user", 0, "127.0.0.1"));
 
 			// Set handler for clicking user
 			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
@@ -45,13 +45,13 @@ namespace Bank.Views
 			// Set debug label
 			LabelMaxValue.Text += uint.MaxValue;
 
-			users[0].Money = 100;
-
 			// Catch events
 			client.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
 
 			client.MoneyChanged += user =>
 			{
+				Debug.WriteLine($"MoneyChanged: {user.Name} = {user.FormattedMoney} / {user.Money}");
+
 				if (user.Address == "127.0.0.1")
 				{
 					currentUser.Money = user.Money;

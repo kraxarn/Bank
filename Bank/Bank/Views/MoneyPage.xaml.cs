@@ -185,6 +185,7 @@ namespace Bank.Views
 				 * Remove 'from'
 				 */
 				case Mode.SelfRemove:
+					client.Send($"REM,{fromUser.Address},{TotalMoney}", out _);
 					break;
 			}
 		}

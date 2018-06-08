@@ -151,6 +151,16 @@ namespace Bank
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
 					}
+					else if (dat[0] == "REM")
+					{
+						var user = users.SingleOrDefault(u => u.Address == dat[1]);
+
+						if (user != default(User) && uint.TryParse(dat[2], out var amount))
+						{
+							user.Money -= amount;
+							InvokeMoneyChange(user);
+						}
+					}
 
 					stream.Write(ok, 0, ok.Length);
 				}
