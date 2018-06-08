@@ -5,19 +5,33 @@
 
 	<ContentPage.Content>
 
-		<StackLayout
-			VerticalOptions="CenterAndExpand"
-			HorizontalOptions="CenterAndExpand">
+		<StackLayout>
 
-			<Label
-	            Text="You're in!"
-				FontSize="32"
-	            HorizontalTextAlignment="Center"/>
+			<StackLayout
+				VerticalOptions="CenterAndExpand"
+				HorizontalOptions="CenterAndExpand">
 
-			<Label
-				Text="Now just sit back and relax."
-				TextColor="Gray"
-				HorizontalTextAlignment="Center"/>
+				<Label
+		            Text="You're in! 👍"
+					FontSize="32"
+					FontAttributes="Bold"
+		            HorizontalTextAlignment="Center"/>
+
+				<Label
+					Text="Now just sit back and relax."
+					TextColor="Gray"
+					HorizontalTextAlignment="Center"/>
+
+			</StackLayout>
+
+			<StackLayout
+				VerticalOptions="End"
+				Margin="32">
+
+				<Button
+					Text="Leave"/>
+
+			</StackLayout>
 
 		</StackLayout>
 
