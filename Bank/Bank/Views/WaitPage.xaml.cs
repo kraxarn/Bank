@@ -14,7 +14,7 @@ namespace Bank.Views
 	{
 		public WaitPage ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 	}
 }

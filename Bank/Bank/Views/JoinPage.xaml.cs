@@ -26,17 +26,19 @@ namespace Bank.Views
 				ButtonConnect.IsEnabled = false;
 		}
 
-		private void ButtonConnect_OnClicked(object sender, EventArgs e)
+		private async void ButtonConnect_OnClicked(object sender, EventArgs e)
 		{
 			client = new Client($"{addressPrefix}{EntryRoom.Text}");
 
 			if (!client.TestConnection(out var msg))
 			{
-				Application.Current.MainPage.DisplayAlert("Conection failed", msg, "OK");
+				await Application.Current.MainPage.DisplayAlert("Conection failed", msg, "OK");
 				return;
 			}
 
 			client.Connect(out _);
+
+			await Navigation.PushModalAsync(new NavigationPage(new WaitPage()));
 		}
 	}
 }
