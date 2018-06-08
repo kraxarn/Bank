@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -43,6 +44,54 @@ namespace Bank.Views
 
 			// Set debug label
 			LabelMaxValue.Text += uint.MaxValue;
+
+			users[0].Money = 100;
+
+			// Catch events
+			client.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
+
+			client.MoneyChanged += user =>
+			{
+				if (user.Address == "127.0.0.1")
+				{
+					currentUser.Money = user.Money;
+					UpdateSelf();
+				}
+
+				/*
+				var ur = users.SingleOrDefault(u => u.Address == user.Address);
+
+				Debug.WriteLine($"Modifying user '{ur?.Name}'");
+				
+				void AddUser()
+				{
+					ur.Money = user.Money;
+					ViewUsers.BeginRefresh();
+				}
+
+				if (Device.RuntimePlatform == Device.UWP)
+					Device.BeginInvokeOnMainThread(AddUser);
+				else
+					AddUser();
+
+				Debug.WriteLine($"{ur.Name} ({user.Name}) now has {user.FormattedMoney}");
+				*/
+			};
+		}
+
+		private void UpdateSelf()
+		{
+			void Update()
+			{
+				ImageAvatar.Source = currentUser.Avatar;
+				LabelName.Text = currentUser.Name;
+				LabelMoney.Text = currentUser.FormattedMoney;
+			}
+
+			if (Device.RuntimePlatform == Device.UWP)
+				Device.BeginInvokeOnMainThread(Update);
+			else
+				Update();
 		}
 
 		private async void ViewUsersOnItemSelected(object sender, SelectedItemChangedEventArgs e)

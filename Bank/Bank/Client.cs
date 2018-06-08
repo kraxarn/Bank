@@ -17,6 +17,9 @@ namespace Bank
 	    private readonly string name;
 	    private readonly int    avatar;
 
+	    public event Listener.JoinEvent  PlayerJoined;
+	    public event Listener.MoneyEvent MoneyChanged;
+
 	    public Client(string address = "127.0.0.1", int port = 13001)
 	    {
 		    this.address = address;
@@ -38,8 +41,8 @@ namespace Bank
 				Debug.WriteLine($"*** Failed to create listener: {err} ***");
 			}
 
-			listener.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
-		    listener.MoneyChanged += user => Debug.WriteLine($"{user.Name} now has {user.FormattedMoney}");
+		    listener.PlayerJoined += user => PlayerJoined?.Invoke(user);
+		    listener.MoneyChanged += user => MoneyChanged?.Invoke(user);
 	    }
 
 	    public bool TestConnection(out string message)
