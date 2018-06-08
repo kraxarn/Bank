@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -149,10 +148,8 @@ namespace Bank
 							user.Money += amount;
 							InvokeMoneyChange(user);
 						}
-						/*
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
-						*/
 					}
 
 					stream.Write(ok, 0, ok.Length);

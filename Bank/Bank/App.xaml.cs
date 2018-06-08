@@ -1,9 +1,8 @@
 ﻿using Bank.Views;
-using Xamarin.Forms;
 
 namespace Bank
 {
-	public partial class App : Application
+	public partial class App
 	{
 		public App()
 		{

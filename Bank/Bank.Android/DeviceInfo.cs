@@ -10,6 +10,6 @@ namespace Bank.Droid
 	{
 		public string DeviceName => Settings.Secure.GetString(Application.Context.ContentResolver, "bluetooth_name");
 		
-		public string OSVersion  => $"Android {Build.VERSION.Sdk}";
+		public string OsVersion  => $"Android {Build.VERSION.Sdk}";
 	}
 }

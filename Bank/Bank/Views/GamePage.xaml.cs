@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GamePage : ContentPage
+	public partial class GamePage
 	{
 		private readonly Client client;
 		private readonly List<User> users;

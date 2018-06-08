@@ -84,10 +84,12 @@
 				Margin="8, 0, 0, 0">
 				<ListView.ItemTemplate>
 					<DataTemplate>
+						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
 							Text="{Binding Name}"
 							Detail="{Binding FormattedMoney}"
 							ImageSource="{Binding Avatar}"/>
+						<!-- ReSharper restore Xaml.BindingWithContextNotResolved -->
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>

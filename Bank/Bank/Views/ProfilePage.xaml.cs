@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProfilePage : ContentPage
+	public partial class ProfilePage
 	{
 		private readonly ImageSource[] avatars;
 		private int selectedIndex;

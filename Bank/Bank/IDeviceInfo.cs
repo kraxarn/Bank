@@ -4,6 +4,6 @@
 	{
 		string DeviceName { get; }
 
-		string OSVersion  { get; }
+		string OsVersion  { get; }
 	}
 }

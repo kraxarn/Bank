@@ -95,12 +95,9 @@ namespace Bank
 			    // Recieve response
 			    data = new byte[256];
 
-			    // String to store response
-			    var response = string.Empty;
-
 			    // Read first batch of response
 			    var bytes = stream.Read(data, 0, data.Length);
-			    response = Encoding.ASCII.GetString(data, 0, bytes);
+			    var response = Encoding.ASCII.GetString(data, 0, bytes);
 
 			    // Use response here
 			    if (response != "OK" && response.Count(c => c == ',') != 2)

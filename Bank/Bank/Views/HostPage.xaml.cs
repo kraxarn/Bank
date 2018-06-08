@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HostPage : ContentPage
+	public partial class HostPage
 	{ 
 		private readonly Server server;
 		private readonly Client client;
@@ -68,16 +68,6 @@ namespace Bank.Views
 			}
 
 			base.OnAppearing();
-		}
-
-		protected override void OnDisappearing()
-		{
-			/*
-			if (server.Running)
-				client.Send("STOP", out _);
-			*/
-
-			base.OnDisappearing();
 		}
 	}
 }

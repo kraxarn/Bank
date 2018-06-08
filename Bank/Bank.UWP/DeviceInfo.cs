@@ -7,6 +7,7 @@ namespace Bank.UWP
 	public class DeviceInfo : IDeviceInfo
 	{
 		public string DeviceName => Environment.MachineName;
-		public string OSVersion  => $"{Environment.OSVersion}";
+
+		public string OsVersion  => $"{Environment.OSVersion}";
 	}
 }

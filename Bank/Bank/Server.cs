@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -171,9 +169,8 @@ namespace Bank
 				stream.Write(data, 0, data.Length);
 
 			    data = new byte[256];
-			    var response = string.Empty;
 			    var bytes = stream.Read(data, 0, data.Length);
-			    response = Encoding.ASCII.GetString(data, 0, bytes);
+			    var response = Encoding.ASCII.GetString(data, 0, bytes);
 
 			    if (response != "OK")
 				    Application.Current.MainPage.DisplayAlert("Invalid response", response, "OK");

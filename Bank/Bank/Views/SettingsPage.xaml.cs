@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SettingsPage : ContentPage
+	public partial class SettingsPage
 	{
 		public SettingsPage()
 		{
@@ -13,7 +13,7 @@ namespace Bank.Views
 
 			var device = DependencyService.Get<IDeviceInfo>();
 			LabelDeviceName.Text = device.DeviceName;
-			LabelDeviceOs.Text    = device.OSVersion;
+			LabelDeviceOs.Text   = device.OsVersion;
 		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e) 

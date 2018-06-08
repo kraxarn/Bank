@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace Bank.Views
 {
-	public partial class MainPage : TabbedPage
+	public partial class MainPage
 	{
 		public MainPage()
 		{

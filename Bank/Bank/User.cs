@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace Bank
 {
@@ -28,7 +29,7 @@ namespace Bank
 		    }
 	    }
 
-	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".")));
+	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".", StringComparison.Ordinal)));
 
 	    public User(string name, int avatar, string address)
 	    {

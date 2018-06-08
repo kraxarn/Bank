@@ -8,6 +8,6 @@ namespace Bank.iOS
 	{
 		public string DeviceName => UIDevice.CurrentDevice.Name;
 
-		public string OSVersion => $"{UIDevice.CurrentDevice.SystemName} {UIDevice.CurrentDevice.SystemVersion}";
+		public string OsVersion => $"{UIDevice.CurrentDevice.SystemName} {UIDevice.CurrentDevice.SystemVersion}";
 	}
 }

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MoneyPage : ContentPage
+	public partial class MoneyPage
 	{
 		public enum Mode
 		{

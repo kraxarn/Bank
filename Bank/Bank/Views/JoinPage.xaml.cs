@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class JoinPage : ContentPage
+	public partial class JoinPage
 	{
 		private Client client;
 		private readonly string addressPrefix;

@@ -48,10 +48,12 @@
 				x:Name="ViewUsers">
 				<ListView.ItemTemplate>
 					<DataTemplate>
+						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
 							Text="{Binding Name}"
 							Detail="{Binding Address}"
 							ImageSource="{Binding Avatar}"/>
+						<!-- ReSharper restore Xaml.BindingWithContextNotResolved -->
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
