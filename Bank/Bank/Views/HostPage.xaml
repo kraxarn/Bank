@@ -51,7 +51,7 @@
 						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
 							Text="{Binding Name}"
-							Detail="{Binding Address}"
+							Detail="{Binding FormattedAddress}"
 							ImageSource="{Binding Avatar}"/>
 						<!-- ReSharper restore Xaml.BindingWithContextNotResolved -->
 					</DataTemplate>

@@ -9,17 +9,17 @@
 			VerticalOptions="CenterAndExpand"
 			HorizontalOptions="CenterAndExpand">
 
-            <Label
+			<Label
 	            Text="You're in!"
 				FontSize="32"
 	            HorizontalTextAlignment="Center"/>
-			
+
 			<Label
-				Text="Now just sit back and relax"
+				Text="Now just sit back and relax."
 				TextColor="Gray"
 				HorizontalTextAlignment="Center"/>
 
-        </StackLayout>
+		</StackLayout>
 
-    </ContentPage.Content>
+	</ContentPage.Content>
 </ContentPage>
