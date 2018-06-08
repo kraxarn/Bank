@@ -31,6 +31,11 @@ namespace Bank
 		    }
 	    }
 
+	    /// <summary>
+	    /// Shortens the address to just ID or 'Host'
+	    /// </summary>
+	    public string FormattedAddress => Address == "127.0.0.1" ? "Host" : $"User {ID}";
+
 	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".", StringComparison.Ordinal)));
 
 	    public User(string name, int avatar, string address)
