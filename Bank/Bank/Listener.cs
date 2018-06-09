@@ -174,7 +174,14 @@ namespace Bank
 			server.Stop();
 		}
 
-		private void DisplayAlert(string title, string message, string button = "Dismiss")
-			=> Application.Current.MainPage.DisplayAlert(title, message, button);
+		private static void DisplayAlert(string title, string message, string button = "Dismiss")
+		{
+			void Alert() => Application.Current.MainPage.DisplayAlert(title, message, button);
+
+			if (Device.IsInvokeRequired)
+				Device.BeginInvokeOnMainThread(Alert);
+			else
+				Alert();
+		}
 	}
 }
