@@ -25,8 +25,10 @@ namespace Bank.Views
 			// We don't need host to be able to leave
 			var ip = Tools.GetIPAddress();
 
-			if (client.Send($"BYE,{ip}", out _))
+			if (client.Send($"BYE,{ip}", out var err))
 				await Navigation.PopAsync();
+			else
+				await Application.Current.MainPage.DisplayAlert("Failed to leave", err, "Dismiss");
 		}
 	}
 }
