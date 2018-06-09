@@ -111,9 +111,12 @@ namespace Bank.Views
 
 			switch (action)
 			{
-				// For now, quit without saving for both
-				case "Quit without saving":
 				case "Save and quit":
+					await Application.Current.MainPage.DisplayAlert("Sorry",
+						"This feature hasn't been implemented yet.", "Dismiss");
+					break;
+
+				case "Quit without saving":
 					await Navigation.PopModalAsync();
 					break;
 			}
