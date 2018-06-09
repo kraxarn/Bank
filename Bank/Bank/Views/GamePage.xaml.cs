@@ -42,9 +42,6 @@ namespace Bank.Views
 			// Set handler for clicking user
 			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
 
-			// Set debug label
-			LabelMaxValue.Text += uint.MaxValue;
-
 			// Catch events
 			client.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
 
@@ -127,5 +124,35 @@ namespace Bank.Views
 
 		private async void ButtonSelfAddClicked(object sender, EventArgs e) 
 			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfAdd, currentUser)));
+
+		private async void ButtonDice_OnClicked(object sender, EventArgs e)
+		{
+			var rng = new Random();
+
+			// First dice
+			var d1 = rng.Next(6) + 1;
+
+			// Second dice
+			var d2 = rng.Next(6) + 1;
+
+			// 'Double' message
+			var d = d1 == d2 ? "Double!" : null;
+
+			await DisplayAlert($"You rolled {d1 + d2}", $"{GetDiceEmoji(d1)} + {GetDiceEmoji(d2)} \n{d}", "Neat!");
+		}
+
+		private static string GetDiceEmoji(int index)
+		{
+			switch (index)
+			{
+				case 1:  return "1️⃣";
+				case 2:  return "2️⃣";
+				case 3:  return "3️⃣";
+				case 4:  return "4️⃣";
+				case 5:  return "5️⃣";
+				case 6:  return "6️⃣";
+				default: return "0️⃣";
+			}
+		}
 	}
 }

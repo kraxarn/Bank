@@ -67,11 +67,12 @@
 
 			</StackLayout>
 			
-			<!-- Debug: Max amount of money -->
-			<Label
-				x:Name="LabelMaxValue"
-				Text="Max money: "/>
-			
+			<!-- Roll dice button -->
+			<Button
+				Margin="16"
+				Text="Roll Dice"
+				Clicked="ButtonDice_OnClicked"/>
+
 			<!-- Other players -->
 			<Label
 	            Text="Players"
