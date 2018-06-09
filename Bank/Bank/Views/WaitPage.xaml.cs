@@ -26,7 +26,7 @@ namespace Bank.Views
 			var ip = Tools.GetIPAddress();
 
 			if (client.Send($"BYE,{ip}", out var err))
-				await Navigation.PopAsync();
+				await Navigation.PopModalAsync();
 			else
 				await Application.Current.MainPage.DisplayAlert("Failed to leave", err, "Dismiss");
 		}
