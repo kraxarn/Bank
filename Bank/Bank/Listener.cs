@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -46,9 +47,11 @@ namespace Bank
 		#endregion
 
 		private readonly TcpListener server;
-		private readonly List<User>  users;
+		private readonly ObservableCollection<User>  users;
 		
 		public bool Running { get; private set; }
+
+		public ObservableCollection<User> Users => users;
 
 		public Listener()
 		{
@@ -57,7 +60,7 @@ namespace Bank
 			server = new TcpListener(ip, 13000);
 			Running = false;
 
-			users = new List<User>();
+			users = new ObservableCollection<User>();
 		}
 
 		private void InvokeNewPlayer(User user) 

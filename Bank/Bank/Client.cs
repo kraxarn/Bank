@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Bank
     public class Client
     {
 	    private TcpClient client;
+	    private readonly Listener listener;
 	    private readonly string address;
 	    private readonly int port;
 
@@ -19,6 +21,8 @@ namespace Bank
 
 	    public event Listener.JoinEvent  PlayerJoined;
 	    public event Listener.MoneyEvent MoneyChanged;
+
+	    public ObservableCollection<User> Users => listener.Users;
 
 	    public Client(string address = "127.0.0.1", int port = 13001)
 	    {
@@ -34,7 +38,7 @@ namespace Bank
 			    ? int.Parse(Application.Current.Properties["avatar"].ToString())
 			    : 0;
 
-			var listener = new Listener();
+			listener = new Listener();
 		    if (!listener.Start(out var err))
 			{
 				//Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
