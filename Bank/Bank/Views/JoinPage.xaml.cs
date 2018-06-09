@@ -38,7 +38,7 @@ namespace Bank.Views
 
 			client.Connect(out _);
 
-			await Navigation.PushModalAsync(new WaitPage(client));
+			await Navigation.PushModalAsync(new NavigationPage(new WaitPage(client)));
 		}
 	}
 }
