@@ -76,14 +76,14 @@ namespace Bank
 		    }
 	    }
 
-	    public bool Connect(out string error)
+	    public bool Connect(out Exception error)
 	    {
 		    var result = Send($"JOIN,{name},{avatar}", out var e);
 		    error = e;
 		    return result;
 	    }
 
-	    public bool Send(string message, out string error)
+	    public bool Send(string message, out Exception error)
 		{
 			error = null;
 
@@ -119,13 +119,13 @@ namespace Bank
 		    }
 		    catch (SocketException e)
 		    {
-			    error = e.Message;
+			    error = e;
 			    client?.Close();
 			    return false;
 		    }
 		    catch (IOException e)
 		    {
-			    error = e.Message;
+			    error = e;
 				client?.Close();
 			    return false;
 		    }

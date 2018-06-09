@@ -28,7 +28,7 @@ namespace Bank.Views
 			if (client.Send($"BYE,{ip}", out var err))
 				await Navigation.PopModalAsync();
 			else
-				await Application.Current.MainPage.DisplayAlert("Failed to leave", err, "Dismiss");
+				await Application.Current.MainPage.DisplayAlert($"Failed to leave ({err.GetType().FullName})", err.Message, "Dismiss");
 		}
 	}
 }
