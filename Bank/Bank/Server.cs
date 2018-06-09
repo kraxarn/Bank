@@ -111,7 +111,7 @@ namespace Bank
 					
 				    if (dat[0] == "JOIN")
 				    {
-					    var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString());
+						var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString());
 
 						// UWP needs this to run on the main thread
 						if (Device.RuntimePlatform == Device.UWP)
@@ -128,18 +128,20 @@ namespace Bank
 					    else
 						    Users.Remove(user);
 					}
-
-					// Send data to clients (listeners)
-					void B()
-					{
-						Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
-						Broadcast(data);
-					}
-
-					if (Device.RuntimePlatform == Device.UWP)
-					    Device.BeginInvokeOnMainThread(B);
 				    else
-						B();
+				    {
+					    // Send data to clients (listeners)
+					    void B()
+					    {
+						    Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
+						    Broadcast(data);
+					    }
+
+					    if (Device.RuntimePlatform == Device.UWP)
+						    Device.BeginInvokeOnMainThread(B);
+					    else
+						    B();
+					}
 
 					// Send 'OK' back to the client
 					stream.Write(ok, 0, ok.Length);

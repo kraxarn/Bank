@@ -36,7 +36,7 @@ namespace Bank
 	    /// </summary>
 	    public string FormattedAddress => Address == "127.0.0.1" ? "Host" : $"User {ID}";
 
-	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".", StringComparison.Ordinal)));
+	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".", StringComparison.Ordinal) + 1));
 
 	    public User(string name, int avatar, string address)
 	    {
