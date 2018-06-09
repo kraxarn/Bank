@@ -69,7 +69,7 @@
 			
 			<!-- Roll dice button -->
 			<Button
-				Margin="0, 8, 0, 0"
+				Margin="0, 16, 0, 0"
 				Text="Roll Dice"
 				Clicked="ButtonDice_OnClicked"/>
 
@@ -78,7 +78,7 @@
 	            Text="Players"
 				FontSize="32"
 				FontAttributes="Bold"
-				Margin="0, 32, 0, 0"/>
+				Margin="0, 16, 0, 0"/>
 
 			<ListView
 				x:Name="ViewUsers"
