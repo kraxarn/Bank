@@ -49,6 +49,9 @@ namespace Bank
 
 		public void AddItem(User item)
 		{
+			if (Contains(item))
+				return;
+
 			Add(item);
 			NotifyCollectionChanged(NotifyCollectionChangedAction.Add);
 		}
