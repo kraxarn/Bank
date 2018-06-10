@@ -25,5 +25,9 @@ namespace Bank
 			else
 				Alert();
 	    }
+
+		public static Page CurrentModalPage => Application.Current.MainPage.Navigation.ModalStack[0];
+
+	    public static Page CurruentPage => Application.Current.MainPage.Navigation.NavigationStack[0];
     }
 }
