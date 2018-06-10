@@ -163,6 +163,8 @@ namespace Bank.Views
 
 		private void SendMoney()
 		{
+			Exception e;
+
 			switch (mode)
 			{
 				/*
@@ -170,6 +172,11 @@ namespace Bank.Views
 				 * Remove 'from' and add 'to'
 				 */
 				case Mode.OtherPlayer:
+					// First, remove from local, then add to other user
+					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out e))
+						DisplayAlert("Failed to remove money", e.Message, "Dismiss");
+					else if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out e))
+						DisplayAlert("Failed to add money", e.Message, "Dismiss");
 					break;
 
 				/*
@@ -177,8 +184,8 @@ namespace Bank.Views
 				 * Add 'from'
 				 */
 				case Mode.SelfAdd:
-					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var e2))
-						DisplayAlert("Failed to add money", e2.Message, "Dismiss");
+					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out e))
+						DisplayAlert("Failed to add money", e.Message, "Dismiss");
 					break;
 
 				/*
@@ -186,8 +193,8 @@ namespace Bank.Views
 				 * Remove 'from'
 				 */
 				case Mode.SelfRemove:
-					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out var e3))
-						DisplayAlert("Failed to remove money", e3.Message, "Dismiss");
+					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out e))
+						DisplayAlert("Failed to remove money", e.Message, "Dismiss");
 					break;
 			}
 		}
