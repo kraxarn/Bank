@@ -1,15 +1,29 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Bank
 {
-    public class User
+    public class User : INotifyPropertyChanged
     {
-	    public string      Name    { get; set; }
-	    public ImageSource Avatar  { get; set; }
-	    public string      Address { get; set; }
+	    public event PropertyChangedEventHandler PropertyChanged;
 
-	    public uint Money;
+	    public string      Name    { get; }
+	    public ImageSource Avatar  { get; }
+	    public string      Address { get; }
+		
+	    private uint money;
+
+	    public uint Money
+	    {
+			get => money;
+		    set
+		    {
+			    money = value;
+				NotifyPropertyChanged();
+		    }
+	    }
 
 		/// <summary>
 		/// Shortens and formats the money. Also adds $.
@@ -21,13 +35,13 @@ namespace Bank
 				// TODO: This rounds of pretty harshly (15.7k => 15k)
 
 				// M
-			    if (Money >= 1000000)
-				    return $"${Money / 100000}m";
+			    if (money >= 1000000)
+				    return $"${money / 100000}m";
 				// K
-			    if (Money >= 1000)
-				    return $"${Money / 1000}k";
+			    if (money >= 1000)
+				    return $"${money / 1000}k";
 				// -
-			    return $"${Money}";
+			    return $"${money}";
 		    }
 	    }
 
@@ -67,5 +81,10 @@ namespace Bank
 
 		    localAddress = Tools.IPAddress;
 	    }
-    }
+
+		private void NotifyPropertyChanged([CallerMemberName] string name = "") 
+			=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+		public override string ToString() => $"{Name} ({Address})";
+	}
 }
