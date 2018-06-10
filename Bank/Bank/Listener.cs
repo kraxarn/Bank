@@ -136,15 +136,20 @@ namespace Bank
 
 					if (dat[0] == "JOIN")
 					{
-						Debug.WriteLine($"Added user: '{dat[1]}'");
+						var ip = ((IPEndPoint) client.Client.LocalEndPoint).Address;
 
-						var u = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString());
+						Debug.WriteLine($"Added user: '{dat[1]}' from '{ip}'");
+
+						var u = new User(dat[1], int.Parse(dat[2]), dat[3]);
 						InvokeNewPlayer(u);
 						users.Add(u);
 					}
 					else if (dat[0] == "ADD")
 					{
 						Debug.WriteLine($"Users: {users.Count}");
+
+						foreach (var u in users)
+							Debug.WriteLine($"{u.Name}: {u.Address} / {u.FormattedAddress}");
 
 						// TODO: Temporary workaround for multiple users bug
 						var user = users.FirstOrDefault(u => u.Address == dat[1]);
@@ -167,6 +172,8 @@ namespace Bank
 							user.Money -= amount;
 							InvokeMoneyChange(user);
 						}
+						else
+							DisplayAlert("Failed to add money", "The specified user could not be found");
 					}
 
 					stream.Write(ok, 0, ok.Length);

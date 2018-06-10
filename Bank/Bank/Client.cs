@@ -78,7 +78,7 @@ namespace Bank
 
 	    public bool Connect(out Exception error)
 	    {
-		    var result = Send($"JOIN,{name},{avatar}", out var e);
+		    var result = Send($"JOIN,{name},{avatar},{Tools.IPAddress}", out var e);
 		    error = e;
 		    return result;
 	    }

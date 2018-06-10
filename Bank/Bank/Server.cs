@@ -98,12 +98,12 @@ namespace Bank
 
 					/*
 					 * TODO: Use ID instead of IP?
-					 * JOIN: name,avatarIndex	// For when someone joins
-					 * ADD:  ip,amount			// Added money to user
-					 * REM:  ip,amount			// Removed money from user
-					 * SET:  ip.amount			// Just set a new value for someone
-					 * NEW:  ip.amount			// A user has a new amount of money
-					 * BYE:  ip					// Removes the user
+					 * JOIN: name,avatarIndex,ip	// For when someone joins
+					 * ADD:  ip,amount				// Added money to user
+					 * REM:  ip,amount				// Removed money from user
+					 * SET:  ip.amount				// Just set a new value for someone
+					 * NEW:  ip.amount				// A user has a new amount of money
+					 * BYE:  ip						// Removes the user
 					 *
 					 * TODO: Just add on 'JOIN' and then always broadcast?
 					 */
