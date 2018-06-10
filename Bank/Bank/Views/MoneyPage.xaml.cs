@@ -175,7 +175,7 @@ namespace Bank.Views
 					// First, remove from local, then add to other user
 					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out e))
 						DisplayAlert("Failed to remove money", e.Message, "Dismiss");
-					else if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out e))
+					else if (!client.Send($"ADD,{toUser.Address},{TotalMoney}", out e))
 						DisplayAlert("Failed to add money", e.Message, "Dismiss");
 					break;
 
