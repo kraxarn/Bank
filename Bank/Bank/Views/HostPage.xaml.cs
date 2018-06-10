@@ -69,5 +69,14 @@ namespace Bank.Views
 
 			base.OnAppearing();
 		}
+
+		protected override void OnDisappearing()
+		{
+			// If modal is null, we just switched tab and can stop the server
+			if (Tools.CurrentModalPage == default(Page) && server.Running)
+				client.Send("STOP", out _);
+
+			base.OnDisappearing();
+		}
 	}
 }
