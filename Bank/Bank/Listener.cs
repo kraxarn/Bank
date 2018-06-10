@@ -159,7 +159,7 @@ namespace Bank
 					}
 					else if (dat[0] == "REM")
 					{
-						var user = users.SingleOrDefault(u => u.Address == dat[1]);
+						var user = users.FirstOrDefault(u => u.Address == dat[1]);
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
