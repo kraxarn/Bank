@@ -33,10 +33,13 @@ namespace Bank
 
 	    /// <summary>
 	    /// Shortens the address to just ID or 'Host'
+	    /// <para> TODO: There's no longer any difference for host </para>
 	    /// </summary>
-	    public string FormattedAddress => Address == "127.0.0.1" ? "Host" : $"User {ID}";
+	    public string FormattedAddress => Address == localAddress ? "You" : $"User {ID}";
 
 	    public byte ID => byte.Parse(Address.Substring(Address.LastIndexOf(".", StringComparison.Ordinal) + 1));
+
+	    private readonly string localAddress;
 
 	    public User(string name, int avatar, string address)
 	    {
@@ -61,6 +64,8 @@ namespace Bank
 		    Avatar = ImageSource.FromFile(Device.RuntimePlatform == Device.UWP 
 			    ? $"images/avatar/48/{avatarNames[avatar]}.png" 
 			    : $"images/avatar/{avatarNames[avatar]}.png");
+
+		    localAddress = Tools.IPAddress;
 	    }
     }
 }

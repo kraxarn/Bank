@@ -19,12 +19,12 @@ namespace Bank.Views
 			InitializeComponent();
 
 			this.client = client;
-			users = new List<User>(serverUsers);
+			users       = new List<User>(serverUsers);
+
+			var ipAddress = Tools.IPAddress;
 
 			// Get local user
-			// TODO: This doesn't work if we're connecting to a server
-			// TODO: Create a new user identical to the current one instead
-			currentUser = users.Single(u => u.Address == "127.0.0.1");
+			currentUser = users.Single(u => u.Address == ipAddress);
 
 			// Don't show ourselves in users list
 			users.Remove(currentUser);
@@ -36,9 +36,6 @@ namespace Bank.Views
 			// Set view source
 			ViewUsers.ItemsSource = users;
 
-			// Add test user
-			//users.Add(new User("Test user", 0, "127.0.0.1"));
-
 			// Set handler for clicking user
 			ViewUsers.ItemSelected += ViewUsersOnItemSelected;
 
@@ -49,7 +46,7 @@ namespace Bank.Views
 			{
 				Debug.WriteLine($"MoneyChanged: {user.Name} = {user.FormattedMoney} / {user.Money}");
 
-				if (user.Address == "127.0.0.1")
+				if (user.Address == ipAddress)
 				{
 					currentUser.Money = user.Money;
 					UpdateSelf();
