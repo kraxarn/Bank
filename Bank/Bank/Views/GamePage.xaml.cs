@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace Bank.Views
 	public partial class GamePage
 	{
 		private readonly Client client;
-		private readonly List<User> users;
+		private readonly ObservableCollection<User> users;
 		private readonly User currentUser;
 
 		public GamePage(Client client, IEnumerable<User> serverUsers)
@@ -19,7 +20,7 @@ namespace Bank.Views
 			InitializeComponent();
 
 			this.client = client;
-			users       = new List<User>(serverUsers);
+			users       = new ObservableCollection<User>(serverUsers);
 
 			var ipAddress = Tools.IPAddress;
 
@@ -53,13 +54,14 @@ namespace Bank.Views
 				}
 				else
 				{
-					// TODO: Also temporary code until duplicate user bug is fixed
-					var found = users.FirstOrDefault(u => u.Address == user.Address);
+					// TODO: Temporary workaround for buggy listview
+					Device.BeginInvokeOnMainThread(() =>
+					{
+						users.First(u => u.Address == user.Address).Money = user.Money;
 
-					if (found == default(User))
-						DisplayAlert("User not found", "The specified user could not be found", "wtf?");
-					else
-						Device.BeginInvokeOnMainThread(() => found.Money = user.Money);
+						ViewUsers.ItemsSource = null;
+						ViewUsers.ItemsSource = users;
+					});
 				}
 			};
 		}
