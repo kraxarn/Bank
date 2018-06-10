@@ -54,25 +54,16 @@ namespace Bank.Views
 					currentUser.Money = user.Money;
 					UpdateSelf();
 				}
-
-				/*
-				var ur = users.SingleOrDefault(u => u.Address == user.Address);
-
-				Debug.WriteLine($"Modifying user '{ur?.Name}'");
-				
-				void AddUser()
-				{
-					ur.Money = user.Money;
-					ViewUsers.BeginRefresh();
-				}
-
-				if (Device.RuntimePlatform == Device.UWP)
-					Device.BeginInvokeOnMainThread(AddUser);
 				else
-					AddUser();
+				{
+					// TODO: Also temporary code until duplicate user bug is fixed
+					var found = users.FirstOrDefault(u => u.Address == user.Address);
 
-				Debug.WriteLine($"{ur.Name} ({user.Name}) now has {user.FormattedMoney}");
-				*/
+					if (found == default(User))
+						DisplayAlert("User not found", "The specified user could not be found", "wtf?");
+					else
+						Device.BeginInvokeOnMainThread(() => found.Money = user.Money);
+				}
 			};
 		}
 
