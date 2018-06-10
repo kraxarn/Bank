@@ -53,9 +53,9 @@ namespace Bank
 
 		public ObservableCollection<User> Users => users;
 
-		public Listener()
+		public Listener(string address = "127.0.0.1")
 		{
-			var ip = IPAddress.Parse("127.0.0.1");
+			var ip = IPAddress.Parse(address);
 			// Assume port
 			server = new TcpListener(ip, 13000);
 			Running = false;
