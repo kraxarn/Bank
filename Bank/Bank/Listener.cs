@@ -159,6 +159,7 @@ namespace Bank
 					}
 					else if (dat[0] == "REM")
 					{
+						// TODO: Yet another workround
 						var user = users.FirstOrDefault(u => u.Address == dat[1]);
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
@@ -177,14 +178,7 @@ namespace Bank
 			server.Stop();
 		}
 
-		private static void DisplayAlert(string title, string message, string button = "Dismiss")
-		{
-			void Alert() => Application.Current.MainPage.DisplayAlert(title, message, button);
-
-			if (Device.IsInvokeRequired)
-				Device.BeginInvokeOnMainThread(Alert);
-			else
-				Alert();
-		}
+		private static void DisplayAlert(string title, string message, string button = "Dismiss") 
+			=> Device.BeginInvokeOnMainThread(() => Application.Current.MainPage.DisplayAlert(title, message, button));
 	}
 }
