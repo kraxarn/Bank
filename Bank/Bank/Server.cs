@@ -128,20 +128,18 @@ namespace Bank
 					    else
 						    Users.Remove(user);
 					}
-				    else
-				    {
-					    // Send data to clients (listeners)
-					    void B()
-					    {
-						    Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
-						    Broadcast(data);
-					    }
 
-					    if (Device.RuntimePlatform == Device.UWP)
-						    Device.BeginInvokeOnMainThread(B);
-					    else
-						    B();
-					}
+				    // Send data to clients (listeners)
+				    void B()
+				    {
+					    Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
+					    Broadcast(data);
+				    }
+
+				    if (Device.RuntimePlatform == Device.UWP)
+					    Device.BeginInvokeOnMainThread(B);
+				    else
+					    B();
 
 					// Send 'OK' back to the client
 					stream.Write(ok, 0, ok.Length);
