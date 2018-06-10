@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using Xamarin.Forms;
 
@@ -29,8 +30,8 @@ namespace Bank
 				Alert();
 	    }
 
-		public static Page CurrentModalPage => Application.Current.MainPage.Navigation.ModalStack[0];
+		public static Page CurrentModalPage => Application.Current.MainPage.Navigation.ModalStack.FirstOrDefault();
 
-	    public static Page CurruentPage => Application.Current.MainPage.Navigation.NavigationStack[0];
+	    public static Page CurruentPage => Application.Current.MainPage.Navigation.NavigationStack.FirstOrDefault();
     }
 }
