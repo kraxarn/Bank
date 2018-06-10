@@ -85,7 +85,7 @@ namespace Bank.Views
 				LabelMoney.Text = currentUser.FormattedMoney;
 			}
 
-			if (Device.RuntimePlatform == Device.UWP)
+			if (Device.IsInvokeRequired)
 				Device.BeginInvokeOnMainThread(Update);
 			else
 				Update();
