@@ -146,7 +146,8 @@ namespace Bank
 					{
 						Debug.WriteLine($"Users: {users.Count}");
 
-						var user = users.SingleOrDefault(u => u.Address == dat[1]);
+						// TODO: Temporary workaround for multiple users bug
+						var user = users.FirstOrDefault(u => u.Address == dat[1]);
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
