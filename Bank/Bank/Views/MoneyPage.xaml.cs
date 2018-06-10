@@ -179,7 +179,6 @@ namespace Bank.Views
 				case Mode.SelfAdd:
 					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var err))
 						Debug.WriteLine(err);
-
 					break;
 
 				/*

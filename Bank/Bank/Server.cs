@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -159,30 +160,39 @@ namespace Bank
 
 	    private void Send(string address, string message)
 	    {
+			Debug.WriteLine($"ServerSend: '{message}' to '{address}'");
+
 			// TODO: This (randomly) throws timed out errors
-		    using (var client = new TcpClient(address, 13000))
+		    try
 		    {
-				// Similar to Client.Send
-			    var data = Encoding.ASCII.GetBytes(message);
-			    var stream = client.GetStream();
-				stream.Write(data, 0, data.Length);
+			    using (var client = new TcpClient(address, 13000))
+			    {
+				    // Similar to Client.Send
+				    var data = Encoding.ASCII.GetBytes(message);
+				    var stream = client.GetStream();
+				    stream.Write(data, 0, data.Length);
 
-			    data = new byte[256];
-			    var bytes = stream.Read(data, 0, data.Length);
-			    var response = Encoding.ASCII.GetString(data, 0, bytes);
+				    data = new byte[256];
+				    var bytes = stream.Read(data, 0, data.Length);
+				    var response = Encoding.ASCII.GetString(data, 0, bytes);
 
-			    if (response != "OK")
-				    Application.Current.MainPage.DisplayAlert("Invalid response", response, "OK");
+				    if (response != "OK")
+					    Application.Current.MainPage.DisplayAlert("Invalid response", response, "OK");
 
-				stream.Close();
-				client.Close();
+				    stream.Close();
+				    client.Close();
+			    }
+		    }
+		    catch (Exception e)
+		    {
+				Debug.WriteLine($"{e.GetType().FullName}: {e.Message}");
 		    }
 
-			/*
-			// TODO: Don't use client here
-		    var client = new Client(address);
-		    return client.Connect(out _) && client.Send(message, out _);
-			*/
+		    /*
+		    // TODO: Don't use client here
+	        var client = new Client(address);
+	        return client.Connect(out _) && client.Send(message, out _);
+		    */
 	    }
     }
 }
