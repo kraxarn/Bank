@@ -18,7 +18,7 @@ namespace Bank.Views
 		private async void ButtonLeave_OnClicked(object sender, EventArgs e)
 		{
 			// We don't need host to be able to leave
-			var ip = Tools.GetIPAddress();
+			var ip = Tools.IPAddress;
 
 			if (client.Send($"BYE,{ip}", out var err))
 				await Navigation.PopModalAsync();

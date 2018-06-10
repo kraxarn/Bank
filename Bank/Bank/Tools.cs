@@ -6,17 +6,20 @@ namespace Bank
 {
 	internal abstract class Tools
     {
-	    public static string GetIPAddress()
-	    {
-		    using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
-		    {
-			    socket.Connect("8.8.8.8", 65530);
-			    var endPoint = socket.LocalEndPoint as IPEndPoint;
-			    return endPoint?.Address.ToString();
-		    }
+		public static string IPAddress
+		{
+			get
+			{
+				using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+				{
+					socket.Connect("8.8.8.8", 65530);
+					var endPoint = socket.LocalEndPoint as IPEndPoint;
+					return endPoint?.Address.ToString();
+				}
+			}
 		}
 
-	    public static void DisplayAlert(string title, string message, string button)
+		public static void DisplayAlert(string title, string message, string button)
 	    {
 		    void Alert() => Application.Current.MainPage.DisplayAlert(title, message, button);
 

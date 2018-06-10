@@ -46,7 +46,7 @@ namespace Bank.Views
 
 		private static bool IsPrivateNetwork()
 		{
-			var ipstr = Tools.GetIPAddress().Split('.');
+			var ipstr = Tools.IPAddress.Split('.');
 			var ip    = new int[ipstr.Length];
 
 			for (var i = 0; i < ipstr.Length; i++)

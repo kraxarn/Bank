@@ -14,7 +14,7 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 
-			var ip = Tools.GetIPAddress();
+			var ip = Tools.IPAddress;
 			addressPrefix = ip.Substring(0, ip.LastIndexOf('.') + 1);
 		}
 
