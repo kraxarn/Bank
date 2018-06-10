@@ -16,13 +16,7 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 
-			string ip;
-			using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
-			{
-				socket.Connect("8.8.8.8", 65530);
-				var endPoint = socket.LocalEndPoint as IPEndPoint;
-				ip = endPoint?.Address.ToString();
-			}
+			var ip = Tools.IPAddress;
 
 			client = new Client();
 
