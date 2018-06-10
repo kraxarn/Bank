@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -177,7 +178,8 @@ namespace Bank.Views
 				 */
 				case Mode.SelfAdd:
 					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var err))
-						DisplayAlert("Warning", $"Failed to send: {err}", "OK");
+						Debug.WriteLine(err);
+
 					break;
 
 				/*

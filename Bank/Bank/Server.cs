@@ -159,6 +159,7 @@ namespace Bank
 
 	    private void Send(string address, string message)
 	    {
+			// TODO: This (randomly) throws timed out errors
 		    using (var client = new TcpClient(address, 13000))
 		    {
 				// Similar to Client.Send
