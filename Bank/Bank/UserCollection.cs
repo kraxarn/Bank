@@ -27,16 +27,18 @@ namespace Bank
 				AddItem(item);
 		}
 
-		private void NotifyCollectionChanged(NotifyCollectionChangedAction action)
-		{
-			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action));
-		}
+		private void NotifyCollectionChanged(NotifyCollectionChangedAction action) 
+			=> CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action));
 
-		private void NotifyPropertyChanged([CallerMemberName] string name = "")
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-		}
+		private void NotifyPropertyChanged([CallerMemberName] string name = "") 
+			=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
+		/// <summary>
+		/// Gets money for a specific user searched by IP address.
+		/// <para> Warning: This will throw InvalidOperationException if not found. </para>
+		/// </summary>
+		/// <param name="address"> IP address </param>
+		/// <returns> Money </returns>
 		public uint this[string address]
 		{
 			get => this.First(u => u.Address == address).Money;
