@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Bank
 {
@@ -31,9 +32,19 @@ namespace Bank
 			CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action));
 		}
 
-		private void NotifyPropertyChanged()
+		private void NotifyPropertyChanged([CallerMemberName] string name = "")
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+		}
+
+		public uint this[string address]
+		{
+			get => this.First(u => u.Address == address).Money;
+			set
+			{
+				this.First(u => u.Address == address).Money = value;
+				NotifyPropertyChanged();
+			}
 		}
 
 		public void AddItem(User item)
@@ -46,27 +57,6 @@ namespace Bank
 		{
 			Remove(item);
 			NotifyCollectionChanged(NotifyCollectionChangedAction.Remove);
-		}
-
-		// User specific stuff
-
-		/// <summary>
-		/// Sets money for a specific user
-		/// </summary>
-		/// <param name="address"> Address to search for </param>
-		/// <param name="money"> Money to set it to </param>
-		/// <returns> If it was successful </returns>
-		public bool SetMoney(string address, uint money)
-		{
-			var user = this.FirstOrDefault(u => u.Address == address);
-
-			if (user == default(User))
-				return false;
-
-			user.Money = money;
-
-			NotifyPropertyChanged();
-			return true;
 		}
 	}
 }

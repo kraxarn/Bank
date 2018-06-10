@@ -53,16 +53,8 @@ namespace Bank.Views
 					UpdateSelf();
 				}
 				else
-				{
-					// TODO: Temporary workaround for buggy listview
 					Device.BeginInvokeOnMainThread(() =>
-					{
-						users.First(u => u.Address == user.Address).Money = user.Money;
-
-						ViewUsers.ItemsSource = null;
-						ViewUsers.ItemsSource = users;
-					});
-				}
+						users.First(u => u.Address == user.Address).Money = user.Money);
 			};
 		}
 

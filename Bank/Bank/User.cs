@@ -22,7 +22,8 @@ namespace Bank
 		    {
 			    money = value;
 				NotifyPropertyChanged();
-		    }
+			    NotifyPropertyChanged("FormattedMoney");
+			}
 	    }
 
 		/// <summary>
