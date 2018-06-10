@@ -85,10 +85,7 @@ namespace Bank.Views
 				LabelMoney.Text = currentUser.FormattedMoney;
 			}
 
-			if (Device.IsInvokeRequired)
-				Device.BeginInvokeOnMainThread(Update);
-			else
-				Update();
+			Device.BeginInvokeOnMainThread(Update);
 		}
 
 		private async void ViewUsersOnItemSelected(object sender, SelectedItemChangedEventArgs e)
