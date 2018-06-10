@@ -53,16 +53,16 @@ namespace Bank
 
 		public ObservableCollection<User> Users => users;
 
-		public Listener(string address = "127.0.0.1")
+		public Listener()
 		{
-			var ip = IPAddress.Parse(address);
+			var ip = IPAddress.Any;
 			// Assume port
 			server = new TcpListener(ip, 13000);
 			Running = false;
 
 			users = new ObservableCollection<User>();
 
-			Debug.WriteLine($"Listener started on {address}");
+			Debug.WriteLine($"Listener started on {ip}");
 		}
 
 		private void InvokeNewPlayer(User user) 

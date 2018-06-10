@@ -24,7 +24,7 @@ namespace Bank
 
 	    public ObservableCollection<User> Users => listener.Users;
 
-	    public Client(string address = "127.0.0.1", int port = 13001)
+	    public Client(string address, int port = 13001)
 	    {
 		    this.address = address;
 		    this.port    = port;

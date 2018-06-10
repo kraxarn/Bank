@@ -18,7 +18,7 @@ namespace Bank.Views
 
 			var ip = Tools.IPAddress;
 
-			client = new Client();
+			client = new Client(Tools.IPAddress);
 
 			server = new Server();
 			ViewUsers.ItemsSource = server.Users;
