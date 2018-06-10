@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
@@ -12,7 +11,7 @@ namespace Bank.Views
 	public partial class GamePage
 	{
 		private readonly Client client;
-		private readonly ObservableCollection<User> users;
+		private readonly UserCollection users;
 		private readonly User currentUser;
 
 		public GamePage(Client client, IEnumerable<User> serverUsers)
@@ -20,7 +19,7 @@ namespace Bank.Views
 			InitializeComponent();
 
 			this.client = client;
-			users       = new ObservableCollection<User>(serverUsers);
+			users       = new UserCollection(serverUsers);
 
 			var ipAddress = Tools.IPAddress;
 
@@ -53,8 +52,7 @@ namespace Bank.Views
 					UpdateSelf();
 				}
 				else
-					Device.BeginInvokeOnMainThread(() =>
-						users.First(u => u.Address == user.Address).Money = user.Money);
+					Device.BeginInvokeOnMainThread(() => users[user.Address] = user.Money);
 			};
 		}
 
