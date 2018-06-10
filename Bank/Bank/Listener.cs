@@ -61,6 +61,8 @@ namespace Bank
 			Running = false;
 
 			users = new ObservableCollection<User>();
+
+			Debug.WriteLine($"Listener started on {address}");
 		}
 
 		private void InvokeNewPlayer(User user) 
