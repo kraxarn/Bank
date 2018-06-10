@@ -177,8 +177,8 @@ namespace Bank.Views
 				 * Add 'from'
 				 */
 				case Mode.SelfAdd:
-					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var err))
-						Debug.WriteLine(err);
+					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out var e2))
+						DisplayAlert("Failed to add money", e2.Message, "Dismiss");
 					break;
 
 				/*
@@ -186,7 +186,8 @@ namespace Bank.Views
 				 * Remove 'from'
 				 */
 				case Mode.SelfRemove:
-					client.Send($"REM,{fromUser.Address},{TotalMoney}", out _);
+					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out var e3))
+						DisplayAlert("Failed to remove money", e3.Message, "Dismiss");
 					break;
 			}
 		}
