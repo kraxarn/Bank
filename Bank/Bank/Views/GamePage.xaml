@@ -39,7 +39,11 @@
 					<Label
 						x:Name="LabelMoney"
 						TextColor="Gray"
-						Text="Money"/>
+						Text="Money">
+						<Label.GestureRecognizers>
+							<TapGestureRecognizer Tapped="LabelMoney_OnTapped"/>
+						</Label.GestureRecognizers>
+					</Label>
 
 				</StackLayout>
 				

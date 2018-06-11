@@ -134,5 +134,8 @@ namespace Bank.Views
 				default: return "0️⃣";
 			}
 		}
+
+		private void LabelMoney_OnTapped(object sender, EventArgs e) 
+			=> DisplayAlert("Your money", $"${Tools.Seperate(currentUser.Money)}", "Dismiss");
 	}
 }

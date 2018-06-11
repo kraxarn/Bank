@@ -32,7 +32,7 @@
 					VerticalOptions="Center"
 					x:Name="ImageAvatar">
 						<Image.GestureRecognizers>
-							<PanGestureRecognizer PanUpdated="PanUpdated"></PanGestureRecognizer>
+							<PanGestureRecognizer PanUpdated="PanUpdated"/>
 						</Image.GestureRecognizers>
 				</Image>
 
