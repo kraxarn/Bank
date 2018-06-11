@@ -158,7 +158,7 @@ namespace Bank.Views
 			else
 				ButtonSave.IsEnabled = true;
 
-			LabelTotalMoney.Text = $"${TotalMoney}";
+			LabelTotalMoney.Text = $"${Tools.Seperate(totalMoney)}";
 		}
 
 		private void SendMoney()

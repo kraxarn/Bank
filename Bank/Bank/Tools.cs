@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Xamarin.Forms;
@@ -33,5 +34,12 @@ namespace Bank
 		public static Page CurrentModalPage => Application.Current.MainPage.Navigation.ModalStack.FirstOrDefault();
 
 	    public static Page CurruentPage => Application.Current.MainPage.Navigation.NavigationStack.FirstOrDefault();
+
+	    public static string Seperate(uint value)
+	    {
+		    var format = (NumberFormatInfo) CultureInfo.InvariantCulture.NumberFormat.Clone();
+		    format.NumberGroupSeparator = ",";
+			return value.ToString("#,0", format);
+		}
     }
 }
