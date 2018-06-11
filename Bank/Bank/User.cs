@@ -33,14 +33,12 @@ namespace Bank
 	    {
 		    get
 		    {
-				// TODO: This rounds of pretty harshly (15.7k => 15k)
-
 				// M
 			    if (money >= 1000000)
-				    return $"${money / 100000}m";
+				    return $"${money / 100000f:F}m";
 				// K
 			    if (money >= 1000)
-				    return $"${money / 1000}k";
+				    return $"${money / 1000f:F1}k";
 				// -
 			    return $"${money}";
 		    }
