@@ -69,9 +69,17 @@ namespace Bank.Views
 
 		protected override void OnDisappearing()
 		{
-			// If modal is null, we just switched tab and can stop the server
-			if (Tools.CurrentModalPage == default(Page) && server.Running)
-				client.Send("STOP", out _);
+			// If modal is null, we switched tab
+			if (Tools.CurrentModalPage == default(Page))
+			{
+				// Shut down listener if running
+				if (client.ListenerRunning)
+					server.Send(Tools.IPAddress, "STOP");
+
+				// Shut down server if running
+				if (server.Running)
+					client.Send("STOP", out _);
+			}
 
 			base.OnDisappearing();
 		}
