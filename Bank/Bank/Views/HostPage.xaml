@@ -14,7 +14,7 @@
 				x:Name="LabelRoom"
 				FontAttributes="Bold"
 				FontSize="32"
-	            Text="RoomID: "/>
+	            Text="Room: "/>
 
 			<StackLayout
 				Margin="0, 16, 0, 0"
