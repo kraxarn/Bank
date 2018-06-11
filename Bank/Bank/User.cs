@@ -35,7 +35,7 @@ namespace Bank
 		    {
 				// M
 			    if (money >= 1000000)
-				    return $"${money / 100000f:F}m";
+				    return $"${money / 1000000f:F}m";
 				// K
 			    if (money >= 1000)
 				    return $"${money / 1000f:F1}k";
