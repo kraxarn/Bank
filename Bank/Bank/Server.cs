@@ -168,7 +168,7 @@ namespace Bank
 			Broadcast("GO");
 	    }
 
-	    private void Send(string address, string message)
+	    public void Send(string address, string message)
 	    {
 			Debug.WriteLine($"ServerSend: '{message}' to '{address}'");
 

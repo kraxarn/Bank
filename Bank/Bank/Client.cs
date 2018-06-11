@@ -25,6 +25,8 @@ namespace Bank
 
 	    public ObservableCollection<User> Users => listener.Users;
 
+	    public bool ListenerRunning => listener.Running;
+
 	    public Client(string address, int port = 13001)
 	    {
 		    this.address = address;
@@ -41,16 +43,19 @@ namespace Bank
 
 			listener = new Listener();
 		    if (!listener.Start(out var err))
-			{
-				//Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Don't crash please");
-				Debug.WriteLine($"*** Failed to create listener: {err} ***");
-			}
+			    Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Dismiss");
 
 		    listener.PlayerJoined += user => PlayerJoined?.Invoke(user);
 		    listener.MoneyChanged += user => MoneyChanged?.Invoke(user);
 
-		    listener.Ready += () => Ready?.Invoke();
-	    }
+		    listener.Ready += () =>
+		    {
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					Ready?.Invoke();
+				});
+		    };
+		}
 
 	    public bool TestConnection(out string message)
 	    {
