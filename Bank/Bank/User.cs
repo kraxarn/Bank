@@ -12,6 +12,7 @@ namespace Bank
 	    public string      Name    { get; }
 	    public ImageSource Avatar  { get; }
 	    public string      Address { get; }
+		public int     AvatarIndex { get; }
 		
 	    private uint money;
 
@@ -79,6 +80,8 @@ namespace Bank
 			    : $"images/avatar/{avatarNames[avatar]}.png");
 
 		    localAddress = Tools.IPAddress;
+
+		    AvatarIndex = avatar;
 	    }
 
 		private void NotifyPropertyChanged([CallerMemberName] string name = "") 

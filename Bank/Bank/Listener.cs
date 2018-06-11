@@ -53,6 +53,10 @@ namespace Bank
 
 		public ObservableCollection<User> Users => users;
 
+		public delegate void ReadyEvent();
+
+		public event ReadyEvent Ready;
+
 		public Listener()
 		{
 			var ip = IPAddress.Any;
@@ -175,6 +179,8 @@ namespace Bank
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
 					}
+					else if (dat[0] == "GO")
+						Ready?.Invoke();
 
 					stream.Write(ok, 0, ok.Length);
 				}

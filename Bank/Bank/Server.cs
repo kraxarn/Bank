@@ -104,8 +104,9 @@ namespace Bank
 					 * SET:  ip.amount				// Just set a new value for someone
 					 * NEW:  ip.amount				// A user has a new amount of money
 					 * BYE:  ip						// Removes the user
+					 * GO:							// Everyone's in, lets go!
 					 *
-					 * TODO: Just add on 'JOIN' and then always broadcast?
+					 * TODO: Are ADD/REM/SET even used?
 					 */
 
 					Debug.WriteLine($"ServerData: '{data}'");
@@ -129,18 +130,17 @@ namespace Bank
 					    else
 						    Users.Remove(user);
 					}
-
-				    // Send data to clients (listeners)
-				    void B()
-				    {
-					    Debug.WriteLine($"ServerBroadcast ({Users.Count}): '{data}'");
-					    Broadcast(data);
-				    }
-
-				    if (Device.RuntimePlatform == Device.UWP)
-					    Device.BeginInvokeOnMainThread(B);
 				    else
-					    B();
+				    {
+					    // Send data to clients (listeners)
+						// TODO: Does this really need to be done on main thead?
+					    void B() => Broadcast(data);
+
+					    if (Device.RuntimePlatform == Device.UWP)
+						    Device.BeginInvokeOnMainThread(B);
+					    else
+						    B();
+					}
 
 					// Send 'OK' back to the client
 					stream.Write(ok, 0, ok.Length);
@@ -156,6 +156,16 @@ namespace Bank
 	    {
 		    foreach (var user in Users)
 			    Send(user.Address, message);
+	    }
+
+		/// <summary>
+		/// Broadcasts all users known to the server and then 'GO'
+		/// </summary>
+	    public void BroadcastUsers()
+	    {
+		    foreach (var user in Users)
+				Broadcast($"JOIN,{user.Name},{user.AvatarIndex},{user.Address}");
+			Broadcast("GO");
 	    }
 
 	    private void Send(string address, string message)
@@ -187,12 +197,6 @@ namespace Bank
 		    {
 				Debug.WriteLine($"{e.GetType().FullName}: {e.Message}");
 		    }
-
-		    /*
-		    // TODO: Don't use client here
-	        var client = new Client(address);
-	        return client.Connect(out _) && client.Send(message, out _);
-		    */
 	    }
     }
 }

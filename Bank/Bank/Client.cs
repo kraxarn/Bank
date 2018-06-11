@@ -21,6 +21,7 @@ namespace Bank
 
 	    public event Listener.JoinEvent  PlayerJoined;
 	    public event Listener.MoneyEvent MoneyChanged;
+	    public event Listener.ReadyEvent Ready;
 
 	    public ObservableCollection<User> Users => listener.Users;
 
@@ -47,6 +48,8 @@ namespace Bank
 
 		    listener.PlayerJoined += user => PlayerJoined?.Invoke(user);
 		    listener.MoneyChanged += user => MoneyChanged?.Invoke(user);
+
+		    listener.Ready += () => Ready?.Invoke();
 	    }
 
 	    public bool TestConnection(out string message)

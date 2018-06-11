@@ -13,6 +13,11 @@ namespace Bank.Views
 		{
 			InitializeComponent();
 			this.client = client;
+
+			client.Ready += async () =>
+			{
+				await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, client.Users)));
+			};
 		}
 
 		private async void ButtonLeave_OnClicked(object sender, EventArgs e)
