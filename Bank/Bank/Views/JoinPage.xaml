@@ -14,7 +14,7 @@
 			<Entry
 				x:Name="EntryRoom"
 				Keyboard="Numeric"
-				Placeholder="Room ID"
+				Placeholder="Room"
 				TextChanged="EntryRoom_OnTextChanged"/>
 			
 			<Button
