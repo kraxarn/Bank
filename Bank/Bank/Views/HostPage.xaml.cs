@@ -36,9 +36,16 @@ namespace Bank.Views
 		{
 			if (server.Users.Count < 2)
 			{
-				if (await Application.Current.MainPage.DisplayAlert("Not enough players",
-					"Add more players and try again", "OK", "Ignore"))
+				const string title = "Not enough players";
+				const string msg   = "Add more players and try again";
+
+				#if DEBUG
+					if (await Application.Current.MainPage.DisplayAlert(title, msg, "Dismiss", "Ignore"))
+						return;
+				#else
+					await Application.Current.MainPage.DisplayAlert(title, msg, "Dismiss");
 					return;
+				#endif
 			}
 
 			if (!uint.TryParse(EntryMoney.Text, out _) || PickerMoney.SelectedIndex < 0)
