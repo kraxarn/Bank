@@ -13,7 +13,7 @@ namespace Bank
 		{
 			get
 			{
-				var ver = "v1.0.0-beta.1";
+				var ver = "v1.0.0-beta.2";
 				#if DEBUG
 					ver += "-dev";
 				#endif
