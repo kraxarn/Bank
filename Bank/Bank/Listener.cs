@@ -144,7 +144,7 @@ namespace Bank
 
 						Debug.WriteLine($"Added user: '{dat[1]}' from '{ip}'");
 
-						var u = new User(dat[1], int.Parse(dat[2]), dat[3]);
+						var u = new User(dat[1], int.Parse(dat[2]), dat[3], uint.Parse(dat[4]));
 						InvokeNewPlayer(u);
 						users.Add(u);
 					}

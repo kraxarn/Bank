@@ -48,11 +48,21 @@ namespace Bank.Views
 				#endif
 			}
 
-			if (!uint.TryParse(EntryMoney.Text, out _) || PickerMoney.SelectedIndex < 0)
+			if (!uint.TryParse(EntryMoney.Text, out var startingMoney) || PickerMoney.SelectedIndex < 0)
 			{
 				await Application.Current.MainPage.DisplayAlert("No starting money", "Please select starting money first", "OK");
 				return;
 			}
+
+			// Save starting money to settings
+			switch (PickerMoney.SelectedIndex)
+			{
+				case 0: startingMoney *= 1000000; break;
+				case 1: startingMoney *= 1000;    break;
+			}
+
+			Tools.SetProperty("startingMoney", startingMoney);
+			await Tools.SavePropertiesAsync();
 
 			// Send users to other players
 			server.BroadcastUsers();

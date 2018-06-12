@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Bank
@@ -43,5 +44,20 @@ namespace Bank
 		    format.NumberGroupSeparator = ",";
 			return value.ToString("#,0", format);
 		}
-    }
+
+		public static object GetProperty(string key, object fallback) 
+			=> Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : fallback;
+
+		public static void SetProperty(string key, object value) 
+			=> Application.Current.Properties[key] = value;
+
+		public static async Task SavePropertiesAsync() 
+			=> await Application.Current.SavePropertiesAsync();
+			
+		public static void SaveProperties()
+		{
+			var task = SavePropertiesAsync();
+			task.Wait();
+		}
+	}
 }

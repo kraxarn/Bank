@@ -55,7 +55,7 @@ namespace Bank
 
 	    private readonly string localAddress;
 
-	    public User(string name, int avatar, string address)
+	    public User(string name, int avatar, string address, uint money)
 	    {
 		    Name = name;
 		    Address = address;
@@ -80,8 +80,8 @@ namespace Bank
 			    : $"images/avatar/{avatarNames[avatar]}.png");
 
 		    localAddress = Tools.IPAddress;
-
-		    AvatarIndex = avatar;
+		    AvatarIndex  = avatar;
+		    this.money   = money;
 	    }
 
 		private void NotifyPropertyChanged([CallerMemberName] string name = "") 

@@ -18,6 +18,8 @@ namespace Bank
 
 	    public bool Running;
 
+	    private readonly uint startingMoney;
+
 	    public Server(string address = null, int port = 13001)
 	    {
 		    var ip = address == null 
@@ -27,7 +29,10 @@ namespace Bank
 			Users  = new ObservableCollection<User>();
 		    server = new TcpListener(ip, port);
 			Running = false;
-	    }
+
+			// Get starting money
+		    startingMoney = Convert.ToUInt32(Tools.GetProperty("startingMoney", 1500));
+		}
 
 	    public bool Start()
 	    {
@@ -98,13 +103,13 @@ namespace Bank
 
 					/*
 					 * TODO: Use ID instead of IP?
-					 * JOIN: name,avatarIndex,ip	// For when someone joins
-					 * ADD:  ip,amount				// Added money to user
-					 * REM:  ip,amount				// Removed money from user
-					 * SET:  ip.amount				// Just set a new value for someone
-					 * NEW:  ip.amount				// A user has a new amount of money
-					 * BYE:  ip						// Removes the user
-					 * GO:							// Everyone's in, lets go!
+					 * JOIN: name,avatarIndex,ip,money	// For when someone joins
+					 * ADD:  ip,amount					// Added money to user
+					 * REM:  ip,amount					// Removed money from user
+					 * SET:  ip.amount					// Just set a new value for someone
+					 * NEW:  ip.amount					// A user has a new amount of money
+					 * BYE:  ip							// Removes the user
+					 * GO:								// Everyone's in, lets go!
 					 *
 					 * TODO: Are ADD/REM/SET even used?
 					 */
@@ -113,7 +118,7 @@ namespace Bank
 					
 				    if (dat[0] == "JOIN")
 				    {
-						var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString());
+						var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString(), startingMoney);
 
 						// UWP needs this to run on the main thread
 						if (Device.RuntimePlatform == Device.UWP)
@@ -164,9 +169,10 @@ namespace Bank
 	    public void BroadcastUsers()
 	    {
 		    foreach (var user in Users)
-				Broadcast($"JOIN,{user.Name},{user.AvatarIndex},{user.Address}");
-			Broadcast("GO");
-	    }
+			    Broadcast($"JOIN,{user.Name},{user.AvatarIndex},{user.Address},{startingMoney}");
+
+		    Broadcast("GO");
+		}
 
 	    public void Send(string address, string message)
 	    {
