@@ -7,7 +7,9 @@ using Xamarin.Forms;
 namespace Bank
 {
 	internal abstract class Tools
-    {
+	{
+		public static string Version => "v1.0.0-beta.1";
+
 		public static string IPAddress
 		{
 			get
