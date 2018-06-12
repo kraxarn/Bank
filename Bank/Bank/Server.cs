@@ -120,11 +120,18 @@ namespace Bank
 				    {
 						var user = new User(dat[1], int.Parse(dat[2]), ((IPEndPoint) client.Client.RemoteEndPoint).Address.ToString(), startingMoney);
 
-						// UWP needs this to run on the main thread
-						if (Device.RuntimePlatform == Device.UWP)
-							Device.BeginInvokeOnMainThread(() => Users.Add(user));
-						else
-							Users.Add(user);
+						// Add user if it does not already exist
+					    // TODO: Maybe we want to use UserCollection here as well
+					    if (!Users.Contains(user))
+					    {
+						    // UWP needs this to run on the main thread
+						    if (Device.RuntimePlatform == Device.UWP)
+							    Device.BeginInvokeOnMainThread(() => Users.Add(user));
+						    else
+							    Users.Add(user);
+					    }
+					    else
+						    Debug.WriteLine($"Warning: Server tried to add duplicate user ({user.Address})");
 				    }
 					else if (dat[0] == "BYE")
 				    {
