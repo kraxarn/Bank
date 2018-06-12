@@ -9,7 +9,17 @@ namespace Bank
 {
 	internal abstract class Tools
 	{
-		public static string Version => "v1.0.0-beta.1";
+		public static string Version
+		{
+			get
+			{
+				var ver = "v1.0.0-beta.1";
+				#if DEBUG
+					ver += "-dev";
+				#endif
+				return ver;
+			}
+		}
 
 		public static string IPAddress
 		{
