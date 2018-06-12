@@ -7,14 +7,16 @@ namespace Bank.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SettingsPage
 	{
+		private readonly IDeviceInfo device;
+		private byte tapped;
+
 		public SettingsPage()
 		{
 			InitializeComponent();
 
-			var device = DependencyService.Get<IDeviceInfo>();
-			LabelDeviceName.Text = device.DeviceName;
-			LabelDeviceOs.Text   = device.OsVersion;
-			LabelVersion.Text    = Tools.Version.Substring(1);
+			tapped = 0;
+			device = DependencyService.Get<IDeviceInfo>();
+			LabelVersion.Text = Tools.Version.Substring(1);
 		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e) 
@@ -25,5 +27,16 @@ namespace Bank.Views
 
 		protected override async void OnDisappearing() 
 			=> await Application.Current.SavePropertiesAsync();
+
+		private void LabelVersion_OnTapped(object sender, EventArgs e)
+		{
+			if (tapped < 3)
+				tapped++;
+			else
+			{
+				tapped = 0;
+				Tools.DisplayAlert("Device info", $"Name {device.DeviceName}\nOS: {device.OsVersion}", "Dismiss");
+			}
+		}
 	}
 }

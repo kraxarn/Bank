@@ -17,27 +17,13 @@
 					x:Name="CellDarkMode"
 					Text="Dark Mode"
 					OnChanged="DarkMode_OnChanged"/>
-				
+
 				<SwitchCell
 					x:Name="CellShortenMoney"
 					Text="Shorten Money"/>
 
 			</TableSection>
 
-			<!-- Advanced Settings -->
-			<TableSection
-				Title="Advanced">
-
-				<EntryCell
-					Label="Port"
-					Placeholder="13000"/>
-
-				<EntryCell
-					Label="Timeout"
-					Placeholder="5000"/>
-
-			</TableSection>
-			
 			<!-- Profile -->
 			<TableSection
 				Title="Profile">
@@ -52,44 +38,7 @@
 			</TableSection>
 			
 			<!-- Info -->
-			<TableSection
-				Title="Info">
-
-				<ViewCell
-					IsEnabled="False">
-					<StackLayout
-						Orientation="Horizontal"
-						Margin="12">
-
-						<Label
-							Text="Name"/>
-
-						<Label
-							TextColor="Gray"
-							HorizontalOptions="EndAndExpand"
-							x:Name="LabelDeviceName"
-							Text="Unknown"/>
-
-					</StackLayout>
-				</ViewCell>
-
-				<ViewCell
-					IsEnabled="False">
-					<StackLayout
-						Orientation="Horizontal"
-						Margin="12">
-
-						<Label
-							Text="OS"/>
-
-						<Label
-							TextColor="Gray"
-							HorizontalOptions="EndAndExpand"
-							x:Name="LabelDeviceOs"
-							Text="Unknown"/>
-
-					</StackLayout>
-				</ViewCell>
+			<TableSection>
 
 				<ViewCell
 					IsEnabled="False">
@@ -103,7 +52,11 @@
 						<Label
 							x:Name="LabelVersion"
 							TextColor="Gray"
-							HorizontalOptions="EndAndExpand"/>
+							HorizontalOptions="EndAndExpand">
+							<Label.GestureRecognizers>
+								<TapGestureRecognizer Tapped="LabelVersion_OnTapped"/>
+							</Label.GestureRecognizers>
+						</Label>
 
 					</StackLayout>
 				</ViewCell>
