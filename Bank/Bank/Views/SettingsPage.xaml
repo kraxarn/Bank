@@ -99,12 +99,11 @@
 
 						<Label
 							Text="Version"/>
-						
-						<!-- For now, just say alpha -->
+
 						<Label
+							x:Name="LabelVersion"
 							TextColor="Gray"
-							HorizontalOptions="EndAndExpand"
-							Text="Alpha"/>
+							HorizontalOptions="EndAndExpand"/>
 
 					</StackLayout>
 				</ViewCell>

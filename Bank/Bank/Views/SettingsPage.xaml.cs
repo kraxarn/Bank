@@ -14,6 +14,7 @@ namespace Bank.Views
 			var device = DependencyService.Get<IDeviceInfo>();
 			LabelDeviceName.Text = device.DeviceName;
 			LabelDeviceOs.Text   = device.OsVersion;
+			LabelVersion.Text    = Tools.Version.Substring(1);
 		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e) 
