@@ -23,7 +23,7 @@ namespace Bank
 			}
 		}
 
-		public static void DisplayAlert(string title, string message, string button)
+		public static void DisplayAlert(string title, string message, string button = "Dismiss")
 	    {
 		    void Alert() => Application.Current.MainPage.DisplayAlert(title, message, button);
 
