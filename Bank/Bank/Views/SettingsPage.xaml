@@ -53,7 +53,7 @@
 			
 			<!-- Info -->
 			<TableSection
-				Title="Device Info">
+				Title="Info">
 
 				<ViewCell
 					IsEnabled="False">
