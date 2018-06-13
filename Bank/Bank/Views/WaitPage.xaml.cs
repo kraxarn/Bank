@@ -9,14 +9,16 @@ namespace Bank.Views
 	{
 		private readonly Client client;
 
-		public WaitPage(Client client)
+		public WaitPage(Client client, JoinPage parent)
 		{
 			InitializeComponent();
 			this.client = client;
 
 			client.Ready += async () =>
 			{
-				await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, client.Users)));
+				// TODO: Do this way or check client.Users size?
+				await Navigation.PopModalAsync();
+				parent.GoToGamePage();
 			};
 		}
 
