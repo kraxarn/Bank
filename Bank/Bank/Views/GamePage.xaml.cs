@@ -79,24 +79,8 @@ namespace Bank.Views
 
 		private async void ButtonBack_OnClicked(object sender, EventArgs e)
 		{
-			string action;
-
-			if (Device.RuntimePlatform == Device.iOS)
-				action = await DisplayActionSheet("Are you sure?", "Cancel", "Quit without saving", "Save and quit");
-			else
-				action = await DisplayActionSheet("Are you sure?", "Cancel", null, "Quit without saving", "Save and quit");
-
-			switch (action)
-			{
-				case "Save and quit":
-					await Application.Current.MainPage.DisplayAlert("Sorry",
-						"This feature hasn't been implemented yet.", "Dismiss");
-					break;
-
-				case "Quit without saving":
-					await Navigation.PopModalAsync();
-					break;
-			}
+			if (await DisplayAlert("Are you sure?", "All progress will be lost", "Yes", "No"))
+				await Navigation.PopModalAsync();
 		}
 
 		private async void ButtonSelfRemoveClicked(object sender, EventArgs e) 
