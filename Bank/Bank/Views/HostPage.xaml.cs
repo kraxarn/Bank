@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Net.Sockets;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,8 +26,27 @@ namespace Bank.Views
 			// Disable selection of users
 			ViewUsers.ItemSelected += (sender, args) => ViewUsers.SelectedItem = null;
 
-			EntryMoney.Text = "1500";
-			PickerMoney.SelectedIndex = 2;
+			// Set starting money
+			var money = Convert.ToUInt32(Tools.GetProperty("startingMoney", 1500));
+
+			if (money >= 1000000)
+			{
+				// M
+				EntryMoney.Text = $"{money / 1000000f}";
+				PickerMoney.SelectedIndex = 0;
+			}
+			else if (money >= 1000)
+			{
+				// K
+				EntryMoney.Text = $"{money / 1000f}";
+				PickerMoney.SelectedIndex = 1;
+			}
+			else
+			{
+				// -
+				EntryMoney.Text = $"{money}";
+				PickerMoney.SelectedIndex = 2;
+			}
 		}
 
 		private async void ButtonStart_OnClicked(object sender, EventArgs e)
