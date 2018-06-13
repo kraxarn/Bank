@@ -20,7 +20,7 @@ namespace Bank.Views
 
 			client = new Client(Tools.IPAddress);
 
-			server = new Server();
+			server = new Server(1500);
 			ViewUsers.ItemsSource = server.Users;
 
 			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
@@ -60,6 +60,8 @@ namespace Bank.Views
 				case 0: startingMoney *= 1000000; break;
 				case 1: startingMoney *= 1000;    break;
 			}
+
+			server.StartingMoney = startingMoney;
 
 			Tools.SetProperty("startingMoney", startingMoney);
 			await Tools.SavePropertiesAsync();

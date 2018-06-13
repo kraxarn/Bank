@@ -18,9 +18,14 @@ namespace Bank
 
 	    public bool Running;
 
-	    private readonly uint startingMoney;
+	    private uint startingMoney;
 
-	    public Server(string address = null, int port = 13001)
+	    public uint StartingMoney
+		{
+			set => startingMoney = value;
+		}
+
+		public Server(uint startingMoney, string address = null, int port = 13001)
 	    {
 		    var ip = address == null 
 			    ? IPAddress.Any 
@@ -30,8 +35,8 @@ namespace Bank
 		    server = new TcpListener(ip, port);
 			Running = false;
 
-			// Get starting money
-		    startingMoney = Convert.ToUInt32(Tools.GetProperty("startingMoney", 1500));
+			// Set starting money
+		    this.startingMoney = startingMoney;
 		}
 
 	    public bool Start()
