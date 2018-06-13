@@ -47,7 +47,6 @@ namespace Bank
 
 	    /// <summary>
 	    /// Shortens the address to just ID or 'Host'
-	    /// <para> TODO: There's no longer any difference for host </para>
 	    /// </summary>
 	    public string FormattedAddress => Address == localAddress ? "You" : $"User {ID}";
 
