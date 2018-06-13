@@ -65,9 +65,9 @@ namespace Bank.Views
 				#endif
 			}
 
-			if (!uint.TryParse(EntryMoney.Text, out var startingMoney) || PickerMoney.SelectedIndex < 0)
+			if (!float.TryParse(EntryMoney.Text.Replace(',', '.'), out var startingMoney) || PickerMoney.SelectedIndex < 0)
 			{
-				await Application.Current.MainPage.DisplayAlert("No starting money", "Please select starting money first", "OK");
+				await Application.Current.MainPage.DisplayAlert("No or invalid starting money", "Please select starting money first", "OK");
 				return;
 			}
 
@@ -78,7 +78,7 @@ namespace Bank.Views
 				case 1: startingMoney *= 1000;    break;
 			}
 
-			server.StartingMoney = startingMoney;
+			server.StartingMoney = (uint) startingMoney;
 
 			Tools.SetProperty("startingMoney", startingMoney);
 			await Tools.SavePropertiesAsync();
