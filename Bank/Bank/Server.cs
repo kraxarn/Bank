@@ -163,6 +163,14 @@ namespace Bank
 					}
 				    else
 				    {
+					    if (dat[0] == "GO")
+					    {
+							// Set starting money before broadcasting
+						    foreach (var user in Users)
+							    user.Money = startingMoney;
+					    }
+
+
 					    // Send data to clients (listeners)
 						// TODO: Does this really need to be done on main thead?
 					    void B() => Broadcast(data);
