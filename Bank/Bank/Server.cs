@@ -147,6 +147,20 @@ namespace Bank
 					    else
 						    Users.Remove(user);
 					}
+					else if (dat[0] == "ADD" || dat[0] == "REM")
+				    {
+					    var user = Users.SingleOrDefault(u => u.Address == dat[1]);
+
+					    if (user != default(User) && uint.TryParse(dat[2], out var amount))
+					    {
+						    if (dat[0] == "ADD")
+							    user.Money += amount;
+						    else
+							    user.Money -= amount;
+
+						    Broadcast($"SET,{user.Address},{user.Money}");
+					    }
+					}
 				    else
 				    {
 					    // Send data to clients (listeners)
