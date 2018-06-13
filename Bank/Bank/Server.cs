@@ -163,14 +163,6 @@ namespace Bank
 					}
 				    else
 				    {
-					    if (dat[0] == "GO")
-					    {
-							// Set starting money before broadcasting
-						    foreach (var user in Users)
-							    user.Money = startingMoney;
-					    }
-
-
 					    // Send data to clients (listeners)
 						// TODO: Does this really need to be done on main thead?
 					    void B() => Broadcast(data);
@@ -203,9 +195,12 @@ namespace Bank
 	    public void BroadcastUsers()
 	    {
 		    foreach (var user in Users)
-			    Broadcast($"JOIN,{user.Name},{user.AvatarIndex},{user.Address},{startingMoney}");
+			{
+				user.Money = startingMoney;
+				Broadcast($"JOIN,{user.Name},{user.AvatarIndex},{user.Address},{startingMoney}");
+			}
 
-		    Broadcast("GO");
+			Broadcast("GO");
 		}
 
 	    public void Send(string address, string message)
