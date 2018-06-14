@@ -13,7 +13,11 @@ namespace Bank.Views
 		public HostPage()
 		{
 			InitializeComponent();
+
 			Enter();
+
+			var ip = Tools.IPAddress;
+			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
 
 			// Disable selection of users
 			ViewUsers.ItemSelected += (sender, args) => ViewUsers.SelectedItem = null;
@@ -45,14 +49,10 @@ namespace Bank.Views
 
 		private void Enter()
 		{
-			var ip = Tools.IPAddress;
-
 			client = new Client(Tools.IPAddress);
 
 			server = new Server(1500);
 			ViewUsers.ItemsSource = server.Users;
-
-			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
 		}
 
 		private async void ButtonStart_OnClicked(object sender, EventArgs e)
