@@ -8,7 +8,7 @@
 	<TableView
 		Intent="Settings">
 		<TableRoot>
-			
+
 			<!-- Application Settings -->
 			<TableSection
 				Title="Application">
@@ -21,6 +21,10 @@
 				<SwitchCell
 					x:Name="CellShortenMoney"
 					Text="Shorten Money"/>
+				
+				<SwitchCell
+					x:Name="CellNotifications"
+					Text="Notifications"/>
 
 			</TableSection>
 
