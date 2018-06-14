@@ -7,21 +7,13 @@ namespace Bank.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HostPage
 	{ 
-		private readonly Server server;
-		private readonly Client client;
+		private Server server;
+		private Client client;
 
 		public HostPage()
 		{
 			InitializeComponent();
-
-			var ip = Tools.IPAddress;
-
-			client = new Client(Tools.IPAddress);
-
-			server = new Server(1500);
-			ViewUsers.ItemsSource = server.Users;
-
-			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
+			Enter();
 
 			// Disable selection of users
 			ViewUsers.ItemSelected += (sender, args) => ViewUsers.SelectedItem = null;
@@ -47,6 +39,20 @@ namespace Bank.Views
 				EntryMoney.Text = $"{money}";
 				PickerMoney.SelectedIndex = 2;
 			}
+
+			server.Stopped += () => server = null;
+		}
+
+		private void Enter()
+		{
+			var ip = Tools.IPAddress;
+
+			client = new Client(Tools.IPAddress);
+
+			server = new Server(1500);
+			ViewUsers.ItemsSource = server.Users;
+
+			LabelRoom.Text += ip == null ? "Error" : ip.Substring(ip.LastIndexOf('.') + 1);
 		}
 
 		private async void ButtonStart_OnClicked(object sender, EventArgs e)
@@ -91,6 +97,10 @@ namespace Bank.Views
 
 		protected override void OnAppearing()
 		{
+			// Start everything again
+			if (server == null)
+				Enter();
+				
 			if (!server.Running)
 			{
 				// Start server
