@@ -44,7 +44,11 @@ namespace Bank.Views
 				PickerMoney.SelectedIndex = 2;
 			}
 
-			server.Stopped += () => server = null;
+			server.Stopped += () =>
+			{
+				server = null;
+				client = null;
+			};
 		}
 
 		private void Enter()
