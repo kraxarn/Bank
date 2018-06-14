@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEBUG
+
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -19,6 +21,10 @@ namespace Bank
 	    public bool Running;
 
 	    private uint startingMoney;
+
+		public delegate void StoppedEvent();
+
+	    public event StoppedEvent Stopped;
 
 	    public uint StartingMoney
 		{
@@ -46,7 +52,7 @@ namespace Bank
 			    server.Start();
 			    var thread = new Thread(ServerThread);
 				thread.Start();
-			}
+		    }
 		    catch (SocketException)
 		    {
 			    server.Stop();
@@ -100,6 +106,9 @@ namespace Bank
 						    Device.BeginInvokeOnMainThread(() => Users.Clear());
 					    else
 						    Users.Clear();
+
+						// Trigger server stopped event
+						Stopped?.Invoke();
 
 						break;
 				    }
