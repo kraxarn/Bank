@@ -73,7 +73,9 @@ namespace Bank.Views
 			if (ViewUsers.SelectedItem == null)
 				return;
 
-			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.OtherPlayer, currentUser, users[0])));
+			var index = users.IndexOf(e.SelectedItem as User);
+
+			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.OtherPlayer, currentUser, users[index])));
 			ViewUsers.SelectedItem = null;
 		}
 
