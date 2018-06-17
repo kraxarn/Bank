@@ -200,6 +200,6 @@ namespace Bank.Views
 		}
 
 		private void ShowError(string title, Exception e) 
-			=> Navigation.PushModalAsync(new NavigationPage(new ErrorPage(title, e)));
+			=> Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new NavigationPage(new ErrorPage(title, e))));
 	}
 }
