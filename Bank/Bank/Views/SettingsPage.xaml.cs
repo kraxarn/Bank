@@ -35,7 +35,7 @@ namespace Bank.Views
 			else
 			{
 				tapped = 0;
-				Tools.DisplayAlert("Device info", $"Name {device.DeviceName}\nOS: {device.OsVersion}", "Dismiss");
+				Tools.DisplayAlert("Device info", $"Name {device.DeviceName}\nOS: {device.OsVersion}");
 			}
 		}
 
