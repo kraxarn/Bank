@@ -20,7 +20,8 @@
 				Margin="8"/>
 			
 			<Label
-				x:Name="LabelDetails"/>
+				x:Name="LabelDetails"
+				FontSize="14"/>
 			
 			<Button
 				Text="Dismiss"
