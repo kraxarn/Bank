@@ -12,8 +12,9 @@ namespace Bank.Views
 			InitializeComponent();
 
 			Title = title;
-
+			
 			LabelTitle.Text   = e.GetType().FullName;
+			LabelMessage.Text = e.Message;
 			LabelDetails.Text = e.StackTrace;
 		}
 
