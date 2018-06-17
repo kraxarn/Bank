@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using Bank.Views;
 using Xamarin.Forms;
 
 namespace Bank
@@ -239,8 +240,8 @@ namespace Bank
 		    }
 		    catch (Exception e)
 		    {
-				Debug.WriteLine($"{e.GetType().FullName}: {e.Message}");
-		    }
+				Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Server error", e)));
+			}
 	    }
     }
 }

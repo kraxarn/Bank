@@ -174,9 +174,9 @@ namespace Bank.Views
 				case Mode.OtherPlayer:
 					// First, remove from local, then add to other user
 					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out e))
-						DisplayAlert("Failed to remove money", e.Message, "Dismiss");
+						ShowError("Failed to remove money", e);
 					else if (!client.Send($"ADD,{toUser.Address},{TotalMoney}", out e))
-						DisplayAlert("Failed to add money", e.Message, "Dismiss");
+						ShowError("Failed to add money", e);
 					break;
 
 				/*
@@ -185,7 +185,7 @@ namespace Bank.Views
 				 */
 				case Mode.SelfAdd:
 					if (!client.Send($"ADD,{fromUser.Address},{TotalMoney}", out e))
-						DisplayAlert("Failed to add money", e.Message, "Dismiss");
+						ShowError("Failed to add money", e);
 					break;
 
 				/*
@@ -194,9 +194,12 @@ namespace Bank.Views
 				 */
 				case Mode.SelfRemove:
 					if (!client.Send($"REM,{fromUser.Address},{TotalMoney}", out e))
-						DisplayAlert("Failed to remove money", e.Message, "Dismiss");
+						ShowError("Failed to remove money", e);
 					break;
 			}
 		}
+
+		private void ShowError(string title, Exception e) 
+			=> Navigation.PushModalAsync(new NavigationPage(new ErrorPage(title, e)));
 	}
 }
