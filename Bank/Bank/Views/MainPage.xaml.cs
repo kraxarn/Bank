@@ -34,6 +34,9 @@ namespace Bank.Views
 				Application.Current.Properties["name"]   = DependencyService.Get<IDeviceInfo>().DeviceName;
 				Application.Current.Properties["avatar"] = 0;
 			}
+
+			if (Application.Current.Properties.ContainsKey("theme") && Application.Current.Properties["theme"] as string == "dark")
+				Tools.CurrentTheme = Tools.Theme.Black;
 		}
 
 		protected override void OnAppearing()
