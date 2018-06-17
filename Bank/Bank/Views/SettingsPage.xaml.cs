@@ -19,8 +19,11 @@ namespace Bank.Views
 			LabelVersion.Text = Tools.Version.Substring(1);
 		}
 
-		private void DarkMode_OnChanged(object sender, ToggledEventArgs e) 
-			=> Application.Current.Properties["theme"] = e.Value ? "dark" : "light";
+		private void DarkMode_OnChanged(object sender, ToggledEventArgs e)
+		{
+			Application.Current.Properties["theme"] = e.Value ? "dark" : "light";
+			Tools.SetTheme(CellDarkMode.On ? Tools.Theme.Black : Tools.Theme.Light);
+		}
 
 		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
 			=> await Navigation.PushAsync(new ProfilePage());

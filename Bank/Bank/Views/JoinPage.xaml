@@ -3,7 +3,8 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Bank.Views.JoinPage"
-	Title="Join">
+	Title="Join"
+	BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.Content>
 
@@ -12,6 +13,8 @@
 	        Margin="32">
 
 			<Entry
+				BackgroundColor="{DynamicResource controlColor}"
+				TextColor="{DynamicResource textColor}"
 				x:Name="EntryRoom"
 				Keyboard="Numeric"
 				Placeholder="Room"

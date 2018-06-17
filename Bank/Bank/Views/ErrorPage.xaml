@@ -2,7 +2,8 @@
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="Bank.Views.ErrorPage">
+	x:Class="Bank.Views.ErrorPage"
+	BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.Content>
 
@@ -10,16 +11,19 @@
 	        Margin="16">
 
             <Label
+				TextColor="{DynamicResource textColor}"
 				x:Name="LabelTitle"
 				FontAttributes="Bold"
 				FontSize="18"
                 HorizontalOptions="CenterAndExpand"/>
 			
 			<Label
+				TextColor="{DynamicResource textColor}"
 				x:Name="LabelMessage"
 				Margin="8"/>
 			
 			<Label
+				TextColor="{DynamicResource textColor}"
 				x:Name="LabelDetails"
 				FontSize="14"/>
 			

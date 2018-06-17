@@ -9,6 +9,8 @@ namespace Bank
 {
 	internal abstract class Tools
 	{
+		public enum Theme { Light, Black }
+
 		public static string Version
 		{
 			get
@@ -68,6 +70,40 @@ namespace Bank
 		{
 			var task = SavePropertiesAsync();
 			task.Wait();
+		}
+
+		public static NavigationPage CreateNavigationPage(Page root)
+		{
+			var page = new NavigationPage(root)
+			{
+				BarBackgroundColor = (Color) Application.Current.Resources["backgroundColor"],
+				BarTextColor       = (Color) Application.Current.Resources["textColor"]
+
+			};
+
+			return page;
+		}
+
+		public static void SetTheme(Theme theme)
+		{
+			var device = DependencyService.Get<IDeviceInfo>();
+
+			switch (theme)
+			{
+				case Theme.Light:
+					Application.Current.Resources["backgroundColor"] = Color.White;
+					Application.Current.Resources["textColor"]       = Color.Black;
+					Application.Current.Resources["controlColor"]    = Color.White;
+					device.SetDarkStatusBar();
+					break;
+
+				case Theme.Black:
+					Application.Current.Resources["backgroundColor"] = Color.Black;
+					Application.Current.Resources["textColor"]       = Color.White;
+					Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
+					device.SetLightStatusBar();
+					break;
+			}
 		}
 	}
 }

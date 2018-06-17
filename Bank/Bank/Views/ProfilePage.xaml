@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bank.Views.ProfilePage"
-             Title="Profile">
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="Bank.Views.ProfilePage"
+	Title="Profile"
+	BackgroundColor="{DynamicResource backgroundColor}"
+	>
 	<ContentPage.Content>
 
 		<StackLayout
@@ -46,6 +49,8 @@
 			</Grid>
 
 			<Entry
+				BackgroundColor="{DynamicResource controlColor}"
+				TextColor="{DynamicResource textColor}"
 				x:Name="EntryName"
 				Placeholder="Name"
 				PropertyChanged="EntryName_OnPropertyChanged"/>

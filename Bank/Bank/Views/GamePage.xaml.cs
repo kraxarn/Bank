@@ -73,7 +73,7 @@ namespace Bank.Views
 			if (ViewUsers.SelectedItem == null)
 				return;
 
-			await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.OtherPlayer, currentUser, e.SelectedItem as User)));
+			await Navigation.PushModalAsync(Tools.CreateNavigationPage(new MoneyPage(client, MoneyPage.Mode.OtherPlayer, currentUser, e.SelectedItem as User)));
 			ViewUsers.SelectedItem = null;
 		}
 
@@ -84,10 +84,10 @@ namespace Bank.Views
 		}
 
 		private async void ButtonSelfRemoveClicked(object sender, EventArgs e) 
-			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfRemove, currentUser)));
+			=> await Navigation.PushModalAsync(Tools.CreateNavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfRemove, currentUser)));
 
 		private async void ButtonSelfAddClicked(object sender, EventArgs e) 
-			=> await Navigation.PushModalAsync(new NavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfAdd, currentUser)));
+			=> await Navigation.PushModalAsync(Tools.CreateNavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfAdd, currentUser)));
 
 		private async void ButtonDice_OnClicked(object sender, EventArgs e)
 		{

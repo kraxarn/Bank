@@ -3,14 +3,16 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Bank.Views.HostPage"
+	BackgroundColor="{DynamicResource backgroundColor}"
 	Title="Create">
 
-    <ContentPage.Content>
+	<ContentPage.Content>
 
-        <StackLayout
+		<StackLayout
 	        Margin="32">
 
 			<Label
+				TextColor="{DynamicResource textColor}"
 				x:Name="LabelRoom"
 				FontAttributes="Bold"
 				FontSize="32"
@@ -22,11 +24,15 @@
 				Orientation="Horizontal">
 
 				<Entry
+					BackgroundColor="{DynamicResource controlColor}"
+					TextColor="{DynamicResource textColor}"
 					x:Name="EntryMoney"
 					Placeholder="Starting Money"
 					Keyboard="Numeric"/>
 
 				<Picker
+					BackgroundColor="{DynamicResource controlColor}"
+					TextColor="{DynamicResource textColor}"
 					x:Name="PickerMoney"
 					Title="Unit">
 					<Picker.Items>
@@ -45,11 +51,13 @@
 		        Text="Players"/>
 
 			<ListView
+				BackgroundColor="{DynamicResource backgroundColor}"
 				x:Name="ViewUsers">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
+							TextColor="{DynamicResource textColor}"
 							Text="{Binding Name}"
 							Detail="{Binding FormattedAddress}"
 							ImageSource="{Binding Avatar}"/>

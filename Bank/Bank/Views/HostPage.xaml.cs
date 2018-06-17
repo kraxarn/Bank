@@ -96,7 +96,7 @@ namespace Bank.Views
 			// Send users to other players
 			server.BroadcastUsers();
 
-			await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, client.Users)));
+			await Navigation.PushModalAsync(Tools.CreateNavigationPage(new GamePage(client, client.Users)));
 		}
 
 		protected override void OnAppearing()
