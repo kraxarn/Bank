@@ -17,12 +17,15 @@ namespace Bank.Views
 			tapped = 0;
 			device = DependencyService.Get<IDeviceInfo>();
 			LabelVersion.Text = Tools.Version.Substring(1);
+
+			if (Tools.CurrentTheme == Tools.Theme.Black)
+				CellDarkMode.On = true;
 		}
 
 		private void DarkMode_OnChanged(object sender, ToggledEventArgs e)
 		{
 			Application.Current.Properties["theme"] = e.Value ? "dark" : "light";
-			Tools.SetTheme(CellDarkMode.On ? Tools.Theme.Black : Tools.Theme.Light);
+			Tools.CurrentTheme = CellDarkMode.On ? Tools.Theme.Black : Tools.Theme.Light;
 		}
 
 		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
