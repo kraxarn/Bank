@@ -21,10 +21,17 @@
 				<SwitchCell
 					x:Name="CellShortenMoney"
 					Text="Shorten Money"/>
-				
+
 				<SwitchCell
 					x:Name="CellNotifications"
 					Text="Notifications"/>
+
+				<ViewCell>
+					<Button
+						Text="Crash"
+						HorizontalOptions="FillAndExpand"
+						Clicked="ButtonCrash_OnClicked"/>
+				</ViewCell>
 
 			</TableSection>
 

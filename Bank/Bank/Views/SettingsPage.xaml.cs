@@ -38,5 +38,8 @@ namespace Bank.Views
 				Tools.DisplayAlert("Device info", $"Name {device.DeviceName}\nOS: {device.OsVersion}", "Dismiss");
 			}
 		}
+
+		private void ButtonCrash_OnClicked(object sender, EventArgs e) 
+			=> Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Test error", new InvalidOperationException("oh no"))));
 	}
 }
