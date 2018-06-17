@@ -12,7 +12,7 @@
             <Label
 				x:Name="LabelTitle"
 				FontAttributes="Bold"
-				FontSize="20"
+				FontSize="18"
                 HorizontalOptions="CenterAndExpand"/>
 			
 			<Label
