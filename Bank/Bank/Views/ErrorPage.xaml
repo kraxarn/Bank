@@ -4,23 +4,29 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Bank.Views.ErrorPage">
 
-	<ContentPage.Content>
+    <ContentPage.Content>
 
-		<StackLayout
-			Margin="16">
+        <StackLayout
+	        Margin="16">
 
-			<Label
+            <Label
 				x:Name="LabelTitle"
 				FontAttributes="Bold"
-				FontSize="16"
-                VerticalOptions="CenterAndExpand"/>
+				FontSize="20"
+                HorizontalOptions="CenterAndExpand"/>
 			
 			<Label
-				Margin="0 8 0 0"
-				x:Name="LabelDetails"/>
+				x:Name="LabelDetails"
+				Margin="0,8,0,0"/>
+			
+			<Button
+				Text="Dismiss"
+				Margin="16"
+				VerticalOptions="EndAndExpand"
+				Clicked="ButtonDismiss_OnClicked"/>
 
-		</StackLayout>
+        </StackLayout>
 
-	</ContentPage.Content>
+    </ContentPage.Content>
 
 </ContentPage>
