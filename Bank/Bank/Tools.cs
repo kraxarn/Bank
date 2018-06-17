@@ -74,35 +74,45 @@ namespace Bank
 
 		public static NavigationPage CreateNavigationPage(Page root)
 		{
-			var page = new NavigationPage(root)
-			{
-				BarBackgroundColor = (Color) Application.Current.Resources["backgroundColor"],
-				BarTextColor       = (Color) Application.Current.Resources["textColor"]
+			var page = new NavigationPage(root);
 
-			};
+			if (Application.Current.Resources.ContainsKey("backgroundColor"))
+				page.BarBackgroundColor = (Color) Application.Current.Resources["backgroundColor"];
+
+			if (Application.Current.Resources.ContainsKey("textColor"))
+				page.BarTextColor = (Color)Application.Current.Resources["textColor"];
 
 			return page;
 		}
 
-		public static void SetTheme(Theme theme)
+		public static Theme CurrentTheme
 		{
-			var device = DependencyService.Get<IDeviceInfo>();
-
-			switch (theme)
+			get
 			{
-				case Theme.Light:
-					Application.Current.Resources["backgroundColor"] = Color.White;
-					Application.Current.Resources["textColor"]       = Color.Black;
-					Application.Current.Resources["controlColor"]    = Color.White;
-					device.SetDarkStatusBar();
-					break;
+				if (Application.Current.Properties.ContainsKey("theme") && Application.Current.Properties["theme"] as string == "dark")
+					return Theme.Black;
+				return Theme.Light;
+			}
+			set
+			{
+				var device = DependencyService.Get<IDeviceInfo>();
 
-				case Theme.Black:
-					Application.Current.Resources["backgroundColor"] = Color.Black;
-					Application.Current.Resources["textColor"]       = Color.White;
-					Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
-					device.SetLightStatusBar();
-					break;
+				switch (value)
+				{
+					case Theme.Light:
+						Application.Current.Resources["backgroundColor"] = Color.White;
+						Application.Current.Resources["textColor"]       = Color.Black;
+						Application.Current.Resources["controlColor"]    = Color.White;
+						device.SetDarkStatusBar();
+						break;
+
+					case Theme.Black:
+						Application.Current.Resources["backgroundColor"] = Color.Black;
+						Application.Current.Resources["textColor"]       = Color.White;
+						Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
+						device.SetLightStatusBar();
+						break;
+				}
 			}
 		}
 	}
