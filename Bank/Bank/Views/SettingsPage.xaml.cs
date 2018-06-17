@@ -39,7 +39,17 @@ namespace Bank.Views
 			}
 		}
 
-		private void ButtonCrash_OnClicked(object sender, EventArgs e) 
-			=> Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Test error", new InvalidOperationException("oh no"))));
+		private void ButtonCrash_OnClicked(object sender, EventArgs e)
+		{
+			try
+			{
+				int[] x = {0, 1};
+				var y = x[2];
+			}
+			catch (IndexOutOfRangeException err)
+			{
+				Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Test error", err)));
+			}
+		}
 	}
 }
