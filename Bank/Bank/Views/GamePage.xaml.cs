@@ -121,5 +121,21 @@ namespace Bank.Views
 
 		private void LabelMoney_OnTapped(object sender, EventArgs e) 
 			=> DisplayAlert("Your money", $"${Tools.Seperate(currentUser.Money)}", "Dismiss");
+
+		protected override void OnAppearing()
+		{
+			if ((bool) Tools.GetProperty("preventSleep", false))
+				DependencyService.Get<IDeviceInfo>().KeepScreenOn = true;
+
+			base.OnAppearing();
+		}
+
+		protected override void OnDisappearing()
+		{
+			if ((bool) Tools.GetProperty("preventSleep", false))
+				DependencyService.Get<IDeviceInfo>().KeepScreenOn = false;
+
+			base.OnDisappearing();
+		}
 	}
 }
