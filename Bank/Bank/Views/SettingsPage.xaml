@@ -87,6 +87,7 @@
 						<Switch
 							Margin="6, 6, 12, 6"
 							x:Name="SwitchPreventSleep"
+							Toggled="SwitchPreventSleep_OnToggled"
 							HorizontalOptions="EndAndExpand"/>
 
 					</StackLayout>

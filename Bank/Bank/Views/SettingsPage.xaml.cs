@@ -20,6 +20,8 @@ namespace Bank.Views
 			LabelVersion.Text = Tools.Version.Substring(1);
 
 			LabelTheme.Text = $"{Tools.CurrentTheme}";
+
+			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("preventSleep", false);
 		}
 
 		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
@@ -76,8 +78,9 @@ namespace Bank.Views
 
 			if (action != "Cancel")
 				LabelTheme.Text = action;
-
-			await Tools.SavePropertiesAsync();
 		}
+
+		private void SwitchPreventSleep_OnToggled(object sender, ToggledEventArgs e) 
+			=> Tools.SetProperty("preventSleep", SwitchPreventSleep.IsToggled);
 	}
 }
