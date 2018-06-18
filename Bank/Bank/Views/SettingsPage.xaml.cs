@@ -82,5 +82,29 @@ namespace Bank.Views
 
 		private void SwitchPreventSleep_OnToggled(object sender, ToggledEventArgs e) 
 			=> Tools.SetProperty("preventSleep", SwitchPreventSleep.IsToggled);
+
+		private async void Setting_OnTapped(object sender, EventArgs e)
+		{
+			var args = (TappedEventArgs) e;
+
+			var info = "No info found for setting";
+
+			switch (args.Parameter)
+			{
+				case "Shorten Money":
+					info = "Shorten and round money. For example, $1,450 will show as $1.5k";
+					break;
+
+				case "Notifications":
+					info = "Display a notification when someone transfers money to someone";
+					break;
+
+				case "Prevent Sleep":
+					info = "Prevents the device from going to sleep while on the game page";
+					break;
+			}
+
+			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
+		}
 	}
 }
