@@ -9,5 +9,9 @@ namespace Bank.UWP
 		public string DeviceName => Environment.MachineName;
 
 		public string OsVersion  => $"{Environment.OSVersion}";
+
+		public void SetDarkStatusBar()  { }
+
+		public void SetLightStatusBar() { }
 	}
 }
