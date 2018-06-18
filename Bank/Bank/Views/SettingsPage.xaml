@@ -3,12 +3,11 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Bank.Views.SettingsPage"
-	BackgroundColor="{DynamicResource backgroundColor}"
 	Title="Settings">
 
 	<TableView
-		Intent="Settings"
-		BackgroundColor="{DynamicResource backgroundColor}">
+		BackgroundColor="{DynamicResource backgroundColor}"
+		Intent="Settings">
 		<TableRoot>
 
 			<!-- Application Settings -->
@@ -16,7 +15,6 @@
 				Title="Application">
 
 				<ViewCell>
-
 					<StackLayout
 						Orientation="Horizontal"
 						Margin="12">
@@ -26,6 +24,7 @@
 						</StackLayout.GestureRecognizers>
 
 						<Label
+							TextColor="{DynamicResource textColor}"
 							Text="Theme"/>
 
 						<Label
@@ -37,17 +36,62 @@
 					</StackLayout>
 				</ViewCell>
 
-				<SwitchCell
-					x:Name="CellShortenMoney"
-					Text="Shorten Money"/>
+				<ViewCell>
 
-				<SwitchCell
-					x:Name="CellNotifications"
-					Text="Notifications"/>
-				
-				<SwitchCell
-					x:Name="CellSleepMode"
-					Text="Prevent sleep"/>
+					<StackLayout
+						Orientation="Horizontal">
+
+						<Label
+							TextColor="{DynamicResource textColor}"
+							Margin="12"
+							Text="Shorten Money"/>
+
+						<Switch
+							Margin="6, 6, 12, 6"
+							x:Name="SwitchShortenMoney"
+							HorizontalOptions="EndAndExpand"/>
+
+					</StackLayout>
+
+				</ViewCell>
+
+				<ViewCell>
+
+					<StackLayout
+						Orientation="Horizontal">
+
+						<Label
+							TextColor="{DynamicResource textColor}"
+							Margin="12"
+							Text="Notifications"/>
+
+						<Switch
+							Margin="6, 6, 12, 6"
+							x:Name="SwitchNotifications"
+							HorizontalOptions="EndAndExpand"/>
+
+					</StackLayout>
+
+				</ViewCell>
+
+				<ViewCell>
+
+					<StackLayout
+						Orientation="Horizontal">
+
+						<Label
+							TextColor="{DynamicResource textColor}"
+							Margin="12"
+							Text="Prevent sleep"/>
+
+						<Switch
+							Margin="6, 6, 12, 6"
+							x:Name="SwitchPreventSleep"
+							HorizontalOptions="EndAndExpand"/>
+
+					</StackLayout>
+
+				</ViewCell>
 
 				<ViewCell>
 					<Button
@@ -81,6 +125,7 @@
 						Margin="12">
 
 						<Label
+							TextColor="{DynamicResource textColor}"
 							Text="Version"/>
 
 						<Label
