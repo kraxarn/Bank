@@ -240,7 +240,7 @@ namespace Bank
 		    }
 		    catch (Exception e)
 		    {
-				Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Server error", e)));
+				Application.Current.MainPage.Navigation.PushModalAsync(Tools.CreateNavigationPage(new ErrorPage("Server error", e)));
 			}
 	    }
     }

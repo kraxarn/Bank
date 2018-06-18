@@ -111,7 +111,7 @@ namespace Bank.Views
 				if (!server.Start())
 					Application.Current.MainPage.DisplayAlert("Server Error", "Error starting local server", "OK");
 				else if (!client.Connect(out var error))
-					Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Server error", error)));
+					Navigation.PushModalAsync(Tools.CreateNavigationPage(new ErrorPage("Server error", error)));
 			}
 
 			base.OnAppearing();

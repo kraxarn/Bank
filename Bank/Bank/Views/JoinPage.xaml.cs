@@ -38,10 +38,10 @@ namespace Bank.Views
 
 			client.Connect(out _);
 
-			await Navigation.PushModalAsync(new NavigationPage(new WaitPage(client, this)));
+			await Navigation.PushModalAsync(Tools.CreateNavigationPage(new WaitPage(client, this)));
 		}
 
 		public async void GoToGamePage() 
-			=> await Navigation.PushModalAsync(new NavigationPage(new GamePage(client, client.Users)));
+			=> await Navigation.PushModalAsync(Tools.CreateNavigationPage(new GamePage(client, client.Users)));
 	}
 }
