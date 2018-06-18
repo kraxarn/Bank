@@ -11,5 +11,15 @@ namespace Bank.Droid
 		public string DeviceName => Settings.Secure.GetString(Application.Context.ContentResolver, "bluetooth_name");
 		
 		public string OsVersion  => $"Android {Build.VERSION.Sdk}";
+
+		
+		/*
+		 * TODO
+		 * Either we use the themes we manually define
+		 * or we use the default Android dark theme
+		 */
+		public void SetDarkStatusBar()  { }
+
+		public void SetLightStatusBar() { }
 	}
 }
