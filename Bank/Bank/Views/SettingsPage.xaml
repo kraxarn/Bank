@@ -112,13 +112,6 @@
 
 				</ViewCell>
 
-				<ViewCell>
-					<Button
-						Text="Crash"
-						HorizontalOptions="FillAndExpand"
-						Clicked="ButtonCrash_OnClicked"/>
-				</ViewCell>
-
 			</TableSection>
 
 			<!-- Profile -->

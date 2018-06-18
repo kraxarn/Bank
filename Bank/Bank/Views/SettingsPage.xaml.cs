@@ -41,19 +41,6 @@ namespace Bank.Views
 			}
 		}
 
-		private void ButtonCrash_OnClicked(object sender, EventArgs e)
-		{
-			try
-			{
-				int[] x = {0, 1};
-				var y = x[2];
-			}
-			catch (IndexOutOfRangeException err)
-			{
-				Navigation.PushModalAsync(Tools.CreateNavigationPage(new ErrorPage("Test error", err)));
-			}
-		}
-
 		private async void StackTheme_OnTapped(object sender, EventArgs e)
 		{
 			var action = await DisplayActionSheet("Select theme", "Cancel", null, "Light", "Dark", "Black");
