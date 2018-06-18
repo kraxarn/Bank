@@ -15,10 +15,27 @@
 			<TableSection
 				Title="Application">
 
-				<SwitchCell
-					x:Name="CellDarkMode"
-					Text="Dark Mode"
-					OnChanged="DarkMode_OnChanged"/>
+				<ViewCell>
+
+					<StackLayout
+						Orientation="Horizontal"
+						Margin="12">
+
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Tapped="StackTheme_OnTapped"/>
+						</StackLayout.GestureRecognizers>
+
+						<Label
+							Text="Theme"/>
+
+						<Label
+							x:Name="LabelTheme"
+							TextColor="Gray"
+							HorizontalOptions="EndAndExpand">
+						</Label>
+
+					</StackLayout>
+				</ViewCell>
 
 				<SwitchCell
 					x:Name="CellShortenMoney"

@@ -35,8 +35,16 @@ namespace Bank.Views
 				Application.Current.Properties["avatar"] = 0;
 			}
 
-			if (Application.Current.Properties.ContainsKey("theme") && Application.Current.Properties["theme"] as string == "dark")
-				Tools.CurrentTheme = Tools.Theme.Black;
+			switch (Tools.GetProperty("theme", "light"))
+			{
+				case "dark":
+					Tools.CurrentTheme = Tools.Theme.Dark;
+					break;
+
+				case "black":
+					Tools.CurrentTheme = Tools.Theme.Black;
+					break;
+			}
 		}
 
 		protected override void OnAppearing()

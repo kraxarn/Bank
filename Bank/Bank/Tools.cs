@@ -89,9 +89,12 @@ namespace Bank
 		{
 			get
 			{
-				if (Application.Current.Properties.ContainsKey("theme") && Application.Current.Properties["theme"] as string == "dark")
-					return Theme.Black;
-				return Theme.Light;
+				switch (GetProperty("theme", "light"))
+				{
+					case "dark":  return Theme.Dark;
+					case "black": return Theme.Black;
+					default:      return Theme.Light;
+				}
 			}
 			set
 			{
