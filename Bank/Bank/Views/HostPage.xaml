@@ -45,6 +45,7 @@
 			</StackLayout>
 
 	        <Label
+		        TextColor="{DynamicResource textColor}"
 		        Margin="0, 16, 0, 0"
 				FontSize="16"
 				FontAttributes="Bold"
