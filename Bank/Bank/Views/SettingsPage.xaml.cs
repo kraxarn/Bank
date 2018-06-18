@@ -54,7 +54,7 @@ namespace Bank.Views
 			}
 			catch (IndexOutOfRangeException err)
 			{
-				Navigation.PushModalAsync(new NavigationPage(new ErrorPage("Test error", err)));
+				Navigation.PushModalAsync(Tools.CreateNavigationPage(new ErrorPage("Test error", err)));
 			}
 		}
 	}
