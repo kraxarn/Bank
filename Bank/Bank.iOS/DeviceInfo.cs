@@ -15,5 +15,10 @@ namespace Bank.iOS
 
 		public void SetDarkStatusBar() 
 			=> UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.Default, true);
+
+		public bool KeepScreenOn
+		{
+			set => UIApplication.SharedApplication.IdleTimerDisabled = value;
+		}
 	}
 }

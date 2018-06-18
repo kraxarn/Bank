@@ -13,5 +13,7 @@ namespace Bank.UWP
 		public void SetDarkStatusBar()  { }
 
 		public void SetLightStatusBar() { }
+
+		public bool KeepScreenOn { get; set; }
 	}
 }

@@ -9,5 +9,7 @@
 		void SetDarkStatusBar();
 
 		void SetLightStatusBar();
+
+		bool KeepScreenOn { set; }
 	}
 }
