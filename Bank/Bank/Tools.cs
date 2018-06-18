@@ -108,7 +108,7 @@ namespace Bank
 
 					case Theme.Black:
 						Application.Current.Resources["backgroundColor"] = Color.Black;
-						Application.Current.Resources["textColor"]       = Color.White;
+						Application.Current.Resources["textColor"]       = Color.FromHex("#f5f5f5");
 						Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
 						device.SetLightStatusBar();
 						break;
