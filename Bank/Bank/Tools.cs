@@ -9,7 +9,7 @@ namespace Bank
 {
 	internal abstract class Tools
 	{
-		public enum Theme { Light, Black }
+		public enum Theme { Light, Black, Dark }
 
 		public static string Version
 		{
@@ -110,6 +110,13 @@ namespace Bank
 						Application.Current.Resources["backgroundColor"] = Color.Black;
 						Application.Current.Resources["textColor"]       = Color.White;
 						Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
+						device.SetLightStatusBar();
+						break;
+
+					case Theme.Dark:
+						Application.Current.Resources["backgroundColor"] = Color.FromHex("#2b3138");
+						Application.Current.Resources["textColor"]       = Color.FromHex("#fafafa");
+						Application.Current.Resources["controlColor"]    = Color.FromHex("#20252f");
 						device.SetLightStatusBar();
 						break;
 				}
