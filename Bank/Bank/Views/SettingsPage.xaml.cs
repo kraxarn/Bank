@@ -19,7 +19,7 @@ namespace Bank.Views
 			device = DependencyService.Get<IDeviceInfo>();
 			LabelVersion.Text = Tools.Version.Substring(1);
 
-			LabelTheme.Text = $"{Tools.CurrentTheme}";
+			LabelTheme.Text = Device.RuntimePlatform == Device.UWP ? "System" : $"{Tools.CurrentTheme}";
 
 			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("preventSleep", false);
 		}
@@ -43,6 +43,12 @@ namespace Bank.Views
 
 		private async void StackTheme_OnTapped(object sender, EventArgs e)
 		{
+			if (Device.RuntimePlatform == Device.UWP)
+			{
+				await DisplayAlert("Changing Theme", "Please select a theme from the system settings instead", "Dismiss");
+				return;
+			}
+
 			var action = await DisplayActionSheet("Select theme", "Cancel", null, "Light", "Dark", "Black");
 
 			switch (action)
