@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -100,9 +99,7 @@ namespace Bank.Views
 			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
 		}
 
-		private void ButtonDebugToast_OnClicked(object sender, EventArgs e)
-		{
-			device.DisplayToast("Title", "Content");
-		}
+		private void ButtonDebugToast_OnClicked(object sender, EventArgs e) 
+			=> device.DisplayToast("Money Transfered", "User0 =$0=> User1");
 	}
 }
