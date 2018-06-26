@@ -112,6 +112,13 @@
 
 				</ViewCell>
 
+				<ViewCell>
+					<Button
+						Text="Display test toast"
+						HorizontalOptions="FillAndExpand"
+						Clicked="ButtonDebugToast_OnClicked"/>
+				</ViewCell>
+
 			</TableSection>
 
 			<!-- Profile -->

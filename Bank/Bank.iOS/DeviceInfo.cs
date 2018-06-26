@@ -1,4 +1,5 @@
 ﻿using Bank.iOS;
+using Foundation;
 using UIKit;
 
 [assembly: Xamarin.Forms.Dependency(typeof (DeviceInfo))]
@@ -19,6 +20,21 @@ namespace Bank.iOS
 		public bool KeepScreenOn
 		{
 			set => UIApplication.SharedApplication.IdleTimerDisabled = value;
+		}
+
+		public void DisplayToast(string title, string content)
+		{
+			NSTimer alertDelay      = null;
+			UIAlertController alert = null;
+
+			alertDelay = NSTimer.CreateScheduledTimer(2, action =>
+			{
+				alert?.DismissViewController(true, null);
+				alertDelay?.Dispose();
+			});
+
+			alert = UIAlertController.Create(title, content, UIAlertControllerStyle.Alert);
+			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alert, true, null);
 		}
 	}
 }

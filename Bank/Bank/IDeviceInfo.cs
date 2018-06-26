@@ -11,5 +11,7 @@
 		void SetLightStatusBar();
 
 		bool KeepScreenOn { set; }
+
+		void DisplayToast(string title, string content);
 	}
 }

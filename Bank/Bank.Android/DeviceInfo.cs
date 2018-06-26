@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Provider;
 using Android.Views;
+using Android.Widget;
 using Bank.Droid;
 using Application = Android.App.Application;
 
@@ -29,6 +30,8 @@ namespace Bank.Droid
 			}
 		}
 
+		public void DisplayToast(string title, string content) 
+			=> Toast.MakeText(Application.Context, content, ToastLength.Short).Show();
 
 
 		/*

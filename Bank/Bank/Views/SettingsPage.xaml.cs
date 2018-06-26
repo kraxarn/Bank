@@ -99,5 +99,10 @@ namespace Bank.Views
 
 			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
 		}
+
+		private void ButtonDebugToast_OnClicked(object sender, EventArgs e)
+		{
+			device.DisplayToast("Title", "Content");
+		}
 	}
 }
