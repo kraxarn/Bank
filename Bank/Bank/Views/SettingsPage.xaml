@@ -80,7 +80,8 @@
 						<Switch
 							Margin="6, 6, 12, 6"
 							x:Name="SwitchNotifications"
-							HorizontalOptions="EndAndExpand"/>
+							HorizontalOptions="EndAndExpand"
+							Toggled="SwitchNotifications_OnToggled"/>
 
 					</StackLayout>
 

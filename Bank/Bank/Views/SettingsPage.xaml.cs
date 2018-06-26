@@ -20,7 +20,8 @@ namespace Bank.Views
 
 			LabelTheme.Text = Device.RuntimePlatform == Device.UWP ? "System" : $"{Tools.CurrentTheme}";
 
-			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("preventSleep", false);
+			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("preventSleep",  false);
+			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("notifications", false);
 		}
 
 		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
@@ -74,6 +75,9 @@ namespace Bank.Views
 
 		private void SwitchPreventSleep_OnToggled(object sender, ToggledEventArgs e) 
 			=> Tools.SetProperty("preventSleep", SwitchPreventSleep.IsToggled);
+
+		private void SwitchNotifications_OnToggled(object sender, ToggledEventArgs e)
+			=> Tools.SetProperty("notifications", SwitchNotifications.IsToggled);
 
 		private async void Setting_OnTapped(object sender, EventArgs e)
 		{
