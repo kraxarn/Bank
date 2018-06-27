@@ -46,7 +46,7 @@ namespace Bank
 			    Application.Current.MainPage.DisplayAlert("Failed to start listener", err, "Dismiss");
 
 		    listener.PlayerJoined += user => PlayerJoined?.Invoke(user);
-		    listener.MoneyChanged += user => MoneyChanged?.Invoke(user);
+		    listener.MoneyChanged += (user, oldMoney) => MoneyChanged?.Invoke(user, oldMoney);
 
 		    listener.Ready += () =>
 		    {
