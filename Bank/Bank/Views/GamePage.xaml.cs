@@ -14,6 +14,10 @@ namespace Bank.Views
 		private readonly UserCollection users;
 		private readonly User currentUser;
 
+		private readonly IDeviceInfo device;
+
+		private readonly bool notif;
+
 		public GamePage(Client client, IEnumerable<User> serverUsers)
 		{
 			InitializeComponent();
@@ -22,6 +26,8 @@ namespace Bank.Views
 			users       = new UserCollection(serverUsers);
 
 			var ipAddress = Tools.IPAddress;
+
+			device = DependencyService.Get<IDeviceInfo>();
 
 			// Get local user
 			currentUser = users.Single(u => u.Address == ipAddress);
@@ -42,18 +48,26 @@ namespace Bank.Views
 			// Catch events
 			client.PlayerJoined += user => Debug.WriteLine($"User joined: {user.Name}");
 
-			client.MoneyChanged += user =>
+			client.MoneyChanged += (user, oldMoney) =>
 			{
-				Debug.WriteLine($"MoneyChanged: {user.Name} = {user.FormattedMoney} / {user.Money}");
-
 				if (user.Address == ipAddress)
 				{
-					currentUser.Money = user.Money;
+					var diff = (int) user.Money - oldMoney;
+					var diffstr = Tools.Seperate((uint) (diff >= 0 ? diff : -diff));
+					DisplayToast(diff >= 0 ? $"You got ${diffstr}" : $"You lost ${diffstr}");
+					
 					UpdateSelf();
 				}
 				else
-					Device.BeginInvokeOnMainThread(() => users[user.Address] = user.Money);
+				{
+					var diff = (int) user.Money - oldMoney;
+					var diffstr = Tools.Seperate((uint)(diff >= 0 ? diff : -diff));
+					DisplayToast(diff >= 0 ? $"{user.Name} got ${diffstr}" : $"{user.Name} lost ${diffstr}");
+				}
 			};
+
+			// Set if notifications should be enabled
+			notif = (bool) Tools.GetProperty("notifications", false);
 		}
 
 		private void UpdateSelf()
@@ -121,6 +135,17 @@ namespace Bank.Views
 
 		private void LabelMoney_OnTapped(object sender, EventArgs e) 
 			=> DisplayAlert("Your money", $"${Tools.Seperate(currentUser.Money)}", "Dismiss");
+
+		private void DisplayToast(string message)
+		{
+			if (notif)
+			{
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					device.DisplayToast("Money transferred", message);
+				});
+			}
+		}
 
 		protected override void OnAppearing()
 		{
