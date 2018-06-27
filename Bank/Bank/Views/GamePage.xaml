@@ -96,6 +96,7 @@
 					<DataTemplate>
 						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
+							TextColor="{DynamicResource textColor}"
 							Text="{Binding Name}"
 							Detail="{Binding FormattedMoney}"
 							ImageSource="{Binding Avatar}"/>
