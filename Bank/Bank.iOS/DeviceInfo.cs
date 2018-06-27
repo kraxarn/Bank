@@ -34,7 +34,13 @@ namespace Bank.iOS
 			});
 
 			alert = UIAlertController.Create(title, content, UIAlertControllerStyle.Alert);
-			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alert, true, null);
+
+			var rootController = ((AppDelegate) UIApplication.SharedApplication.Delegate).Window.RootViewController.PresentedViewController;
+			
+			if (rootController is UINavigationController navcontroller)
+				rootController = navcontroller.VisibleViewController;
+
+			rootController.PresentViewController(alert, true, null);
 		}
 	}
 }
