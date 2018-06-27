@@ -31,7 +31,7 @@ namespace Bank
 		#region Events
 
 		public delegate void JoinEvent(User joinedUser);
-		public delegate void MoneyEvent(User changedUser); // Or just address and money
+		public delegate void MoneyEvent(User user, uint oldMoney);
 
 		/// <summary>
 		/// A player has joined (or already joined)
@@ -72,8 +72,8 @@ namespace Bank
 		private void InvokeNewPlayer(User user) 
 			=> PlayerJoined?.Invoke(user);
 
-		private void InvokeMoneyChange(User user)
-			=> MoneyChanged?.Invoke(user);
+		private void InvokeMoneyChange(User user, uint oldMoney)
+			=> MoneyChanged?.Invoke(user, oldMoney);
 
 		public bool Start(out string error)
 		{
@@ -160,8 +160,9 @@ namespace Bank
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
+							var oldMoney = user.Money;
 							user.Money += amount;
-							InvokeMoneyChange(user);
+							InvokeMoneyChange(user, oldMoney);
 						}
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
@@ -173,8 +174,9 @@ namespace Bank
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
+							var oldMoney = user.Money;
 							user.Money -= amount;
-							InvokeMoneyChange(user);
+							InvokeMoneyChange(user, oldMoney);
 						}
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
@@ -186,8 +188,9 @@ namespace Bank
 
 						if (user != default(User) && uint.TryParse(dat[2], out var amount))
 						{
+							var oldMoney = user.Money;
 							user.Money = amount;
-							InvokeMoneyChange(user);
+							InvokeMoneyChange(user, oldMoney);
 						}
 						else
 							DisplayAlert("Failed to add money", "The specified user could not be found");
