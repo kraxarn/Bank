@@ -104,6 +104,6 @@ namespace Bank.Views
 		}
 
 		private void ButtonDebugToast_OnClicked(object sender, EventArgs e) 
-			=> device.DisplayToast("Money Transferred", "User0 =$0=> User1");
+			=> device.DisplayToast("Money Transferred", "User0 sent $0 to User1");
 	}
 }
