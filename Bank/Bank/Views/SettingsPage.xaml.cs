@@ -20,8 +20,8 @@ namespace Bank.Views
 
 			LabelTheme.Text = Device.RuntimePlatform == Device.UWP ? "System" : $"{Tools.CurrentTheme}";
 
-			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("preventSleep",  false);
-			SwitchPreventSleep.IsToggled = (bool) Tools.GetProperty("notifications", false);
+			SwitchPreventSleep.IsToggled  = (bool) Tools.GetProperty("preventSleep",  false);
+			SwitchNotifications.IsToggled = (bool) Tools.GetProperty("notifications", false);
 		}
 
 		private async void ButtonProfile_OnClicked(object sender, EventArgs e) 
@@ -104,6 +104,6 @@ namespace Bank.Views
 		}
 
 		private void ButtonDebugToast_OnClicked(object sender, EventArgs e) 
-			=> device.DisplayToast("Money Transfered", "User0 =$0=> User1");
+			=> device.DisplayToast("Money Transferred", "User0 =$0=> User1");
 	}
 }
