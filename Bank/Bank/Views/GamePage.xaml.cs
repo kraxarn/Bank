@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +19,8 @@ namespace Bank.Views
 		private readonly IDeviceInfo device;
 
 		private readonly bool notif;
+
+		private string lastUser;
 
 		public GamePage(Client client, IEnumerable<User> serverUsers)
 		{
@@ -50,20 +54,39 @@ namespace Bank.Views
 
 			client.MoneyChanged += (user, oldMoney) =>
 			{
-				if (user.Address == ipAddress)
+				var diff = (int)user.Money - oldMoney;
+				var diffstr = Tools.Seperate((uint)(diff >= 0 ? diff : -diff));
+
+				if (diff < 0)
 				{
-					var diff = (int) user.Money - oldMoney;
-					var diffstr = Tools.Seperate((uint) (diff >= 0 ? diff : -diff));
-					DisplayToast(diff >= 0 ? $"You got ${diffstr}" : $"You lost ${diffstr}");
-					
-					UpdateSelf();
+					// TODO: Nothing actually happens if a user just loses money
+
+					// Someone lost money
+					lastUser = user.Name;
+
+					// Check value after 0.1 sec
+					Task.Run(() =>
+					{
+						Thread.Sleep(100);
+
+						// If it already is null, we already sent a 'transferred' notification
+						if (lastUser != null)
+						{
+							DisplayToast($"{CheckName(user.Name)} lost ${diffstr}");
+							lastUser = null;
+						}
+					});
+				}
+				else if (lastUser != null)
+				{
+					DisplayToast($"{CheckName(lastUser)} sent ${diffstr} to {CheckName(user.Name)}");
+					lastUser = null;
 				}
 				else
-				{
-					var diff = (int) user.Money - oldMoney;
-					var diffstr = Tools.Seperate((uint)(diff >= 0 ? diff : -diff));
-					DisplayToast(diff >= 0 ? $"{user.Name} got ${diffstr}" : $"{user.Name} lost ${diffstr}");
-				}
+					DisplayToast($"{CheckName(user.Name)} got ${diffstr}");
+
+				// Fuck it
+				UpdateSelf();
 			};
 
 			// Set if notifications should be enabled
@@ -81,6 +104,9 @@ namespace Bank.Views
 
 			Device.BeginInvokeOnMainThread(Update);
 		}
+
+		private string CheckName(string name)
+			=> name == currentUser.Name ? "You" : name;
 
 		private async void ViewUsersOnItemSelected(object sender, SelectedItemChangedEventArgs e)
 		{
