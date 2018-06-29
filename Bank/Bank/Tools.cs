@@ -103,9 +103,9 @@ namespace Bank
 				switch (value)
 				{
 					case Theme.Light:
-						Application.Current.Resources["backgroundColor"] = Color.White;
-						Application.Current.Resources["textColor"]       = Color.Black;
-						Application.Current.Resources["controlColor"]    = Color.White;
+						Application.Current.Resources["backgroundColor"] = Color.Default;
+						Application.Current.Resources["textColor"]       = Color.Default;
+						Application.Current.Resources["controlColor"]    = Color.Default;
 						device.SetDarkStatusBar();
 						break;
 
