@@ -81,7 +81,7 @@ namespace Bank.Views
 					lastUser = null;
 				}
 				else
-					DisplayToast($"{CheckName(user.Name)} got ${diffstr}");
+					DisplayToast($"{CheckName(user.Name)} received ${diffstr}");
 
 				// Fuck it
 				UpdateSelf();
