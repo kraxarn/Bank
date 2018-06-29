@@ -1,11 +1,10 @@
 ﻿using System;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Bank.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ErrorPage : ContentPage
+	public partial class ErrorPage
 	{
 		public ErrorPage(string title, Exception e)
 		{
