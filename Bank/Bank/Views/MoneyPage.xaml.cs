@@ -112,7 +112,7 @@ namespace Bank.Views
 					break;
 
 				default:
-					if (text != "0" || money != "$0")
+					if (text != "0" && text != "00" || money != "$0")
 						money += text;
 					break;
 			}
