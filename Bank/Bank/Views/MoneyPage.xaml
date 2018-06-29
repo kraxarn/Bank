@@ -100,14 +100,17 @@
 						Text="K"
 						Clicked="ButtonUnit_OnClicked"/>
 
-					<Entry
+					<Frame
 						BackgroundColor="{DynamicResource controlColor}"
-						TextColor="{DynamicResource textColor}"
-						x:Name="EntryMoney"
-						IsEnabled="False"
-						WidthRequest="192"
 						Margin="16,0,16,0"
-						Text="$"/>
+						Padding="12, 0, 0, 0">
+						<Label
+							TextColor="{DynamicResource textColor}"
+							VerticalTextAlignment="Center"
+							x:Name="EntryMoney"
+							WidthRequest="192"
+							Text="$"/>
+					</Frame>
 
 					<Button
 						Text="M"
