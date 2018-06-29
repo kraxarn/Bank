@@ -59,15 +59,13 @@ namespace Bank.Views
 
 				if (diff < 0)
 				{
-					// TODO: Nothing actually happens if a user just loses money
-
 					// Someone lost money
 					lastUser = user.Name;
 
-					// Check value after 0.1 sec
+					// Check value after 0.2 sec
 					Task.Run(() =>
 					{
-						Thread.Sleep(100);
+						Thread.Sleep(200);
 
 						// If it already is null, we already sent a 'transferred' notification
 						if (lastUser != null)
