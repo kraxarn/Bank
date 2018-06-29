@@ -41,7 +41,7 @@
 
 					<Label
 						x:Name="LabelMoney"
-						TextColor="Gray"
+						TextColor="{DynamicResource infoColor}"
 						Text="Money">
 						<Label.GestureRecognizers>
 							<TapGestureRecognizer Tapped="LabelMoney_OnTapped"/>
@@ -97,6 +97,7 @@
 						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
 							TextColor="{DynamicResource textColor}"
+							DetailColor="{DynamicResource infoColor}"
 							Text="{Binding Name}"
 							Detail="{Binding FormattedMoney}"
 							ImageSource="{Binding Avatar}"/>

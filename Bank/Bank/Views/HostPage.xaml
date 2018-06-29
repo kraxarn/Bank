@@ -59,6 +59,7 @@
 						<!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
 						<ImageCell
 							TextColor="{DynamicResource textColor}"
+							DetailColor="{DynamicResource infoColor}"
 							Text="{Binding Name}"
 							Detail="{Binding FormattedAddress}"
 							ImageSource="{Binding Avatar}"/>

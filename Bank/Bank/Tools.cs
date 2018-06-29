@@ -106,6 +106,7 @@ namespace Bank
 						Application.Current.Resources["backgroundColor"] = Color.Default;
 						Application.Current.Resources["textColor"]       = Color.Default;
 						Application.Current.Resources["controlColor"]    = Color.Default;
+						Application.Current.Resources["infoColor"]       = Color.FromHex("#b0bec5");
 						device.SetDarkStatusBar();
 						break;
 
@@ -113,6 +114,7 @@ namespace Bank
 						Application.Current.Resources["backgroundColor"] = Color.Black;
 						Application.Current.Resources["textColor"]       = Color.FromHex("#f5f5f5");
 						Application.Current.Resources["controlColor"]    = Color.FromHex("#424242");
+						Application.Current.Resources["infoColor"]       = Color.FromHex("#78909c");
 						device.SetLightStatusBar();
 						break;
 
@@ -120,6 +122,7 @@ namespace Bank
 						Application.Current.Resources["backgroundColor"] = Color.FromHex("#2b3138");
 						Application.Current.Resources["textColor"]       = Color.FromHex("#fafafa");
 						Application.Current.Resources["controlColor"]    = Color.FromHex("#20252f");
+						Application.Current.Resources["infoColor"]       = Color.FromHex("#90a4ae");
 						device.SetLightStatusBar();
 						break;
 				}
