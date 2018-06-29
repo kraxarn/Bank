@@ -70,7 +70,7 @@ namespace Bank.Views
 						// If it already is null, we already sent a 'transferred' notification
 						if (lastUser != null)
 						{
-							DisplayToast($"{CheckName(user.Name)} lost ${diffstr}");
+							DisplayToast($"{CheckName(user.Name)} paid ${diffstr}");
 							lastUser = null;
 						}
 					});
