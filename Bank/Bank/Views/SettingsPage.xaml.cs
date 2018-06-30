@@ -79,6 +79,9 @@ namespace Bank.Views
 		private void SwitchNotifications_OnToggled(object sender, ToggledEventArgs e)
 			=> Tools.SetProperty("notifications", SwitchNotifications.IsToggled);
 
+		private void SwitchAutoRerollDice_OnToggled(object sender, ToggledEventArgs e)
+			=> Tools.SetProperty("autoRerollDice", SwitchAutoRerollDice.IsToggled);
+
 		private async void Setting_OnTapped(object sender, EventArgs e)
 		{
 			var args = (TappedEventArgs) e;
@@ -105,11 +108,6 @@ namespace Bank.Views
 			}
 
 			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
-		}
-
-		private void SwitchAutoRerollDice_OnToggled(object sender, ToggledEventArgs e)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
