@@ -164,7 +164,12 @@ namespace Bank.Views
 				if (rolls.Count == 4)
 					message += "Double!";
 				else if (rolls.Count > 4)
-					message += $"{rolls.Count / 2} doubles!";
+				{
+					if (d1 == d2)
+						message += "3 doubles!";
+					else
+						message += "2 doubles!";
+				}
 
 				// Display message
 				await DisplayAlert(title, message, "Neat!");
