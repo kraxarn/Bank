@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +32,7 @@ namespace Bank.Views
 				if (total.StartsWith("."))
 					total = $"0{total}";
 
-				if (!float.TryParse(total, out var m))
+				if (!float.TryParse(total, NumberStyles.Any, CultureInfo.InvariantCulture, out var m))
 					return 0;
 
 				switch (moneyUnit)

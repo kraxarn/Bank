@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -75,7 +76,7 @@ namespace Bank.Views
 				#endif
 			}
 
-			if (!float.TryParse(EntryMoney.Text.Replace(',', '.'), out var startingMoney) || PickerMoney.SelectedIndex < 0)
+			if (!float.TryParse(EntryMoney.Text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out var startingMoney) || PickerMoney.SelectedIndex < 0)
 			{
 				await Application.Current.MainPage.DisplayAlert("No or invalid starting money", "Please select starting money first", "OK");
 				return;
