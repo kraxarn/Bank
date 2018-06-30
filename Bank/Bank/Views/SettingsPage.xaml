@@ -113,6 +113,32 @@
 
 				</ViewCell>
 
+				<ViewCell>
+
+					<StackLayout
+						Orientation="Horizontal">
+
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer
+								Tapped="Setting_OnTapped"
+								CommandParameter="Auto reroll dice"/>
+						</StackLayout.GestureRecognizers>
+
+						<Label
+							TextColor="{DynamicResource textColor}"
+							Margin="12"
+							Text="Auto reroll dice"/>
+
+						<Switch
+							Margin="6, 6, 12, 6"
+							x:Name="SwitchAutoRerollDice"
+							Toggled="SwitchAutoRerollDice_OnToggled"
+							HorizontalOptions="EndAndExpand"/>
+
+					</StackLayout>
+
+				</ViewCell>
+
 			</TableSection>
 
 			<!-- Profile -->

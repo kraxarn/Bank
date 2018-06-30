@@ -98,9 +98,18 @@ namespace Bank.Views
 				case "Prevent Sleep":
 					info = "Prevents the device from going to sleep while on the game page";
 					break;
+
+				case "Auto reroll dice":
+					info = "Automatically reroll dice and sum results if you roll double (up to 3 times)";
+					break;
 			}
 
 			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
+		}
+
+		private void SwitchAutoRerollDice_OnToggled(object sender, ToggledEventArgs e)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
