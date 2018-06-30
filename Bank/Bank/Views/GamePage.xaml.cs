@@ -160,6 +160,12 @@ namespace Bank.Views
 				for (var i = 0; i < rolls.Count; i += 2)
 					message += $"{GetDiceEmoji(rolls[i])} + {GetDiceEmoji(rolls[i + 1])}\n";
 
+				// Add double message
+				if (rolls.Count == 4)
+					message += "Double!";
+				else if (rolls.Count > 4)
+					message += $"{rolls.Count / 2} doubles!";
+
 				// Display message
 				await DisplayAlert(title, message, "Neat!");
 			}
