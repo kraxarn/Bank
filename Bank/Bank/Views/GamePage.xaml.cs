@@ -127,20 +127,57 @@ namespace Bank.Views
 		private async void ButtonSelfAddClicked(object sender, EventArgs e) 
 			=> await Navigation.PushModalAsync(Tools.CreateNavigationPage(new MoneyPage(client, MoneyPage.Mode.SelfAdd, currentUser)));
 
-		private async void ButtonDice_OnClicked(object sender, EventArgs e)
+		private static void RollDice(out int dice1, out int dice2)
 		{
 			var rng = new Random();
 
-			// First dice
-			var d1 = rng.Next(6) + 1;
+			dice1 = rng.Next(6) + 1;
+			dice2 = rng.Next(6) + 1;
+		}
+		
+		private async void ButtonDice_OnClicked(object sender, EventArgs e)
+		{
+			RollDice(out var d1, out var d2);
 
-			// Second dice
-			var d2 = rng.Next(6) + 1;
+			// Check if we should auto reroll
+			if ((bool) Tools.GetProperty("autoRerollDice", false))
+			{
+				// List to store all rolls
+				var rolls = new List<int>(new []{d1, d2});
 
-			// 'Double' message
-			var d = d1 == d2 ? "Double!" : null;
+				// Roll while we're getting doubles
+				while (d1 == d2 && rolls.Count < 6)
+				{
+					RollDice(out d1, out d2);
+					rolls.AddRange(new []{d1, d2});
+				}
 
-			await DisplayAlert($"You rolled {d1 + d2}", $"{GetDiceEmoji(d1)} + {GetDiceEmoji(d2)} \n{d}", "Neat!");
+				// Display result
+				var title   = $"You rolled {rolls.Sum()}";
+				var message = "";
+
+				// Add all dice rolls
+				for (var i = 0; i < rolls.Count; i += 2)
+					message += $"{GetDiceEmoji(rolls[i])} + {GetDiceEmoji(rolls[i + 1])}\n";
+
+				// Display message
+				await DisplayAlert(title, message, "Neat!");
+			}
+			else
+			{
+				// Get text to display
+				var title = $"You rolled {d1 + d2}";
+				var message = $"{GetDiceEmoji(d1)} + {GetDiceEmoji(d2)} \n{(d1 == d2 ? "Double!" : null)}";
+
+				// Check if double
+				if (d1 == d2)
+				{
+					if (await DisplayAlert(title, message, "Reroll", "I'm good"))
+						await Task.Run(() => Device.BeginInvokeOnMainThread(() => ButtonDice_OnClicked(this, null)));
+				}
+				else
+					await DisplayAlert(title, message, "Neat!");
+			}
 		}
 
 		private static string GetDiceEmoji(int index)
