@@ -103,8 +103,8 @@ namespace Bank.Views
 					info = "Prevents the device from going to sleep while on the game page";
 					break;
 
-				case "Auto reroll dice":
-					info = "Automatically reroll dice and sum results if you roll double (up to 3 times)";
+				case "Auto roll dice":
+					info = "Automatically roll dice again and sum results if you roll double (up to 3 times)";
 					break;
 			}
 
