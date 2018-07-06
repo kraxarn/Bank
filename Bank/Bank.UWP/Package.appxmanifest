@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="3514dd07-8433-48fa-8d0a-8fa48fa74513" Publisher="CN=kraxarn" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="41477CrowGamez.VirtualBank" Publisher="CN=C45F6D83-AE2F-4B49-A243-F866EB2AF82D" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="6eea4c0f-6a51-478a-b0e1-1084d6552396" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Bank.UWP</DisplayName>
-    <PublisherDisplayName>b1ceab5d-5639-4c0d-9f2c-f1c269880f5d</PublisherDisplayName>
+    <DisplayName>Virtual Bank</DisplayName>
+    <PublisherDisplayName>CrowGamez</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
