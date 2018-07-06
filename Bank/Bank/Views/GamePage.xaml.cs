@@ -183,7 +183,7 @@ namespace Bank.Views
 				// Check if double
 				if (d1 == d2)
 				{
-					if (await DisplayAlert(title, message, "Reroll", "I'm good"))
+					if (await DisplayAlert(title, message, "Roll again", "I'm good"))
 						await Task.Run(() => Device.BeginInvokeOnMainThread(() => ButtonDice_OnClicked(this, null)));
 				}
 				else
