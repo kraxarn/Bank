@@ -1,7 +1,9 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -126,6 +128,40 @@ namespace Bank
 						device.SetLightStatusBar();
 						break;
 				}
+			}
+		}
+
+		public static bool SendMessage(string address, string message, out Exception error)
+		{
+			// TODO: This probably also (randomly) throws timeouts
+			try
+			{
+				using (var client = new TcpClient(address, 13000))
+				{
+					// Similar to Client.Send / Server.Send
+
+					var data = Encoding.ASCII.GetBytes(message);
+					var stream = client.GetStream();
+					stream.Write(data, 0, data.Length);
+
+					data = new byte[256];
+					var bytes = stream.Read(data, 0, data.Length);
+					var response = Encoding.ASCII.GetString(data, 0, bytes);
+
+					if (response != "OK")
+						Application.Current.MainPage.DisplayAlert("Invalid response", response, "Dismiss");
+
+					stream.Close();
+					client.Close();
+
+					error = null;
+					return true;
+				}
+			}
+			catch (Exception e)
+			{
+				error = e;
+				return false;
 			}
 		}
 	}
