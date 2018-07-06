@@ -21,7 +21,7 @@ namespace Bank.Views
 		private readonly Client client;
 		private readonly Mode mode;
 
-		private string FormattedMoney => $"{money}{moneyUnit}";
+		private string FormattedMoney => moneyUnit == ' ' ? money : $"{money}{moneyUnit}";
 
 		private uint TotalMoney
 		{
@@ -104,6 +104,9 @@ namespace Bank.Views
 					break;
 
 				case "Send":
+					if (TotalMoney < fromUser.Money * 0.1f && !await DisplayAlert("You sure about that?", $"{FormattedMoney} is not a lot. Are you sure you entered it correctly?", "Yeah", "No lol"))
+						return;
+
 					SendMoney();
 					await Navigation.PopModalAsync();
 					break;
