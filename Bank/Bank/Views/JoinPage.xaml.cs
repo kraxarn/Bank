@@ -33,6 +33,10 @@ namespace Bank.Views
 			if (!client.TestConnection(out var msg))
 			{
 				await Application.Current.MainPage.DisplayAlert("Conection failed", msg, "OK");
+
+				if (!Tools.SendMessage("127.0.0.1", "STOP", out var err))
+					await DisplayAlert("Failed to stop listener", err.Message, "Dismiss");
+
 				return;
 			}
 

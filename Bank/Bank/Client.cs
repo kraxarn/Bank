@@ -54,7 +54,7 @@ namespace Bank
 					Ready?.Invoke();
 				});
 		    };
-		}
+	    }
 
 	    public bool TestConnection(out string message)
 	    {
