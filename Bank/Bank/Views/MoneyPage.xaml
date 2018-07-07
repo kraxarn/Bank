@@ -36,12 +36,14 @@
 					<!-- You (With some dummy text) -->
 					<Label
 						TextColor="{DynamicResource textColor}"
+						HorizontalTextAlignment="Center"
 						Grid.Column="0"
 						Grid.Row="0"
 						FontSize="32"
 						Text="You"/>
 					<Label
 						x:Name="LabelSelfMoney"
+						HorizontalTextAlignment="Center"
 						TextColor="{DynamicResource textColor}"
 						Grid.Column="0"
 						Grid.Row="1"
@@ -51,6 +53,7 @@
 					<Label
 						x:Name="LabelArrow"
 						TextColor="{DynamicResource textColor}"
+						HorizontalTextAlignment="Center"
 						Grid.Column="1"
 						Grid.Row="0"
 						Grid.RowSpan="2"
@@ -64,6 +67,7 @@
 					<Label
 						x:Name="LabelUserName"
 						TextColor="{DynamicResource textColor}"
+						HorizontalTextAlignment="Center"
 						Grid.Column="2"
 						Grid.Row="0"
 						FontSize="32"
@@ -71,6 +75,7 @@
 					<Label
 						x:Name="LabelUserMoney"
 						TextColor="{DynamicResource textColor}"
+						HorizontalTextAlignment="Center"
 						Grid.Column="2"
 						Grid.Row="1"
 						Text="Money"/>
