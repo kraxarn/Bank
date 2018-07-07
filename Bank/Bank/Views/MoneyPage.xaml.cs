@@ -104,7 +104,7 @@ namespace Bank.Views
 					break;
 
 				case "Send":
-					if (TotalMoney < fromUser.Money * 0.1f && !await DisplayAlert("You sure about that?", $"{FormattedMoney} is not a lot. Are you sure you entered it correctly?", "Yeah", "No lol"))
+					if (TotalMoney < fromUser.Money * 0.05f && !await DisplayAlert("You sure about that?", $"{FormattedMoney} is not a lot. Are you sure you entered it correctly?", "Yeah", "No lol"))
 						return;
 
 					SendMoney();
