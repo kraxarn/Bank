@@ -61,5 +61,7 @@
 	<false/>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0 Beta</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright 2018, Croware, All Rights Reserved</string>
 </dict>
 </plist>
