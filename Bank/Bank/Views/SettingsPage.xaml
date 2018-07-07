@@ -121,13 +121,13 @@
 						<StackLayout.GestureRecognizers>
 							<TapGestureRecognizer
 								Tapped="Setting_OnTapped"
-								CommandParameter="Auto reroll dice"/>
+								CommandParameter="Auto roll dice"/>
 						</StackLayout.GestureRecognizers>
 
 						<Label
 							TextColor="{DynamicResource textColor}"
 							Margin="12"
-							Text="Auto reroll dice"/>
+							Text="Auto roll dice"/>
 
 						<Switch
 							Margin="6, 6, 12, 6"
