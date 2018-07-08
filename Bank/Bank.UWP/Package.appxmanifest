@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="6eea4c0f-6a51-478a-b0e1-1084d6552396" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Virtual Bank</DisplayName>
-    <PublisherDisplayName>CrowGamez</PublisherDisplayName>
+    <PublisherDisplayName>Croware</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
