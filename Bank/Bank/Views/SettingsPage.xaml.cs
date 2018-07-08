@@ -110,5 +110,8 @@ namespace Bank.Views
 
 			await DisplayAlert($"{args.Parameter}", info, "Dismiss");
 		}
+
+		private async void ButtonWhatsNew_OnClicked(object sender, EventArgs e)
+			=> await Navigation.PushModalAsync(Tools.CreateNavigationPage(new WhatsNewPage()));
 	}
 }

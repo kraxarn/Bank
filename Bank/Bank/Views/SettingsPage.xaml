@@ -179,6 +179,13 @@
 					</StackLayout>
 				</ViewCell>
 
+				<ViewCell>
+					<Button
+						Text="What's New"
+						HorizontalOptions="FillAndExpand"
+						Clicked="ButtonWhatsNew_OnClicked"/>
+				</ViewCell>
+
 			</TableSection>
 
 		</TableRoot>
