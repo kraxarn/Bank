@@ -89,6 +89,15 @@ namespace Bank.Views
 
 			// Set if notifications should be enabled
 			notif = (bool) Tools.GetProperty("notifications", false);
+
+			// Fix some sizes on Android
+			if (Device.RuntimePlatform == Device.Android)
+			{
+				ButtonAdd.WidthRequest    = 36;
+				ButtonRemove.WidthRequest = 36;
+
+				LabelName.FontSize = 18;
+			}
 		}
 
 		private void UpdateSelf()
