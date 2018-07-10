@@ -55,6 +55,10 @@ namespace Bank.Views
 							span.Text = span.Text.Substring(3);
 						}
 
+						// Add new line on Android
+						if (Device.RuntimePlatform == Device.Android)
+							span.Text += "\n";
+
 						// Add the lime
 						log.Spans.Add(span);
 					}
