@@ -83,9 +83,10 @@ namespace Bank.Views
 			moneyUnit = ' ';
 
 			// Increase font size for buttons
-			// TODO: Make this an option
-			foreach (var child in GridNumpad.Children)
-				((Button) child).FontSize = 18;
+			// TODO: Make this an option?
+			if (Device.RuntimePlatform != Device.Android)
+				foreach (var child in GridNumpad.Children)
+					((Button) child).FontSize = 18;
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)
