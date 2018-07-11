@@ -103,6 +103,7 @@
 
 					<Button
 						Text="K"
+						WidthRequest="50"
 						Clicked="ButtonUnit_OnClicked"/>
 
 					<Frame
@@ -120,6 +121,7 @@
 
 					<Button
 						Text="M"
+						WidthRequest="50"
 						Clicked="ButtonUnit_OnClicked"/>
 
 				</StackLayout>
