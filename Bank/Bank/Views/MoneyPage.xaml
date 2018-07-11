@@ -142,12 +142,13 @@
 						<ColumnDefinition/>
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
-					
+
 					<Button
 						Clicked="Button_OnClicked"
 						Grid.Row="0"
 						Grid.Column="0"
-						Text="Erase"/>
+						Text="Del"/>
+
 					<Button
 						Clicked="Button_OnClicked"
 						Grid.Row="0"
