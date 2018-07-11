@@ -134,7 +134,7 @@
 						<RowDefinition/>
 						<RowDefinition/>
 					</Grid.RowDefinitions>
-					
+
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
 						<ColumnDefinition/>
@@ -142,7 +142,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
-
+					
 					<Button
 						Clicked="Button_OnClicked"
 						Grid.Row="0"
@@ -169,7 +169,7 @@
 						Clicked="Button_OnClicked"
 						Grid.Row="0"
 						Grid.Column="4"
-						Text="Cancel"/>
+						Text="Back"/>
 					
 					<Button
 						Clicked="Button_OnClicked"

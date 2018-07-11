@@ -95,12 +95,12 @@ namespace Bank.Views
 
 			switch (text)
 			{
-				case "Erase":
+				case "Del":
 					if (money != "$")
 						money = money.Substring(0, money.Length - 1);
 					break;
 
-				case "Cancel":
+				case "Back":
 					await Navigation.PopModalAsync();
 					break;
 
@@ -155,7 +155,7 @@ namespace Bank.Views
 			EntryMoney.Text = FormattedMoney;
 			var totalMoney  = TotalMoney;
 
-			ButtonSave.Text = totalMoney == 0 ? "Cancel" : "Send";
+			ButtonSave.Text = totalMoney == 0 ? "Back" : "Send";
 
 			if (mode != Mode.SelfAdd && ButtonSave.Text == "Send" && totalMoney > fromUser.Money)
 				ButtonSave.IsEnabled = false;
