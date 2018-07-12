@@ -41,6 +41,10 @@ namespace Bank.Views
 			ImageAvatar.Source = avatars[selectedIndex];
 
 			EntryName.Text = Application.Current.Properties["name"] as string;
+
+			// Fix button sizes on Android
+			if (Device.RuntimePlatform == Device.Android)
+				ButtonPrevious.WidthRequest = ButtonNext.WidthRequest = 64;
 		}
 
 		private void ButtonPrevious_OnClicked(object sender, EventArgs e)

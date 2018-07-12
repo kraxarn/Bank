@@ -24,6 +24,7 @@
 				</Grid.ColumnDefinitions>
 
 				<Button
+					x:Name="ButtonPrevious"
 					VerticalOptions="Center"
 					Grid.Column="0"
 					FontSize="32"
@@ -40,6 +41,7 @@
 				</Image>
 
 				<Button
+					x:Name="ButtonNext"
 					VerticalOptions="Center"
 					Grid.Column="2"
 					FontSize="32"
