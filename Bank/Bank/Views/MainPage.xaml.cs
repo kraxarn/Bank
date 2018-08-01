@@ -34,6 +34,12 @@ namespace Bank.Views
 				PageJoin.Icon     = "images/ui/join.png";
 				PageSettings.Icon = "images/ui/settings.png";
 			}
+			else if (Device.RuntimePlatform == Device.Android)
+			{
+				PageCreate.Icon   = "ic_host.xml";
+				PageJoin.Icon     = "ic_join.xml";
+				PageSettings.Icon = "ic_settings.xml";
+			}
 
 			if (!Application.Current.Properties.ContainsKey("name") || !Application.Current.Properties.ContainsKey("avatar"))
 			{
