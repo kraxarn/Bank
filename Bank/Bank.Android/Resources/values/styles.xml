@@ -45,7 +45,7 @@
     <item name="colorPrimaryDark">#303F9F</item>
     <item name="colorAccent">#FF4081</item>
     <item name="windowActionModeOverlay">true</item>
-    <item name="windowBackground">#000000</item>
+    <item name="android:windowBackground">@android:color/black</item>
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
