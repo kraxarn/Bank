@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using Application = Xamarin.Forms.Application;
 
 namespace Bank.Views
 {
@@ -9,6 +11,10 @@ namespace Bank.Views
 		public MainPage()
 		{
 			InitializeComponent();
+
+			// Put buttons at bottom
+			if (Device.RuntimePlatform == Device.Android)
+				On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
 			AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
 			{
