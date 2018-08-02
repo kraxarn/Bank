@@ -62,11 +62,23 @@ namespace Bank
 			return value.ToString("#,0", format);
 		}
 
-		public static object GetProperty(string key, object fallback) 
-			=> Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : fallback;
+		public static object GetProperty(string key, object fallback)
+		{
+			// At least for now, we do specific code for Android
+			if (Device.RuntimePlatform == Device.Android)
+				return DependencyService.Get<IProperties>().GetProperty(key, fallback);
 
-		public static void SetProperty(string key, object value) 
-			=> Application.Current.Properties[key] = value;
+			return Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : fallback;
+		}
+
+		public static void SetProperty(string key, object value)
+		{
+			// Android specific again
+			if (Device.RuntimePlatform == Device.Android)
+				DependencyService.Get<IProperties>().SetProperty(key, value);
+			else
+				Application.Current.Properties[key] = value;
+		}
 
 		public static async Task SavePropertiesAsync() 
 			=> await Application.Current.SavePropertiesAsync();
