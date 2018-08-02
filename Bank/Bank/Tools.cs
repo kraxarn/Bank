@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Xamarin.Forms;
 
 namespace Bank
@@ -49,8 +54,6 @@ namespace Bank
 	    }
 
 		public static Page CurrentModalPage => Application.Current.MainPage.Navigation.ModalStack.FirstOrDefault();
-
-	    public static Page CurruentPage => Application.Current.MainPage.Navigation.NavigationStack.FirstOrDefault();
 
 	    public static string Seperate(uint value)
 	    {
@@ -162,6 +165,28 @@ namespace Bank
 			{
 				error = e;
 				return false;
+			}
+		}
+
+		public static object GetPropertyFromFile(string key)
+		{
+			using (var appStorage = IsolatedStorageFile.GetUserStoreForApplication())
+			{
+				if (!appStorage.FileExists("PropertyStore.forms"))
+					return null;
+
+				using (var fileStream = appStorage.OpenFile("PropertyStorage.forms", FileMode.Open, FileAccess.Read))
+				{
+					using (var reader = XmlDictionaryReader.CreateBinaryReader(fileStream, XmlDictionaryReaderQuotas.Max))
+					{
+						if (fileStream.Length == 0L)
+							return null;
+
+						var dict = (Dictionary<string, object>) new DataContractSerializer(typeof(Dictionary<string, object>)).ReadObject(reader);
+
+						return dict.ContainsKey(key) ? dict[key] : null;
+					}
+				}
 			}
 		}
 	}
