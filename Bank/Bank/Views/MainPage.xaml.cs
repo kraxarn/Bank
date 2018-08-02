@@ -41,10 +41,10 @@ namespace Bank.Views
 				PageSettings.Icon = "ic_settings.xml";
 			}
 
-			if (!Application.Current.Properties.ContainsKey("name") || !Application.Current.Properties.ContainsKey("avatar"))
+			if (!Tools.ContainsProperty("name") || !Tools.ContainsProperty("avatar"))
 			{
-				Application.Current.Properties["name"]   = DependencyService.Get<IDeviceInfo>().DeviceName;
-				Application.Current.Properties["avatar"] = 0;
+				Tools.SetProperty("name", DependencyService.Get<IDeviceInfo>().DeviceName);
+				Tools.SetProperty("avatar", 0);
 			}
 
 			switch (Tools.GetProperty("theme", "light"))

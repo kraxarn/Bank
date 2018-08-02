@@ -36,11 +36,11 @@ namespace Bank.Views
 			for (var i = 0; i < avatarNames.Length; i++)
 				avatars[i] = ImageSource.FromFile($"images/avatar/{avatarNames[i]}.png");
 
-			selectedIndex = (int) Application.Current.Properties["avatar"];
+			selectedIndex = (int) Tools.GetProperty("avatar", 0);
 
 			ImageAvatar.Source = avatars[selectedIndex];
 
-			EntryName.Text = Application.Current.Properties["name"] as string;
+			EntryName.Text = Tools.GetProperty("name", "NAME") as string;
 
 			// Fix button sizes on Android
 			if (Device.RuntimePlatform == Device.Android)
@@ -81,9 +81,9 @@ namespace Bank.Views
 				return;
 			}
 
-			Application.Current.Properties["name"]   = EntryName.Text;
-			Application.Current.Properties["avatar"] = selectedIndex;
-			await Application.Current.SavePropertiesAsync();
+			Tools.SetProperty("name", EntryName.Text);
+			Tools.SetProperty("avatar", selectedIndex);
+			await Tools.SavePropertiesAsync();
 
 			base.OnDisappearing();
 		}

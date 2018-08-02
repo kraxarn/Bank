@@ -80,6 +80,9 @@ namespace Bank
 				Application.Current.Properties[key] = value;
 		}
 
+		public static bool ContainsProperty(string key)
+			=> Application.Current.Properties.ContainsKey(key);
+
 		public static async Task SavePropertiesAsync() 
 			=> await Application.Current.SavePropertiesAsync();
 			

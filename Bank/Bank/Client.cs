@@ -32,12 +32,10 @@ namespace Bank
 		    this.port    = port;
 
 			// We prob want to update these if settings changes
-		    name = Application.Current.Properties.ContainsKey("name")
-			    ? Application.Current.Properties["name"] as string
-			    : "NAME";
+		    name = Tools.GetProperty("name", "NAME") as string;
 
-		    avatar = Application.Current.Properties.ContainsKey("avatar")
-			    ? int.Parse(Application.Current.Properties["avatar"].ToString())
+		    avatar = Tools.ContainsProperty("avatar")
+			    ? int.Parse(Tools.GetProperty("avatar", 0).ToString())
 			    : 0;
 
 			listener = new Listener();
