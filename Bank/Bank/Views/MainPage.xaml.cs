@@ -59,10 +59,10 @@ namespace Bank.Views
 			}
 		}
 
-		protected override void OnAppearing()
+		protected override async void OnAppearing()
 		{
 			if (!IsPrivateNetwork())
-				DisplayAlert("Warning", "It looks like you aren't connected to WiFi, which is required for this app to work", "OK");
+				await DisplayAlert("Warning", "It looks like you aren't connected to WiFi, which is required for this app to work", "OK");
 
 			base.OnAppearing();
 		}
