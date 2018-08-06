@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.IsolatedStorage;
@@ -64,11 +65,21 @@ namespace Bank
 
 		public static object GetProperty(string key, object fallback)
 		{
-			// At least for now, we do specific code for Android
-			if (Device.RuntimePlatform == Device.Android)
-				return DependencyService.Get<IProperties>().GetProperty(key, fallback);
+			try
+			{
+				// At least for now, we do specific code for Android
+				if (Device.RuntimePlatform == Device.Android)
+					return DependencyService.Get<IProperties>().GetProperty(key, fallback);
 
-			return Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : fallback;
+				return Application.Current.Properties.ContainsKey(key) ? Application.Current.Properties[key] : fallback;
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				Debug.WriteLine(e.StackTrace);
+				
+				throw new InvalidOperationException(e.Message);
+			}
 		}
 
 		public static void SetProperty(string key, object value)

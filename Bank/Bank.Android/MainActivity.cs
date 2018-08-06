@@ -23,6 +23,7 @@ namespace Bank.Droid
 
 			Forms.Init(this, bundle);
 			DeviceInfo.SetContext(this);
+			Properties.SetContext(this);
             LoadApplication(new App());
 		}
     }
