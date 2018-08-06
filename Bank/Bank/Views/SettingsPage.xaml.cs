@@ -70,7 +70,7 @@ namespace Bank.Views
 					break;
 			}
 
-			if (action != "Cancel")
+			if (!string.IsNullOrEmpty(action) && action != "Cancel")
 			{
 				LabelTheme.Text = action;
 
