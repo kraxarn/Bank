@@ -71,7 +71,12 @@ namespace Bank.Views
 			}
 
 			if (action != "Cancel")
+			{
 				LabelTheme.Text = action;
+
+				if (Device.RuntimePlatform == Device.Android)
+					DependencyService.Get<IDeviceInfo>().DisplayToast(null, "Restart app to apply changes");
+			}
 		}
 
 		private void SwitchPreventSleep_OnToggled(object sender, ToggledEventArgs e) 
