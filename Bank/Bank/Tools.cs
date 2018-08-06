@@ -129,6 +129,10 @@ namespace Bank
 			}
 			set
 			{
+				// Only set theme on iOS
+				if (Device.RuntimePlatform != Device.iOS)
+					return;
+
 				var device = DependencyService.Get<IDeviceInfo>();
 
 				switch (value)
