@@ -13,8 +13,16 @@ namespace Bank.Droid
         {
 	        var prefs = PreferenceManager.GetDefaultSharedPreferences(this);
 
-			if (prefs.GetString("theme", "light") == "dark")
-				SetTheme(Resource.Style.MainThemeDark);
+	        switch (prefs.GetString("theme", "light"))
+	        {
+				case "dark":
+					SetTheme(Resource.Style.MainThemeDark);
+					break;
+
+				case "black":
+					SetTheme(Resource.Style.MainThemeBlack);
+					break;
+	        }
 
 			TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
