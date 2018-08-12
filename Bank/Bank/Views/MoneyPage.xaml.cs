@@ -87,6 +87,10 @@ namespace Bank.Views
 			if (Device.RuntimePlatform != Device.Android)
 				foreach (var child in GridNumpad.Children)
 					((Button) child).FontSize = 18;
+
+			// TODO: (Temporary) fix for frame not being themed on Android
+			if (Device.RuntimePlatform == Device.Android)
+				FrameMoney.BackgroundColor = Color.Transparent;
 		}
 
 		private async void Button_OnClicked(object sender, EventArgs e)
