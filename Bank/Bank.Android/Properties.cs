@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Android.App;
 using Android.Content;
 using Android.Preferences;
@@ -38,6 +39,12 @@ namespace Bank.Droid
 
 		public void SetProperty(string key, object value)
 		{
+			if (value == null)
+			{
+				Debug.WriteLine($"Warning: Ignored key '{key}' with null value");
+				return;
+			}
+
 			var editor = Prefs.Edit();
 
 			switch (value)
