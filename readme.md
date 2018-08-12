@@ -9,7 +9,7 @@ An app for iOS, Android and UWP that lets you transfer money between users. Used
 * Runs on iOS, Android and UWP
 * Customizable to enable/disable notifications, money rounding etc.
 * Virtual dice that can optionally auto re-roll (if you roll doubles)
-* White, dark and black themes
+* Light, dark and black themes
 * Fully free and open source
 
 ## Installing
