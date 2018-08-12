@@ -1,4 +1,4 @@
-# Virtual Bank
+# Virtual Bank (Beta)
 ### Virtual bank for games that uses virtual currency.
 #### _**NOTE:** This app is currently in beta and still has a lot of issues!_
 
