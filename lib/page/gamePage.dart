@@ -167,6 +167,7 @@ class GamePage extends StatelessWidget
 									),
 									// Bottom padding
 									ButtonBarTheme(
+										data: ButtonBarThemeData(),
 										child: ButtonBar()
 									)
 								],
@@ -194,6 +195,7 @@ class GamePage extends StatelessWidget
 									),
 									// Bottom padding
 									ButtonBarTheme(
+										data: ButtonBarThemeData(),
 										child: ButtonBar()
 									)
 								],

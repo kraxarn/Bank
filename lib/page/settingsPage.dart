@@ -206,6 +206,7 @@ class SettingsPage extends StatelessWidget
 								),
 								// Mostly a lazy way to add bottom padding
 								ButtonBarTheme(
+									data: ButtonBarThemeData(),
 									child: ButtonBar(
 										children: <Widget>[
 										],
@@ -248,6 +249,7 @@ class SettingsPage extends StatelessWidget
 								),
 								// Save button
 								ButtonBarTheme(
+									data: ButtonBarThemeData(),
 									child: ButtonBar(
 										children: <Widget>[
 											FlatButton(
