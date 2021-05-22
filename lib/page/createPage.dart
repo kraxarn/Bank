@@ -71,7 +71,7 @@ class CreatePage extends StatelessWidget
 										)
 									),
 									// Lazy fix for bottom padding
-									ButtonTheme.bar(
+									ButtonBarTheme(
 										child: ButtonBar(),
 									)
 								]

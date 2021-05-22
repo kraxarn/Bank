@@ -205,7 +205,7 @@ class SettingsPage extends StatelessWidget
 									"Automatically roll dice again and sum results if you roll double (up to 3 times)"
 								),
 								// Mostly a lazy way to add bottom padding
-								ButtonTheme.bar(
+								ButtonBarTheme(
 									child: ButtonBar(
 										children: <Widget>[
 										],
@@ -247,7 +247,7 @@ class SettingsPage extends StatelessWidget
 									),
 								),
 								// Save button
-								ButtonTheme.bar(
+								ButtonBarTheme(
 									child: ButtonBar(
 										children: <Widget>[
 											FlatButton(

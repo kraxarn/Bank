@@ -166,7 +166,7 @@ class GamePage extends StatelessWidget
 										)
 									),
 									// Bottom padding
-									ButtonTheme.bar(
+									ButtonBarTheme(
 										child: ButtonBar()
 									)
 								],
@@ -193,7 +193,7 @@ class GamePage extends StatelessWidget
 										subtitle: Text("\$15")
 									),
 									// Bottom padding
-									ButtonTheme.bar(
+									ButtonBarTheme(
 										child: ButtonBar()
 									)
 								],
