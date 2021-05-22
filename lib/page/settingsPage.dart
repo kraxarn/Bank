@@ -194,7 +194,7 @@ class SettingsPage extends StatelessWidget
 								),
 								_createSwitch(
 									"Notification",
-									"Display a notification when comeone transfers money to someone"
+									"Display a notification when someone transfers money to someone"
 								),
 								_createSwitch(
 									"Prevent Sleep",
